@@ -161,7 +161,7 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
         <table width="99%" align="center" border="0" cellpadding="5" cellspacing="0" bgcolor="#dddddd">
           <tr>
 		  
-            <td bgcolor="#ffffff" ><a href="http://www.slscn.com"  style="cursor:pointer"><img src="themes/default/images/continue.gif" alt="continue" /></a></td>
+            <td bgcolor="#ffffff" ><a href="http://www.slscn.net"  style="cursor:pointer"><img src="themes/default/images/continue.gif" alt="continue" /></a></td>
             <td bgcolor="#ffffff" align="right"><a href="flow.php?step=checkout"><img src="themes/default/images/checkout.gif" alt="checkout" /></a></td>
           </tr>
         </table>
