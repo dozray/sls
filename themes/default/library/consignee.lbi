@@ -1,0 +1,268 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<div class="consignee_title">请选择收货方式：</div>
+<div class="consignee_type">
+	<ul>
+		<li {if $shouhuo_type == 1}class="cur"{/if} shouhuo_type="1" id="daigou">代购</li>
+		<li class="line"><b></b></li>
+		<li {if $shouhuo_type == 2}class="cur"{/if} shouhuo_type="2" id="daishouhuo">代收货</li>
+		<li class="line"><b></b></li>
+		<li {if $shouhuo_type == 3} class="cur"{/if} shouhuo_type="3" id="shangmen">送货上门</li>
+	</ul>
+	<div class="cl"></div>
+</div>
+<div class="consignee_box">
+	<div><img src="images/zitidian.jpg" /></div>
+	
+	<div class="daigou_box" id="daigou_box" {if $shouhuo_type != 1} style="display:none" {/if}>
+		<table width="99%" align="center" border="0" cellpadding="5" cellspacing="1" >
+		<tr><td height="30">请输入代购帐号：</td><td></td></tr>
+		<tr><td colspan="2"><input type="text" name="daigou_username" id="daigou_username" class="daigou_username" value="{if $daigou_username neq ''}{$daigou_username}{/if}" /> </td></tr>
+		<tr><td height="30">请填写取货人：</td><td></td></tr>
+		<tr><td align="left" height="30" colspan="2">姓名：<input type="text" name="gquhuo_name" id="gquhuo_name" value="{$gquhuo_name}" /> 手机号：<input type="text" name="gquhuo_tel" id="gquhuo_tel" value="{$gquhuo_name}" /></td></tr>
+		<tr><td height="30">请选择取货方式：</td><td></td></tr>
+		<tr><td align="left" height="30" colspan="2">
+			<select name="gquhuo_fangshi"  style="width:80px;">
+				<option value="1" {if $gquhuo_fangshi eq 1} selected{/if}>自提</option>
+				<option value="2" {if $gquhuo_fangshi eq 1} selected{/if}>送货</option>
+			</select>
+		</td></tr>
+		
+		<tr><td width="150"></td><td><input id="daigou_submit" type="button" name="daigou_submit" value="确定" class="btn_submit" /></td></tr>
+		</table>
+	</div>
+	<div class="daishouhuo_box" id="daishouhuo_box" {if $shouhuo_type != 2} style="display:none" {/if}>
+		<table width="99%" align="center" border="0" cellpadding="5" cellspacing="1" >
+		<tr><td height="30">请选择代收点：</td><td></td></tr>
+		<tr><td colspan="2"> 
+		<select name="province2" id="selProvinces_100" onchange="region.changed(this, 2, 'selCities_100')" style="border:1px solid #ccc;">
+        <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
+        <!-- {foreach from=$province_list.100 item=province} -->
+        <option value="{$province.region_id}" {if $dai_consignee.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+      <select name="city2" id="selCities_100" onchange="region.changed(this, 3, 'selDistricts_100');get_daishou()" style="border:1px solid #ccc;">
+        <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
+        <!-- {foreach from=$city_list.100 item=city} -->
+        <option value="{$city.region_id}" {if $dai_consignee.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+      <select name="district2" id="selDistricts_100" onchange="get_daishou()" {if !$district_list.100}style="display:none"{/if} style="border:1px solid #ccc;">
+        <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
+        <!-- {foreach from=$district_list.100 item=district} -->
+        <option value="{$district.region_id}" {if $dai_consignee.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+	  <select name="daishou_list" id="daishou_list"  style="border:1px solid #ccc;">
+		<option value="0" >选择代收点</option>
+		<!-- {foreach from=$daishou_list item=daishou} -->
+		<option value="{$daishou.user_id}" {if $daishou_id eq $daishou.user_id}selected{/if}>{$daishou.name}</option>
+		<!-- {/foreach} -->
+	  </select>
+		</td></tr>
+		<tr><td height="30">请填写取货人：</td><td></td></tr>
+		<tr><td align="left" height="30" colspan="2">姓名：<input type="text" name="squhuo_name" id="squhuo_name" value="{$squhuo_name}" /> 手机号：<input type="text" name="squhuo_tel" id="squhuo_tel" value="{$squhuo_tel}" /></td><td>收货人地址：<input type="text" name="receiveaddres" id="receiveaddres" value="{$receiveaddres}" /></td><td>最佳收货时间：<input type="text" name="sendTime" id="sendTime" value="{$sendTime}" /></td></tr>
+		<tr><td align="left" height="30" colspan="2">
+			<select name="squhuo_fangshi" style="width:80px;">
+				<option value="1" {if $squhuo_fangshi eq 1} selected{/if}>自提</option>
+				<option value="2" {if $squhuo_fangshi eq 2} selected{/if}>送货</option>
+			</select>
+		</td></tr>
+		<tr><td width="150"></td><td><input id="daishou_submit" type="button" name="daishou_submit" value="确定" class="btn_submit" /></td></tr>
+		</table>
+	</div>
+
+<div class="flowBox mtop10" id="shangmen_box" {if $shouhuo_type != 3 } style="display:none;" {/if}>
+<h6><span>{$lang.consignee_info}</span></h6>
+{insert_scripts files='utils.js,transport.js'}
+<table width="99%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+  <!-- {if $real_goods_count gt 0} -->
+  <!-- 购物车中存在实体商品显示国家和地区 -->
+  <tr>
+    <td bgcolor="#ffffff">{$lang.country_province}:</td>
+    <td colspan="3" bgcolor="#ffffff">
+    <select name="country" id="selCountries_{$sn}" onchange="region.changed(this, 1, 'selProvinces_{$sn}')" style="border:1px solid #ccc; display:none;">
+        <option value="0">{$lang.please_select}{$name_of_region[0]}</option>
+        <!-- {foreach from=$country_list item=country} -->
+        <option value="{$country.region_id}" {if $consignee.country eq $country.region_id}selected{/if}>{$country.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+      <select name="province" id="selProvinces_{$sn}" onchange="region.changed(this, 2, 'selCities_{$sn}')" style="border:1px solid #ccc;">
+        <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
+        <!-- {foreach from=$province_list.$sn item=province} -->
+        <option value="{$province.region_id}" {if $consignee.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+      <select name="city" id="selCities_{$sn}" onchange="region.changed(this, 3, 'selDistricts_{$sn}')" style="border:1px solid #ccc;">
+        <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
+        <!-- {foreach from=$city_list.$sn item=city} -->
+        <option value="{$city.region_id}" {if $consignee.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+      <select name="district" id="selDistricts_{$sn}" {if !$district_list.$sn}style="display:none"{/if} style="border:1px solid #ccc;">
+        <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
+        <!-- {foreach from=$district_list.$sn item=district} -->
+        <option value="{$district.region_id}" {if $consignee.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+    {$lang.require_field} </td>
+  </tr>
+  <!-- {/if} -->
+  <tr>
+    <td bgcolor="#ffffff">{$lang.consignee_name}:</td>
+    <td bgcolor="#ffffff"><input name="consignee" type="text" class="inputBg" id="consignee_{$sn}" value="{$consignee.consignee|escape}" />
+    {$lang.require_field} </td>
+    <td bgcolor="#ffffff">{$lang.email_address}:</td>
+    <td bgcolor="#ffffff"><input name="email" type="text" class="inputBg"  id="email_{$sn}" value="{$consignee.email|escape}" />
+    {$lang.require_field}</td>
+  </tr>
+  <!-- {if $real_goods_count gt 0} -->
+  <!-- 购物车中存在实体商品显示详细地址以及邮政编码 -->
+  <tr>
+    <td bgcolor="#ffffff">{$lang.detailed_address}:</td>
+    <td bgcolor="#ffffff"><input name="address" type="text" class="inputBg"  id="address_{$sn}" value="{$consignee.address|escape}" />
+    {$lang.require_field}</td>
+    <td bgcolor="#ffffff">{$lang.postalcode}:</td>
+    <td bgcolor="#ffffff"><input name="zipcode" type="text" class="inputBg"  id="zipcode_{$sn}" value="{$consignee.zipcode|escape}" /></td>
+  </tr>
+  <!-- {/if} -->
+  <tr>
+    <td bgcolor="#ffffff">{$lang.phone}:</td>
+    <td bgcolor="#ffffff"><input name="tel" type="text" class="inputBg"  id="tel_{$sn}" value="{$consignee.tel|escape}" />
+    {$lang.require_field}</td>
+    <td bgcolor="#ffffff">{$lang.backup_phone}:</td>
+    <td bgcolor="#ffffff"><input name="mobile" type="text" class="inputBg"  id="mobile_{$sn}" value="{$consignee.mobile|escape}" /></td>
+  </tr>
+  <!-- {if $real_goods_count gt 0} -->
+  <!-- 购物车中存在实体商品显示最佳送货时间及标志行建筑 -->
+  <tr>
+    <td bgcolor="#ffffff">{$lang.sign_building}:</td>
+    <td bgcolor="#ffffff"><input name="sign_building" type="text" class="inputBg"  id="sign_building_{$sn}" value="{$consignee.sign_building|escape}" /></td>
+    <td bgcolor="#ffffff">{$lang.deliver_goods_time}:</td>
+    <td bgcolor="#ffffff"><input name="best_time" type="text"  class="inputBg" id="best_time_{$sn}" value="{$consignee.best_time|escape}" /></td>
+  </tr>
+  <!-- {/if} -->
+  <tr>
+    <td colspan="4" align="center" bgcolor="#ffffff">
+    <input type="submit" name="Submit" id="Submit" class="bnt_blue_2" value="{$lang.shipping_address}" />
+      <!-- {if $smarty.session.user_id gt 0 and $consignee.address_id gt 0 and 1==0} -->
+      <!-- 如果登录了，显示删除按钮 -->
+      <input name="button" type="button" onclick="if (confirm('{$lang.drop_consignee_confirm}')) location.href='flow.php?step=drop_consignee&amp;id={$consignee.address_id}'"  class="bnt_blue" value="{$lang.drop}" />
+      <!-- {/if} -->
+      <input type="hidden" name="step" value="consignee" />
+	  <input type="hidden" name="daigou_id" id="daigou_id" value="{$daigou_id}" />
+	  <input type="hidden" name="daishou_id" id="daishou_id" value="{$daishou_id}" />
+      <input type="hidden" name="act" value="checkout" />
+      <input name="address_id" type="hidden" value="{$consignee.address_id}" />
+	  <input type="hidden" name="shouhuo_type" id="shouhuo_type" value="{$shouhuo_type}" />
+      </td>
+  </tr>
+</table>
+</div>
+</div>
+{insert_scripts files='jquery.1.9.js'}
+<script>
+jQuery(function(){
+	jQuery('.consignee_type ul li').click(function(){
+		jQuery('.consignee_type ul li').removeClass('cur');
+		jQuery(this).addClass('cur');
+		var id = jQuery(this).attr('id');
+		var shouhuo_type = jQuery(this).attr('shouhuo_type');
+		jQuery('#daigou_box').hide();
+		jQuery('#daishouhuo_box').hide();
+		jQuery('#shangmen_box').hide();
+		jQuery('#daigou_id').val(0);
+		jQuery('#'+id+'_box').show();
+		jQuery('#shouhuo_type').val(shouhuo_type);
+	});
+	jQuery('#daigou_username').focus(function(){
+		if( jQuery(this).val() == '请输入代购帐号') {
+			jQuery(this).val('');
+		}
+	});
+	jQuery('#daigou_submit').click(function(){
+		var username = jQuery('#daigou_username').val();
+		if(username == '请输入代购帐号' || username == '' ) {
+			alert('请输入代购帐号');
+			return false;
+		}
+		var gquhuo_name = $('#gquhuo_name').val();
+		var gquhuo_tel = $('#gquhuo_tel').val();
+		if( gquhuo_name == '' ){
+			alert('请填写取货人姓名');
+			return false;
+		}
+		if( gquhuo_tel == ''){
+			alert('请填写取货人手机号');
+			return false;
+		}
+		
+		Ajax.call('flow.php?step=getuser', 'username='+username, daiGouUser, 'GET', 'JSON');
+
+	});
+	
+	jQuery('#daishou_submit').click(function(){
+		var daishou_id = parseInt(jQuery('#daishou_list').val(),10);
+		if( isNaN(daishou_id) ) {
+			daishou_id = 0;
+		}
+		if( daishou_id == 0) {
+			alert('请选择代收点');
+			return false;
+		}
+		var squhuo_name = $('#squhuo_name').val();
+		var squhuo_tel = $('#squhuo_tel').val();
+		var receiveaddres = $('#receiveaddres').val();
+		var sendTime = $('#sendTime').val();
+		if( squhuo_name == '' ){
+			alert('请填写取货人姓名');
+			return false;
+		}
+		if( squhuo_tel == ''){
+			alert('请填写取货人手机号');
+			return false;
+		}
+		jQuery('#daishou_id').val(daishou_id);
+		jQuery('#theForm').submit();
+	});
+	
+	
+});
+
+function daiGouUser(res){
+	if( res.count < 1 ) {
+		alert(res.info);
+	} else {
+		jQuery('#daigou_id').val(res.user_id);
+		jQuery('#theForm').submit();
+	}
+}
+
+function get_daishou() {
+	
+	var province = parseInt(jQuery('#selProvinces_100').val(),10);
+	if(isNaN(province)) {
+		province = 0;
+	}
+	var city = parseInt(jQuery('#selCities_100').val(),10);
+	if( isNaN(city)) {
+		city = 0;
+	}
+	var district = parseInt(jQuery('#selDistricts_100').val(),10);
+	if( isNaN(district)) {
+		district = 0;
+	}
+	Ajax.call('flow.php?step=getdaiuser', 'province=' + province + '&city='+city+'&district='+district, daiShouOption, 'GET', 'JSON');
+}
+function daiShouOption(res){
+	jQuery('#daishou_list').empty();
+	var option = '<option value="0">选择代收点</option>';
+	if( res.error == 0 ) {
+			jQuery.each(res.lists,function(k, val) {
+				option += '<option value="'+val.user_id+'" >'+val.name+'</option>';
+			});
+			
+		}
+		jQuery('#daishou_list').append(option);
+}
+</script>

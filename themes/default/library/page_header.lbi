@@ -1,0 +1,77 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+</script>
+<link href="themes/default/css/style_new.css" rel="stylesheet" type="text/css" />
+	<div class="pagebox new-bar">
+		<table width="100%" ><tr><td align="left" width="400"><span class="collect-bg"><a href="javascript:void(0)" onclick="shoucang('','')">收藏手拉手</a></span></td>
+		<td align="right">{insert name='member_info'}</td></tr></table>
+	</div>
+	<div class="pagebox new-top">
+		<table width="100%" >
+		<tr>
+		<td width="480" style="padding-top:5px;"><a href="/" class="logo-box"><img src="images/new/nlogo.jpg"/></a></td>
+		<td align="right" style="padding-top:5px;">
+			<script type="text/javascript">
+    {literal}
+    <!--
+    function checkSearchForm()
+    {
+        if(document.getElementById('keyword').value)
+        {
+            return true;
+        }
+        else
+        {
+            alert("{$lang.no_keywords}");
+            return false;
+        }
+    }
+    -->
+    {/literal}
+    </script>
+            <form class="search-form" id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()">
+            <input name="keywords" type="text" id="keyword" onClick="value=&quot;&quot;" value="{if $search_keywords}{$search_keywords|escape}{else}你想找什么？{/if}" class="search-text"/><input type="submit" value=" " class="search-btn" /></form>
+		</td>
+		<td width="220" align="center" valign="bottom" style="padding-top:15px;">
+			<a href="/flow.php?step=cart" ><img src="images/new/ncartico.jpg"/></a>
+		</td>
+		</tr>
+		</table>
+    </div>
+
+{insert_scripts files='jquery.js'}
+<div class="pagebox mtop20" style="display:none">
+	<table width="100%">
+    	<tr>
+        	<td width="240" align="left" valign="top"><a href="" class="logo-box"><img src="images/new/logo.jpg"/></a></td>
+            <td>
+            
+            <div class="top-a1"><img src="images/new/top-a1.jpg"/></div>
+            <div class="search-key">
+            {if $searchkeywords}
+            {foreach from=$searchkeywords item=val name=searchkeys}
+   				<a href="search.php?keywords={$val|escape:url}">{$val}</a>{if !$smarty.foreach.searchkeys.last} | {/if} 
+   			{/foreach}
+            {else}
+            <a href="search.php?keywords=食用油">食用油</a> | <a href="search.php?keywords=海鲜">海鲜</a> | <a href="search.php?keywords=进口奶粉">进口奶粉</a> | <a href="search.php?keywords=面粉">面粉</a> | <a href="search.php?keywords=进口红酒">进口红酒</a> | <a href="search.php?keywords=酱油">酱油</a> | <a href="search.php?keywords=饮料">饮料</a>
+            {/if}
+            </div>
+            
+            <div class="cl"></div>
+            <div class="menu-nav">
+                 <ul>
+                     <li class="first-bg"><img src="images/new/menu-firstbg.jpg" /></li>
+                     <li class="menu-name"><a href="../index.php"><img src="images/new/home-{if $page_index eq 1}n{else}b{/if}.jpg" /></a></li>
+                     <li class="line"><img src="images/new/menu-l.jpg" /></li>
+                     <li class="menu-name"><a href="../group_buy.php"><img src="images/new/tuangou-{if $page_index eq 2}n{else}b{/if}.jpg" /></a></li>
+                     <li class="line"><img src="images/new/menu-l.jpg" /></li>
+                     <li class="menu-name"><img src="images/new/fuwu-b.jpg" /></li>
+                     <li class="line"><img src="images/new/menu-l.jpg" /></li>
+                     <li class="menu-name"><a href="../bbs"><img src="images/new/bbs-b.jpg" /></a></li>
+                 </ul>
+			</div>
+            </td>
+        </tr>
+    </table>
+</div>

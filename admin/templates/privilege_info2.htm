@@ -1,0 +1,56 @@
+<!-- $Id: privilege_info.htm 16616 2009-08-27 01:56:35Z liuhui $ -->
+{include file="pageheader.htm"}
+{insert_scripts files="../js/region.js"}
+<script type="text/javascript">
+  region.isAdmin = true;
+</script>
+<div class="main-div">
+ 
+<table width="100%">
+  <tr>
+    <td class="label">供应商名称：</td>
+    <td>
+      {$user.name|escape}</td>
+  </tr>
+  <tr>
+    <td class="label">所在地：</td>
+    <td>{$user.areaname|escape}</td>
+  </tr>
+  <tr>
+    <td class="label">联系人：</td>
+    <td>
+      {$user.uname}</td>
+  </tr>
+    <tr>
+    <td class="label">联系电话：</td>
+    <td>
+      {$user.phone}</td>
+  </tr>
+      <tr>
+    <td class="label">手机：</td>
+    <td>
+      {$user.mobile}</td>
+  </tr>
+  <tr>
+    <td class="label">电子邮箱：</td>
+    <td>
+      {$user.email}</td>
+  </tr>
+    <tr>
+    <td class="label">地址：</td>
+    <td>
+      {$user.address}</td>
+  </tr>
+      <tr>
+    <td class="label">备注：</td>
+    <td>
+      {$user.info}</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+     </td>
+  </tr>
+</table>
+ 
+</div>
+{include file="pagefooter.htm"}

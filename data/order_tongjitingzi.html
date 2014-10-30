@@ -1,0 +1,12 @@
+<table align="center"><tr ><td >亭子</td></tr></table>
+<table align="center" border="1"> 
+<tr><td>亭子</td><td>货物</td><td>数量</td></tr>
+    <!-- {foreach from=$goods_list item=goods key=key} -->
+
+    <tr> 
+        <td>&nbsp;{$goods.tingziId}</td><!-- 商品名称 -->
+ 	<td>&nbsp;{$goods.goods_name}</td>
+	<td>&nbsp;{$goods.gsum}</td>
+    </tr>
+    <!-- {/foreach} -->
+   </table>

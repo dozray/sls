@@ -1,0 +1,34 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="userMenu">
+<div class="menu-title">帐户管理</div>
+<a href="user.php" {if $action eq 'default'}class="curs"{/if}>信息中心</a>
+<a href="user.php?act=profile"{if $action eq 'profile'}class="curs"{/if}>帐户信息</a>
+<a href="user.php?act=password"{if $action eq 'password'}class="curs"{/if}>密码管理</a>
+<a href="user.php?act=message_list"{if $action eq 'message_list'}class="curs"{/if}>意见反馈</a>
+<a href="user.php?act=account_deposit"{if $action eq 'account_deposit' || $action eq 'account_log'}class="curs"{/if}>资金充值</a>
+<a href="user.php?act=account_detail"{if $action eq 'account_detail'}class="curs"{/if}>资金明细</a>
+<div class="menu-title">订单管理</div>
+<a href="user.php?act=order_list"{if $action eq 'order_list'|| $action eq 'order_detail'}class="curs"{/if}>{$lang.label_order}</a>
+<a href="user.php?act=address_list"{if $action eq 'address_list'}class="curs"{/if}>{$lang.label_address}</a>
+<!--{if $special_rank == 1}-->
+<a href="user.php?act=dgorder_list"{if $action eq 'dgorder_list'}class="curs"{/if}>代购订单</a>
+<a href="user.php?act=dsorder_list"{if $action eq 'dsorder_list'}class="curs"{/if}>代收订单</a>
+<!--{/if}-->
+
+<!--{if 1==0}-->
+<a href="user.php?act=collection_list"{if $action eq 'collection_list'}class="curs"{/if}>{$lang.label_collection}</a>
+
+<a href="user.php?act=message_list"{if $action eq 'message_list'}class="curs"{/if}>{$lang.label_message}</a>
+<a href="user.php?act=tag_list"{if $action eq 'tag_list'}class="curs"{/if}>{$lang.label_tag}</a>
+<a href="user.php?act=booking_list"{if $action eq 'booking_list'}class="curs"{/if}>{$lang.label_booking}</a>
+<a href="user.php?act=bonus"{if $action eq 'bonus'}class="curs"{/if}>{$lang.label_bonus}</a>
+<!-- {if $affiliate.on eq 1} --><a href="user.php?act=affiliate"{if $action eq 'affiliate'}class="curs"{/if}>{$lang.label_affiliate}</a><!-- {/if} -->
+<a href="user.php?act=comment_list"{if $action eq 'comment_list'}class="curs"{/if}>{$lang.label_comment}</a>
+<!--<a href="user.php?act=group_buy">{$lang.label_group_buy}</a>-->
+<a href="user.php?act=track_packages"{if $action eq 'track_packages'}class="curs"{/if}>{$lang.label_track_packages}</a>
+<!--{if $show_transform_points}-->
+<a href="user.php?act=transform_points"{if $action eq 'transform_points'}class="curs"{/if}>{$lang.label_transform_points}</a>
+<!--{/if}-->
+<a href="user.php?act=logout" style="background:none; text-align:right; margin-right:10px;"><img src="../images/bnt_sign.gif"></a>
+<!--{/if}-->
+</div>

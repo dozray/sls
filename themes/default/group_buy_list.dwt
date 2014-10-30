@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript">
+$(function() {
+window.__Object_toJSONString = Object.prototype.toJSONString;
+delete Object.prototype.toJSONString;
+});
+</script>
+{insert_scripts files='Validform_v5.3.2_min.js,jquery.kinMaxShow-1.0.min.js'}
+<script>
+jQuery(function(){
+	jQuery("#kinMaxShow").kinMaxShow({
+		height:482,
+		intervalTime:2,
+		button:{
+			showIndex:false,
+			normal: { display:"none"},
+			focus:{ background:"#ffffff",border:"1px solid #cccccc" }
+		}
+	});
+});
+</script>
+<div class="indexa">
+	<div style="width:1308px; height:482px; overflow:hidden;" id="kinMaxShow">
+	{insert name='ads' id=1 num=5}
+	</div>
+	<div class="pagebox pos">
+	<div class="categoryalpha"></div>
+	<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+	</div>
+</div>
+<div class="tuan-bg">
+	<div class="tuan-box">
+		<!--{if $todaygoods_list}-->
+    	<div class="today-nav">
+        	<table width="100%">
+            	<tr>
+                	<th width="150" align="left"><img src="images/new/tuan-ming.jpg" /></th>
+                    <td align="right"></td>
+                </tr>
+            </table>
+            
+        </div>
+        
+        <div class="today-box"><span class="lefttop"><img src="images/new/tuan-lefttop.jpg" /></span>
+        	<span class="righttop"><img src="images/new/tuan-righttop.jpg" /></span>
+            <span class="rightbottom"><img src="images/new/tuan-rightbottom.jpg" /></span>
+            <span class="leftbottom"><img src="images/new/tuan-leftbottom.jpg" /></span>
+            <ul>
+                <!-- {foreach from=$todaygoods_list item=group_buy} 循环团购活动开始 -->
+                <li>
+                	<div class="tuan-title">{$group_buy.goods_name|escape:html}</div>
+                    <div class="tuan-desc">
+                    {$group_buy.act_desc|nl2br}
+                    </div>
+                    <div><a href="{$group_buy.url}"><img src="{$group_buy.goods_thumb}" width="475" height="300"/></a></div>
+                    <div class="tuan-sale"><span class="fl">超市价：{$group_buy.market_price}</span><span class="fr">{$group_buy.goods_buyer}人已购买</span><div class="cl"></div></div>
+                    <div class="tuan-btnbox">
+                        <table width="100%"><tr>
+                        <td class="tuan-price"><span{$group_buy.group_price}</span></td>
+                        <td class="tuan-buy"><a href="{$group_buy.url}"><img src="images/new/tuan-buy.jpg"/></a></td>
+                        </tr></table>
+                    </div>
+                    
+                </li>
+                <!--{/foreach}-->
+            </ul>
+            <div class="cl"></div>
+        </div>
+      </div>
+      <!--{/if}-->
+      <div class="list-box mtop20">
+          <div class="ac">
+            <img src="images/new/tuan-more.jpg" />
+          </div>
+          <div class="mtop20"></div>
+          <!-- {if $gb_list} 如果有团购活动 -->
+      	<!-- {foreach from=$gb_list item=group_buy} 循环团购活动开始 -->
+        <div class="list-tuan">
+        	<a href="{$group_buy.url}"><img src="{$group_buy.goods_thumb}" width="310" height="310"/></a>
+            <div class="goods-name">{$group_buy.goods_name|escape:html}</div>
+            <div class="goods-desc">{$group_buy.act_desc}</div>
+            <div class="goods-sale"><span class="fl">超市价：{$group_buy.market_price}</span> <span class="fr">已有<b>{$group_buy.goods_buyer}</b>人抢购</span></div>
+            <div class="goods-btnbox">
+            	<table width="100%"><tr>
+               	<td class="goods-price"><span>{$group_buy.group_price}</span></td>
+                <td class="goods-buy"><a href="{$group_buy.url}"><img src="images/new/tuan-buy2.jpg"/></a></td>
+                </tr></table>
+            </div>
+        </div>
+		<!--{/foreach}-->
+       <!-- {/if} -->
+        <div class="cl"></div>
+        <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+        </div>
+    </div>
+</div>
+
+<div class="border3"></div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>
