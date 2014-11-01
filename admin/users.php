@@ -196,10 +196,10 @@ elseif ($_REQUEST['act'] == 'insert')
     $province = intval($_POST['province']);
     $city = intval($_POST['city']);
     $district = intval($_POST['district']);
-    
-    if( $country > 0 && $province > 0 ) {
-        $sql = "insert into ". $ecs->table('user_address') ." (`user_id`,`country`,`province`,`city`,`district`) ";
-        $sql.= " values('".$user_id_arr['user_id']."','".$country."','".$province."','".$city."','".$district."')";
+    $name = empty($_POST['extend_field1']) ? '' : trim($_POST['extend_field1']);
+   if( $country > 0 && $province > 0 ) {
+        $sql = "insert into ". $ecs->table('user_address') ." (`user_id`,`country`,`province`,`city`,`district`,`name`) ";
+        $sql.= " values('".$user_id_arr['user_id']."','".$country."','".$province."','".$city."','".$district."','".$name."')";
         $db->query($sql);
     }
     

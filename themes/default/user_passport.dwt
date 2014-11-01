@@ -82,16 +82,32 @@
                 <tr><th><font color="red">*</font>请设置密码：</th><td><input name="password" type="password" id="password1" onblur="check_password(this.value);" onkeyup="checkIntensity(this.value)" class="uInput"  /></td></tr>
                 <tr><td height="20"></td><td></td></tr>
                 <tr><th><font color="red">*</font>请确认密码：</th><td><input name="confirm_password" type="password" id="conform_password" onblur="check_conform_password(this.value);"  class="uInput" /></td></tr>
-				<tr><th><font color="red">*</font>所属网点：</th><td>
-				 {if $get_shops}
-				<select name="msn" id="suppliers_id">
-        <option value="0">请选择社区网点</option>
-        {foreach from=$get_shops item=item}
-      <option value="{$item.msn}">{$item.msn}</option>
-      {/foreach}
+				<tr><th><font color="red">*</font>地址：</th>
+					<td>
+						<select name="province2" id="selProvinces_100" onchange="region.changed(this, 2, 'selCities_100')" style="border:1px solid #ccc;">
+        <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
+        <!-- {foreach from=$province_list.100 item=province} -->
+        <option value="{$province.region_id}" {if $dai_consignee.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+        <!-- {/foreach} -->
       </select>
-	   {/if}
-	  
+      <select name="city2" id="selCities_100" onchange="region.changed(this, 3, 'selDistricts_100');get_daishou()" style="border:1px solid #ccc;">
+        <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
+        <!-- {foreach from=$city_list.100 item=city} -->
+        <option value="{$city.region_id}" {if $dai_consignee.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+      <select name="district2" id="selDistricts_100" onchange="get_daishou()" {if !$district_list.100}style="display:none"{/if} style="border:1px solid #ccc;">
+        <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
+        <!-- {foreach from=$district_list.100 item=district} -->
+        <option value="{$district.region_id}" {if $dai_consignee.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+	  <select name="daishou_list" id="daishou_list"  style="border:1px solid #ccc;">
+		<option value="0" >选择所属网点</option>
+		<!-- {foreach from=$daishou_list item=daishou} -->
+		<option value="{$daishou.user_id}" {if $daishou_id eq $daishou.user_id}selected{/if}>{$daishou.name}</option>
+		<!-- {/foreach} -->
+	  </select>
 	  </td></tr>
                 <tr><td height="20"></td><td></td></tr>
                 <tr><th><font color="red">*</font>验证码：</th><td><input type="text" size="8" name="captcha" class="yinput" />
@@ -264,5 +280,32 @@ var process_request = "{$lang.process_request}";
 var {$key} = "{$item}";
 {/foreach}
 var username_exist = "{$lang.username_exist}";
+
+function get_daishou() {
+	var province = parseInt(jQuery('#selProvinces_100').val(),10);
+	if(isNaN(province)) {
+		province = 0;
+	}
+	var city = parseInt(jQuery('#selCities_100').val(),10);
+	if( isNaN(city)) {
+		city = 0;
+	}
+	var district = parseInt(jQuery('#selDistricts_100').val(),10);
+	if( isNaN(district)) {
+		district = 0;
+	}
+	Ajax.call('flow.php?step=getdaiuser', 'province=' + province + '&city='+city+'&district='+district, daiShouOption, 'GET', 'JSON');
+}
+function daiShouOption(res){
+	jQuery('#daishou_list').empty();
+	var option = '<option value="0">选择所属网点</option>';
+	if( res.error == 0 ) {
+			jQuery.each(res.lists,function(k, val) {
+				option += '<option value="'+val.name+'" >'+val.name+'</option>';
+			});
+			
+		}
+		jQuery('#daishou_list').append(option);
+}
 </script>
 </html>

@@ -121,6 +121,125 @@ if ($action == 'default')
 if ($action == 'register')
 {
 	include_once(ROOT_PATH .'includes/lib_transaction.php');
+	
+	  if ($_SERVER['REQUEST_METHOD'] == 'GET')
+    {
+        /* 取得购物类型 */
+        $flow_type = isset($_SESSION['flow_type']) ? intval($_SESSION['flow_type']) : CART_GENERAL_GOODS;
+
+        /*
+         * 收货人信息填写界面
+         */
+
+        if (isset($_REQUEST['direct_shopping']))
+        {
+            $_SESSION['direct_shopping'] = 1;
+        }
+		$daigou_id = intval($_SESSION['daigou_id']);
+		$daishou_id = intval($_SESSION['daishou_id']);
+		$shouhuo_type = intval($_SESSION['shouhuo_type']);
+		if($shouhuo_type < 1){
+			$shouhuo_type = 2;
+		}
+		$daigou_username = '';
+		if($daigou_id > 0){
+			$sql = 'SELECT user_id, user_name FROM ' . $ecs->table('users') . " WHERE `user_id` = '" . $daigou_id. "'";
+			$userInfo = $db->getRow($sql);
+			if($userInfo){
+				$daigou_username = $userInfo['user_name'];
+			}
+		}
+		
+
+        /* 取得国家列表、商店所在国家、商店所在国家的省列表 */
+        $smarty->assign('country_list',       get_regions());
+        $smarty->assign('shop_country',       $_CFG['shop_country']);
+        $smarty->assign('shop_province_list', get_regions(1, $_CFG['shop_country']));
+
+        /* 获得用户所有的收货人信息 */
+        if ($_SESSION['user_id'] > 0)
+        {
+            $consignee_list = get_consignee_list($_SESSION['user_id']);
+
+            if (count($consignee_list) < 1)
+            {
+                /* 如果用户收货人信息的总数小于 5 则增加一个新的收货人信息 */
+                $consignee_list[] = array('country' => $_CFG['shop_country'], 'email' => isset($_SESSION['email']) ? $_SESSION['email'] : '');
+            }
+        }
+        else
+        {
+            if (isset($_SESSION['flow_consignee'])){
+                $consignee_list = array($_SESSION['flow_consignee']);
+            }
+            else
+            {
+                $consignee_list[] = array('country' => $_CFG['shop_country']);
+            }
+        }
+		
+        $smarty->assign('name_of_region',   array($_CFG['name_of_region_1'], $_CFG['name_of_region_2'], $_CFG['name_of_region_3'], $_CFG['name_of_region_4']));
+        $smarty->assign('consignee_list', $consignee_list);
+
+        /* 取得每个收货地址的省市区列表 */
+        $province_list = array();
+        $city_list = array();
+        $district_list = array();
+        foreach ($consignee_list as $region_id => $consignee)
+        {
+            $consignee['country']  = isset($consignee['country'])  ? intval($consignee['country'])  : 0;
+            $consignee['province'] = isset($consignee['province']) ? intval($consignee['province']) : 0;
+            $consignee['city']     = isset($consignee['city'])     ? intval($consignee['city'])     : 0;
+
+            $province_list[$region_id] = get_regions(1, $consignee['country']);
+            $city_list[$region_id]     = get_regions(2, $consignee['province']);
+            $district_list[$region_id] = get_regions(3, $consignee['city']);
+        }
+		$dai_consignee = $consignee;
+		if($daishou_id > 0){
+			$dai_consignee_list = get_consignee_list($daishou_id);
+			if($dai_consignee_list){
+				$dai_consignee = $dai_consignee_list[0];
+			}
+		}
+		$province_list[100] = get_regions(1, $dai_consignee['country']);
+				$city_list[100]     = get_regions(2, $dai_consignee['province']);
+				$district_list[100] = get_regions(3, $dai_consignee['city']);
+				$smarty->assign('dai_consignee',     $dai_consignee);
+		
+		$sql = 'SELECT user_id,name FROM ' . $ecs->table('user_address') . " WHERE `user_id` > 0 and `name` != '' ";
+		$sql .= " and province = ".$dai_consignee['province']." ";
+		$sql .= " and city = ".$dai_consignee['city']." ";
+		
+		if( $dai_consignee['district'] > 0 ) {
+			$sql .= " and district = ".$dai_consignee['district']." ";
+		}
+		//echo  $_SESSION['receiveaddres']."----".$_SESSION['squhuo_name'];exit;
+		$daishou = $db->getall($sql);
+		$smarty->assign('daishou_list',     $daishou);
+		$smarty->assign('consignee',     $consignee);
+        $smarty->assign('province_list', $province_list);
+        $smarty->assign('city_list',     $city_list);
+        $smarty->assign('district_list', $district_list);
+		$smarty->assign('gquhuo_name', $_SESSION['gquhuo_name']);
+
+		$smarty->assign('gquhuo_tel', $_SESSION['gquhuo_tel']);
+		$smarty->assign('gquhuo_fangshi', $_SESSION['gquhuo_fangshi']);
+		$smarty->assign('squhuo_name', $_SESSION['squhuo_name']);
+		
+		$smarty->assign('receiveaddres', $_SESSION['receiveaddres']);
+		$smarty->assign('sendTime', $_SESSION['sendTime']);
+		$smarty->assign('squhuo_tel', $_SESSION['squhuo_tel']);
+		$smarty->assign('squhuo_fangshi', $_SESSION['squhuo_fangshi']);
+		
+		$smarty->assign('daigou_id', $daigou_id);
+		$smarty->assign('daigou_username', $daigou_username);
+		$smarty->assign('daishou_id', $daishou_id);
+		$smarty->assign('shouhuo_type', $shouhuo_type);
+
+        /* 返回收货人页面代码 */
+        //$smarty->assign('real_goods_count', exist_real_goods(0, $flow_type) ? 1 : 0);
+    }
     if ((!isset($back_act)||empty($back_act)) && isset($GLOBALS['_SERVER']['HTTP_REFERER']))
     {
         $back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? './index.php' : $GLOBALS['_SERVER']['HTTP_REFERER'];
@@ -176,7 +295,11 @@ elseif ($action == 'act_register')
 		//echo $msn;exit;
 		
 		
-        $other['msn'] = isset($_POST['msn']) ? $_POST['msn'] : '';
+        $other['msn'] = isset($_POST['daishou_list']) ? $_POST['daishou_list'] : '';
+		$other['province'] = isset($_POST['province2']) ? $_POST['province2'] : '';
+		$other['city'] = isset($_POST['city2']) ? $_POST['city2'] : '';
+		$other['district'] = isset($_POST['district2']) ? $_POST['district2'] : '';
+		
         $other['qq'] = isset($_POST['extend_field2']) ? $_POST['extend_field2'] : '';
         $other['office_phone'] = isset($_POST['extend_field3']) ? $_POST['extend_field3'] : '';
         $other['home_phone'] = isset($_POST['extend_field4']) ? $_POST['extend_field4'] : '';
