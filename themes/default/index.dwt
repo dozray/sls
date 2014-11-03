@@ -110,7 +110,7 @@ function popGet(){
 	<td width="4"></td>
 	<td width="262"><a href="category.php?id=12"><img src="images/new/index-shuiguo.jpg" /></a></td>
 	<td width="4"></td>
-	<td width="129"><a href="javascript:void(0)" onclick="popGet()"><img src="images/new/index-piaowu.jpg" /></a></td>
+	<td width="129"><a href="category.php?id=49"><img src="images/new/index-piaowu.jpg" /></a></td>
 	<td width="4"></td>
 	<td width="129"><a href="javascript:void(0)" onclick="popGet()"><img src="images/new/index-jiaofei.jpg" /></a></td>
 	<td width="4"></td>
