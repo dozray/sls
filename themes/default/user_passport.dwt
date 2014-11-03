@@ -63,8 +63,9 @@
         <div class="f1 f5" align="center">{$lang.shop_register_closed}</div>
       </div>
     </div>
-    <!-- {else} -->
-    {insert_scripts files='utils.js'}
+    <!-- {else} 
+    {insert_scripts files='utils.js'}-->
+    {insert_scripts files='region.js,utils.js'}
 <div class="pagebox">
 <div class="reg-step"><img src="images/new/reg-step.jpg" /></div>
 </div>
