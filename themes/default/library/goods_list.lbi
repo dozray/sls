@@ -5,7 +5,7 @@
 	<div class="goods-img"><a href="{$goods.url}"><img src="{$goods.goods_thumb}" alt="{$goods.goods_name}" width="196" height="196"/></a></div>
     <div class="goods-price"><!--{if $goods.promote_price neq "" } -->{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}--></div>
     
-    <div class="goods-name">{$goods.goods_name}</div>
+	<div class="goods-name" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="{$goods.goods_name}">{$goods.goods_name}</div>
     <div class="goods-name">规格：{$goods.guige}</div>
     <div class="goods-name">原产地：{$goods.chandi}</div>
     <div class="goods-btnbuy">
