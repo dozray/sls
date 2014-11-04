@@ -93,7 +93,7 @@ function popGet(){
 	<td width="4"></td>
 	<td width="261" {if $uinfo}class="myjiazbg"{/if}>{if $uinfo}
 	
-	{else}<a href="#"><img src="images/new/index-myjiaz.jpg" /></a>{/if}</td>
+	{else}<a href="category.php?id=51"><img src="_images/new/index-myjiaz.jpg" /></a>{/if}</td>
 	
 	<td width="4"></td>
 	<td width="262" class="myjiazbg22"></td>
