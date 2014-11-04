@@ -101,7 +101,7 @@ echo $this->_echash . $k['name'] . '|' . serialize($k) . $this->_echash;
 	<td width="4"></td>
 	<td width="261" <?php if ($this->_var['uinfo']): ?>class="myjiazbg"<?php endif; ?>><?php if ($this->_var['uinfo']): ?>
 	
-	<?php else: ?><a href="#"><img src="themes/default/images/new/index-myjiaz.jpg" /></a><?php endif; ?></td>
+	<?php else: ?><a href="category.php?id=51"><img src="themes/default/_images/new/index-myjiaz.jpg" /></a><?php endif; ?></td>
 	
 	<td width="4"></td>
 	<td width="262" class="myjiazbg22"></td>
@@ -118,9 +118,9 @@ echo $this->_echash . $k['name'] . '|' . serialize($k) . $this->_echash;
 	<td width="4"></td>
 	<td width="262"><a href="category.php?id=12"><img src="themes/default/images/new/index-shuiguo.jpg" /></a></td>
 	<td width="4"></td>
-	<td width="129"><a href="javascript:void(0)" onclick="popGet()"><img src="themes/default/images/new/index-piaowu.jpg" /></a></td>
+	<td width="129"><a href="category.php?id=49"><img src="themes/default/images/new/index-piaowu.jpg" /></a></td>
 	<td width="4"></td>
-	<td width="129"><a href="javascript:void(0)" onclick="popGet()"><img src="themes/default/images/new/index-jiaofei.jpg" /></a></td>
+	<td width="129"><a href="article.php?id=45"><img src="themes/default/images/new/index-jiaofei.jpg" /></a></td>
 	<td width="4"></td>
 	<td width="129"><a href="javascript:void(0)" onclick="popGet()"><img src="themes/default/images/new/index-jiazh.jpg" /></a></td>
 	
