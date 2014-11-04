@@ -1,0 +1,182 @@
+@charset "utf-8";
+body { font-family: "微软雅黑",arial; font-size: 12px; line-height: 20px; color: #606060;
+	margin:0px; padding:0px; ;
+}
+table { border-collapse:collapse;}
+div,td { word-break:break-all; word-wrap:break-word;}
+image { border:0px;}
+ul,li { margin:0px; padding:0px; list-style:none;}
+a { color:#606060; text-decoration:none;} 
+a:hover { color:#C40001; text-decoration:none;}
+a.hui { color:#ccc;}
+a.blue { color:#1B539D; font-weight:normal;}
+.red { color:red;}
+.pagebox { margin:0px auto; width:1192px;}
+
+.pos { position:relative; }
+
+.hide { display:none;}
+
+.al,.left { text-align:left;}
+.ac,.center { text-align:center;}
+.ar,.right { text-align:right;}
+
+.fl { float:left;}
+.fr { float:right;}
+.cl { clear:both;}
+
+.border1 { border:1px solid #aeaeae;}
+.border2 { border:1px solid #E4E4E4;}
+.border3 { border-top:1px solid #D3D6DB;}
+.border4 { border-top:1px dashed #DFDFDF;}
+
+.paddm { padding:15px 25px;}
+.paddm2 { padding:5px 20px;}
+.paddm3 { padding:2px 6px;}
+.padd5 { padding:5px;}
+.padd6 { padding:6px;}
+.padd8 { padding:8px;}
+.padd10 { padding:10px;}
+.padd15 { padding:15px;}
+.padd20 { padding:20px;}
+.padd25 { padding:25px;}
+
+.pleft5 { padding-left:5px;}
+.pleft10 { padding-left:10px;}
+.pleft15 { padding-left:15px;}
+.pleft20 { padding-left:20px;}
+.pleft30 { padding-left:30px;}
+.pleft50 { padding-left:50px;}
+.pleft110 { padding-left:110px;}
+.pleft150 { padding-left:150px;}
+
+.pright10 { padding-right:10px;}
+.pright15 { padding-right:15px;}
+.pright20 { padding-right:20px;}
+.pright30 { padding-right:30px;}
+
+.ptop3 { padding-top:3px;}
+.ptop5 { padding-top:5px;}
+.ptop8 { padding-top:8px;}
+.ptop10 { padding-top:10px;}
+.ptop20 { padding-top:20px;}
+.ptop50 { padding-top:50px;}
+
+.pbot3 { padding-bottom:3px;}
+.pbot8 { padding-bottom:8px;}
+.pbot10 { padding-bottom:10px;}
+
+.mleft1 { margin-left:1px;}
+.mleft5 { margin-left:5px;}
+.mleft10 { margin-left:10px;}
+.mleft20 { margin-left:20px;}
+.mleft25 { margin-left:25px;}
+.mleft30 { margin-left:30px;}
+
+.mright1 { margin-right:1px;}
+.mright5 { margin-right:5px;}
+.mright13 { margin-right:13px;}
+.mright50 { margin-right:50px;}
+
+.mtop3 { margin-top:3px;}
+.mtop5 { margin-top:5px;}
+.mtop8 { margin-top:8px;}
+.mtop10 { margin-top:10px;}
+.mtop15 { margin-top:15px;}
+.mtop20 { margin-top:20px;}
+
+.mbot3 { margin-bottom:3px;}
+.mbot8 { margin-bottom:8px;}
+.mbot10 { margin-bottom:10px;}
+.mbot12 { margin-bottom:12px;}
+
+.fontu { text-decoration:underline;}
+.font1 { font-size:21px; font-weight:bold;}
+.font14 { font-size:14px;}
+
+
+.vcenter { vertical-align:middle;}
+.hand { cursor:pointer;}
+
+.w350 { width:350px;}
+.w190 { width:190px;}
+.w110 { width:110px;}
+.w230 { width:230px;}
+.w944 { width:944px;}
+.h10 { height:10px;}
+.h15 { height:15px;}
+.h20 { height:20px;}
+.h30 { height:30px; line-height:30px;}
+.h36 { height:36px; line-height:36px;}
+.h40 { height:40px;}
+.h60 { height:60px;}
+.h105 { height:105px;}
+
+.inputtxt { width:270px; padding:2px; height:30px; line-height:30px; border:1px solid #aeaeae;}
+.input80 { width:80px; padding:2px; height:30px; line-height:30px; border:1px solid #aeaeae;}
+.input100 { width:100px; padding:2px; height:30px; line-height:30px; border:1px solid #aeaeae;}
+.input120 { width:120px; padding:2px; height:30px; line-height:30px; border:1px solid #aeaeae;}
+.input140 { width:140px; padding:2px; height:30px; line-height:30px; border:1px solid #aeaeae;}
+.input200 { width:200px; padding:2px; height:30px; line-height:30px; border:1px solid #aeaeae;}
+.input400 { width:400px; padding:2px; height:30px; line-height:30px; border:1px solid #aeaeae;}
+
+.areabox { width:95%; padding:2px; height:200px; border:1px solid #aeaeae;}
+
+.foot_border { margin-top:20px; background:#fff; border-top:1px solid #D2D7DD; padding-top:10px; padding-bottom:30px;}
+.foot_title { padding-left:30px; padding-bottom:10px; text-align:left; border-bottom:1px solid #E2E2E2;}
+ul.foot_list { padding-left:30px; padding-top:5px;}
+ul.foot_list li { padding-left:13px; height:24px; line-height:24px; text-align:left; background:url(../imgs/dot.jpg) no-repeat 3px;}
+
+.footmenu { text-align:center; }
+.footmenu a { color:#000;}
+.copyright { padding:5px; text-align:center; line-height:22px;}
+.onError { padding-left:5px; text-align:left; color:#FF0000; font-weight:100; font-size:12px;}
+.onShow { padding-left:5px; text-align:left; color:#666; font-weight:100; font-size:12px;}
+.onFocus { padding-left:5px; text-align:left; color:#000; font-weight:100; font-size:12px;}
+.onLoad { padding-left:5px; text-align:left; font-weight:100;  font-size:12px;} 
+
+/*表单验证样式*/
+/*==========以下部分是Validform必须的===========*/
+.Validtip { color:#666;}
+.Validform_checktip{
+	float:left;
+	margin-left:8px;
+	margin-top:5px;
+	line-height:20px;
+	height:20px;
+	overflow:hidden;
+	color:#999;
+	font-size:12px;
+	/*vertical-align:8px;*/
+}
+.Validform_right{
+	float:left;
+	margin-top:5px;
+	color:#71b83d;
+	padding-left:20px;
+	background:url(../image/right.png) no-repeat left center;
+}
+.Validform_wrong{
+	float:left;
+	margin-top:5px;
+	color:red;
+	padding-left:20px;
+	white-space:nowrap;
+	background:url(../image/error.png) no-repeat left center;
+}
+.Validform_loading{
+	float:left;
+	margin-top:5px;
+	padding-left:20px;
+	background:url(../image/onLoad.gif) no-repeat left center;
+}
+.Validform_error{
+	 
+}
+#Validform_msg{color:#555; font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif; width:280px; -webkit-box-shadow:2px 2px 3px #aaa; -moz-box-shadow:2px 2px 3px #aaa; background:#fff; position:absolute; top:0px; right:50px; z-index:99999; display:none;filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999'); box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);}
+#Validform_msg .iframe{position:absolute; left:0px; top:-1px; z-index:-1;}
+#Validform_msg .Validform_title{line-height:25px; height:25px; text-align:left; font-weight:bold; padding:0 8px; color:#fff; position:relative; background-color:#999;
+background: -moz-linear-gradient(top, #999, #666 100%); background: -webkit-gradient(linear, 0 0, 0 100%, from(#999), to(#666)); filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#999999', endColorstr='#666666');}
+#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{line-height:22px; position:absolute; right:8px; top:0px; color:#fff; text-decoration:none;}
+#Validform_msg a.Validform_close:hover{color:#ccc;}
+#Validform_msg .Validform_info{padding:8px;border:1px solid #bbb; border-top:none; text-align:left;}
