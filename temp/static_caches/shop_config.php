@@ -148,7 +148,7 @@ scrollAmount=3><U><FONT color=red>
   'mail_service' => '0',
   'smtp_ssl' => '0',
   'integrate_code' => 'ucenter',
-  'integrate_config' => 'a:17:{s:5:"uc_id";s:1:"3";s:6:"uc_key";s:64:"qbU4KcX5u9f1m988wete8bn8c981Yab042Uej711OdAbu7ofR8g1W7K8h6X5s7q2";s:6:"uc_url";s:34:"http://www.slscn.com/bbs/uc_server";s:5:"uc_ip";s:0:"";s:10:"uc_connect";s:5:"mysql";s:10:"uc_charset";s:5:"utf-8";s:7:"db_host";s:9:"localhost";s:7:"db_user";s:4:"slas";s:7:"db_name";s:4:"slas";s:7:"db_pass";s:8:"g7k7n7W4";s:6:"db_pre";s:7:"cdb_uc_";s:10:"db_charset";s:4:"utf8";s:7:"uc_lang";a:2:{s:7:"credits";a:2:{i:0;a:1:{i:0;s:12:"等级积分";}i:1;a:1:{i:0;s:12:"消费积分";}}s:8:"exchange";s:19:"UCenter积分兑换";}s:13:"cookie_domain";s:0:"";s:11:"cookie_path";s:1:"/";s:10:"tag_number";s:0:"";s:5:"quiet";i:1;}',
+  'integrate_config' => 'a:17:{s:5:"uc_id";s:1:"3";s:6:"uc_key";s:64:"qbU4KcX5u9f1m988wete8bn8c981Yab042Uej711OdAbu7ofR8g1W7K8h6X5s7q2";s:6:"uc_url";s:34:"http://www.slscn.net/bbs/uc_server";s:5:"uc_ip";s:0:"";s:10:"uc_connect";s:5:"mysql";s:10:"uc_charset";s:5:"utf-8";s:7:"db_host";s:9:"localhost";s:7:"db_user";s:4:"slas";s:7:"db_name";s:4:"slas";s:7:"db_pass";s:8:"g7k7n7W4";s:6:"db_pre";s:7:"cdb_uc_";s:10:"db_charset";s:4:"utf8";s:7:"uc_lang";a:2:{s:7:"credits";a:2:{i:0;a:1:{i:0;s:12:"等级积分";}i:1;a:1:{i:0;s:12:"消费积分";}}s:8:"exchange";s:19:"UCenter积分兑换";}s:13:"cookie_domain";s:0:"";s:11:"cookie_path";s:1:"/";s:10:"tag_number";s:0:"";s:5:"quiet";i:1;}',
   'hash_code' => '31693422540744c0a6b6da635b7a5a93',
   'template' => 'default',
   'install_date' => '1404614777',
