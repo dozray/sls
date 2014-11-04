@@ -34,7 +34,7 @@ a.logo-box { margin-left:20px;}
 
 
 .myjiazbg { background:url(../_images/new/index-myjiaz.jpg) no-repeat;} 
-.myjiazbg22 { background:url(../images/new/index-myjifen.jpg) no-repeat;} 
+.myjiazbg22 { background:url(../images/new/index-myjifen.jpg) no-repeat 2px 1px;} 
 .myjiazbg22 a { display: block; width: 262px; height: 129px;}
 
 #footers { text-align:center; color:#666; padding:30px;}
