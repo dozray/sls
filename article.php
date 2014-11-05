@@ -27,9 +27,12 @@ if ((DEBUG_MODE & 2) != 2)
 /*------------------------------------------------------ */
 
 $_REQUEST['id'] = isset($_REQUEST['id']) ? intval($_REQUEST['id']) : 0;
+
 $article_id     = $_REQUEST['id'];
+
 if(isset($_REQUEST['cat_id']) && $_REQUEST['cat_id'] < 0)
 {
+	
     $article_id = $db->getOne("SELECT article_id FROM " . $ecs->table('article') . " WHERE cat_id = '".intval($_REQUEST['cat_id'])."' ");
 }
 
@@ -43,7 +46,9 @@ if (!$smarty->is_cached('article.dwt', $cache_id))
 {
     /* 文章详情 */
     $article = get_article_info($article_id);
-
+	$user_id = $_SESSION['user_id'];
+    $sql = "SELECT qq FROM ecs_users WHERE user_id = $user_id";
+    $qq = $db->getRow($sql);
     if (empty($article))
     {
         ecs_header("Location: ./\n");
@@ -69,6 +74,7 @@ if (!$smarty->is_cached('article.dwt', $cache_id))
     $smarty->assign('username',         $_SESSION['user_name']);
     $smarty->assign('email',            $_SESSION['email']);
     $smarty->assign('type',            '1');
+	$smarty->assign('Qqq',            $qq);
     $smarty->assign('promotion_info', get_promotion_info());
 
     /* 验证码相关设置 */
