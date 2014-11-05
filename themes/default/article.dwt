@@ -18,10 +18,11 @@
  
   <div class="pagebox mtop20">
  
-      <div style="border:1px solid #ededed; background-color:#fff; padding:20px 15px;">
+      <div style="border:1px solid #ededed; background-color:#fff; padding:20px 15px; position: relative;">
          <div class="tc" style="padding:8px; border-bottom:1px solid #ededed; " >
          <font class="f5 f6">{$article.title|escape:html}</font>
          </div>
+         <div style="position: absolute; top: 300px; left: 618px; font-size: 20px;">社区网点电话：{$Qqq.qq}</div>
          <!-- {if $article.content } -->
           {$article.content}
          <!-- {/if} -->
