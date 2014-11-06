@@ -4,8 +4,8 @@ var process_request = "{$lang.process_request}";
 </script>
 <link href="themes/default/css/style_new.css" rel="stylesheet" type="text/css" />
 	<div class="pagebox new-bar">
-		<table width="100%" ><tr><td align="left" width="400"><span class="collect-bg"><a href="javascript:void(0)" onclick="shoucang('','')">收藏手拉手</a></span></td>
-		<td align="right">{insert name='member_info'}</td></tr></table>
+		<table width="100%" ><tr><td align="left" width="400"></td>
+		<td align="right"><span class="collect-bg"><a href="javascript:void(0)" onclick="shoucang('','')">收藏手拉手</a></span>&nbsp;{insert name='member_info'}</td></tr></table>
 	</div>
 	<div class="pagebox new-top">
 		<table width="100%" >
