@@ -6,6 +6,8 @@
 <meta name="Description" content="{$description}" />
 <!-- TemplateBeginEditable name="doctitle" -->
 <title>{$page_title}</title>
+<script type="text/javascript" src="themes/default/_js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="themes/default/_js/_category.js"></script>
 <!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
@@ -15,13 +17,14 @@
 <!-- {/if} -->
 {* 包含脚本文件 *}
 {insert_scripts files='transport.js,common.js,global.js,compare.js'}
+<link href="themes/default/_css/_category.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-
+<div class="_category_tit"><span></span></div>
 <div class="pagebox mtop15">
 	<div class="fl w944">
-		<div class="sub-cat">
+		<div class="sub-cat _sub-cat">
 			<ul>
 				{foreach from=$categories item=cat}
 				<li><a href="{$cat.url}">{$cat.name}</a></li>
@@ -29,18 +32,25 @@
 			</ul>
 		</div>
 	</div>
-	<div class="fr w230"><a href="/"><img src="images/new/ngohome.jpg"/></a></div>
+	<div class="fr w230 _w230"><a href="/"></a></div>
 	<div class="cl"></div>
 </div>
+<!--
+<div class="_btns">
+	<input type="button" value="价格" />
+    <input type="button" value="销量" />
+    <input type="button" value="上架时间" />
+    <input type="button" value="评论数量" />
+</div>-->
 <div class="pagebox mtop15">
 	<div class="fl w944">
 		 <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem -->
 		 <div class="cl"></div>
   		 <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
 	</div>
-	<div class="fr w230" >
+	<div class="fr w230 __w230" >
 		<div style="border:1px solid #E7E7E7; padding-bottom:10px;">
-		<div><img src="images/new/nmycart.jpg" width="230"/></div>
+		<div class="_car"></div>
 		<div style=" padding:10px;">
 			<table width="100%">
 			{foreach from=$cart_goods item=goods}
@@ -61,7 +71,7 @@
 			</tr>
 			</table>
 		</div>
-		<div style="text-align:center;"><a href="flow.php?step=checkout"><img src="images/new/njiesuan.jpg"/></a></div>
+		<div style="text-align:center;"><a class="_total" href="flow.php?step=checkout"><img src="images/new/njiesuan.jpg"/></a></div>
 		</div>
 	</div>
 	<div class="cl"></div>
