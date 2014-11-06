@@ -30,7 +30,7 @@ $back_act='';
 
 // 不需要登录的操作或自己验证是否登录（如ajax处理）的act
 $not_login_arr =
-array('login','act_login','register','act_register','act_edit_password','get_password','send_pwd_email','password', 'signin', 'add_tag', 'collect', 'return_to_cart', 'logout', 'email_list', 'validate_email', 'send_hash_mail', 'order_query', 'is_registered', 'check_email','clear_history','qpassword_name', 'get_passwd_question', 'check_answer');
+array('login','act_login','register','act_register','act_edit_password','get_password','send_pwd_email','password', 'signin', 'add_tag', 'collect', 'return_to_cart', 'logout', 'email_list', 'validate_email', 'send_hash_mail', 'order_query', 'is_registered', 'check_email','clear_history','qpassword_name', 'get_passwd_question', 'check_answer','authcode','checkAV');
 
 /* 显示页面的action列表 */
 $ui_arr = array('register', 'login', 'profile', 'password','order_list', 'dgorder_list', 'affirm_shouhuo', 'affirm_daohuo', 'dsorder_list', 'order_detail', 'address_list', 'collection_list',
@@ -271,7 +271,20 @@ if ($action == 'register')
 //    $smarty->assign('back_act', $back_act);
     $smarty->display('user_passport.dwt');
 }
-
+elseif($action == 'authcode')
+{	
+	$username=$_REQUEST['username'];
+	$zcm=rand(100000,999999);
+	$_SESSION['authcode'] = $zcm;
+	$neirong=array($zcm,'60');
+	$sendid='5397';		
+	include_once('includes/Send.php');
+	sendTemplateSMS($username,$neirong,$sendid);
+	$re_arr = array('status'=>0);
+	echo json_encode($re_arr);
+    exit();
+	
+}
 /* 注册会员的处理 */
 elseif ($action == 'act_register')
 {
@@ -289,12 +302,8 @@ elseif ($action == 'act_register')
         $username = isset($_POST['username']) ? trim($_POST['username']) : '';
         $password = isset($_POST['password']) ? trim($_POST['password']) : '';
         $email    = isset($_POST['email']) ? trim($_POST['email']) : '';
-		
 		//$msn = isset($_POST['msn']) ? trim($_POST['msn']) : '';
-		
-		//echo $msn;exit;
-		
-		
+
         $other['msn'] = isset($_POST['daishou_list']) ? $_POST['daishou_list'] : '';
 		$other['province'] = isset($_POST['province2']) ? $_POST['province2'] : '';
 		$other['city'] = isset($_POST['city2']) ? $_POST['city2'] : '';
@@ -303,11 +312,11 @@ elseif ($action == 'act_register')
         $other['qq'] = isset($_POST['extend_field2']) ? $_POST['extend_field2'] : '';
         $other['office_phone'] = isset($_POST['extend_field3']) ? $_POST['extend_field3'] : '';
         $other['home_phone'] = isset($_POST['extend_field4']) ? $_POST['extend_field4'] : '';
-        //$other['mobile_phone'] = isset($_POST['extend_field5']) ? $_POST['extend_field5'] : '';
-		$other['mobile_phone'] = $username;
+       // $other['mobile_phone'] = isset($_POST['extend_field5']) ? $_POST['extend_field5'] : '';
+	   	$other['mobile_phone']= $username;
         $sel_question = empty($_POST['sel_question']) ? '' : $_POST['sel_question'];
         $passwd_answer = isset($_POST['passwd_answer']) ? trim($_POST['passwd_answer']) : '';
-
+		$reg_authcode = $_POST['check'];
 
         $back_act = isset($_POST['back_act']) ? trim($_POST['back_act']) : '';
 
@@ -329,7 +338,15 @@ elseif ($action == 'act_register')
         {
             show_message($_LANG['passwd_balnk']);
         }
-
+		//print_r($_SESSION['authcode']);
+		//echo "@@@@";
+		//print_r($reg_authcode);
+		if (($_SESSION['authcode']!=$reg_authcode))
+		{
+			//echo "asdfasdf";
+				show_message($_LANG['reg_authcode']);
+		}
+		//echo "sssssssssssss";
         /* 验证码检查 */
         if ((intval($_CFG['captcha']) & CAPTCHA_REGISTER) && gd_version() > 0)
         {
@@ -347,9 +364,10 @@ elseif ($action == 'act_register')
                 show_message($_LANG['invalid_captcha'], $_LANG['sign_up'], 'user.php?act=register', 'error');
             }
         }
-
+		
         if (register($username, $password, $email, $other) !== false)
         {
+			
             /*把新注册用户的扩展信息插入数据库*/
             $sql = 'SELECT id FROM ' . $ecs->table('reg_fields') . ' WHERE type = 0 AND display = 1 ORDER BY dis_order, id';   //读出所有自定义扩展字段的id
             $fields_arr = $db->getAll($sql);
@@ -3092,4 +3110,5 @@ elseif ($action == 'clear_history')
 {
     setcookie('ECS[history]',   '', 1);
 }
+
 ?>
