@@ -10,7 +10,7 @@
 
 .new-top { height:87px; background:#01AFEC; color:#fff; border-bottom:1px solid #3D9DB3;}
 .new-top a { color:#fff;}
-a.logo-box { margin-left:20px;}
+a.logo-box { margin-left:60px;}
 
 .help-menu { height:48px;}
 .help-menu a { font-weight:bold;}
@@ -38,14 +38,14 @@ a.logo-box { margin-left:20px;}
 .myjiazbg22 { background:url(../images/new/index-myjifen.jpg) no-repeat 2px 0px;} 
 .myjiazbg22 a { display: block; width: 262px; height: 129px;}
 
-#footers { text-align:center; color:#666; padding:30px;}
+#footers { text-align:center; color:#666; padding-top: 30px;}
 
 /*新版结束*/
 .top-nav { height:27px; line-height:27px; background:#f2f2f2; border-bottom:1px solid #e5e5e5;}
 .top-cartbg { background:url(../images/new/cart-ico.jpg) no-repeat left; padding-left:15px;}
 
 
-.search-form { float:left; text-align:left; margin-top:10px; width:450px; height:37px; background:url(../images/new/nsearchbg.jpg) no-repeat left;}
+.search-form { float:left; text-align:left; margin-top:10px; width:450px; height:37px; /*background:url(../images/new/nsearchbg.jpg) no-repeat left;*/background:url(../_images/_search.png) no-repeat left;}
 .search-form .search-text { width:337px; height:26px; margin:5px; margin-left:5px; border:0px; font-size:14px;
  line-height:26px; color:#B2B2CE; }
 .search-form .search-btn { width:85px; height:40px; border:0px; background:none; cursor:pointer;  }
@@ -60,7 +60,7 @@ a.logo-box { margin-left:20px;}
 .menu-nav li.menu-name { padding-top:4px; padding-left:15px; padding-right:15px;}
 
 .indexa1 { height:482px; background:url(../images/new/indexa1.jpg) center;}
-.indexa6 { height:482px; background:url(../images/new/indexa6.jpg) center;}
+.indexa6 { height:482px; background:url(../images/new/indexa6.jpg) no-repeat center;}
 .indexa7 { height:482px; background:url(../images/new/indexa7.jpg) center;}
 .indexa { height:336px; text-align:center;}
 
@@ -109,6 +109,7 @@ a.logo-box { margin-left:20px;}
 .login-box .sinfo a { color:#527FB6;}
 
 .reg-step { margin-left:auto; margin-right:auto; width:1000px; margin-top:30px; background:#F8F8F8; border:1px solid #EFEFEF; height:88px; text-align:center;}
+._reg_step { width: 1000px; height: 88px; background: url(../_images/1-2.png) no-repeat 0 -10px;}
 
 .reg-box { padding-bottom:40px;}
 .reg-box th { height:40px; padding-right:20px; text-align:right; width:100px; font-size:14px; font-weight:normal; }
