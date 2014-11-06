@@ -303,7 +303,8 @@ elseif ($action == 'act_register')
         $other['qq'] = isset($_POST['extend_field2']) ? $_POST['extend_field2'] : '';
         $other['office_phone'] = isset($_POST['extend_field3']) ? $_POST['extend_field3'] : '';
         $other['home_phone'] = isset($_POST['extend_field4']) ? $_POST['extend_field4'] : '';
-        $other['mobile_phone'] = isset($_POST['extend_field5']) ? $_POST['extend_field5'] : '';
+        //$other['mobile_phone'] = isset($_POST['extend_field5']) ? $_POST['extend_field5'] : '';
+		$other['mobile_phone'] = $username;
         $sel_question = empty($_POST['sel_question']) ? '' : $_POST['sel_question'];
         $passwd_answer = isset($_POST['passwd_answer']) ? trim($_POST['passwd_answer']) : '';
 
