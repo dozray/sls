@@ -1,0 +1,34 @@
+@charset "utf-8";
+._category_tit { height: 41px; width: 1190px; margin: auto; background: url(../_images/c_tit.png) no-repeat; margin-top: 15px; line-height: 40px;}
+	._category_tit span { font-size: 18px; color: #fff; margin-left: 115px;}
+	
+body ._sub-cat { height: 73px; background: #8fc31f; border-radius: 5px;}
+body ._sub-cat ul { padding-top: 25px;}
+/*body ._sub-cat ul li a { font-size: 12px;}*/
+
+body ._w230 { height: 41px; margin-top: -50px; background: url(../images/new/ngohome.jpg) no-repeat center -27px; border-radius: 5px;}
+
+body .__w230 { margin-top: -127px;}
+body ._car { height: 73px; width: 234px; background: url(../_images/nmycart.jpg) 0px 9px; margin: -3px 0px 0px -3px; border-radius: 5px;}
+body ._total { border-radius: 5px; width: 189px; height: 51px; display: block; overflow: hidden; margin: auto;}
+
+body ._btns { width: 1190px; margin: auto; margin-top: 15px;}
+body ._btns input { border: solid 1px #8fc31f; height: 26px; width: 93px; border-radius: 5px; background: #fff; color: #8fc31f; margin-right: 5px; outline: none;}
+
+body ._goods-name {overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+
+body .list-goods ._goods-btnbuy { background: none; padding-bottom: 12px;}
+body .list-goods .goods-btnbuy a._addtocart { border: solid 1px #8fc31f; border-radius: 5px; height: 33px; width: 92px; color: #8fc31f; display: inline-block; line-height: 32px;}
+
+body .list-goods ._goods-btnbuy ._dgi input{ width: 30px; height: 33px; padding: 0px; margin: 0px; border: 0px; float: left;}
+body .list-goods ._goods-btnbuy ._dgi .decr { border: solid 1px #f6643d; border-radius: 5px 0px 0px 5px; background: url(../_images/j_11.png) no-repeat center center; outline: none; text-indent: -10px;}
+body .list-goods ._goods-btnbuy ._dgi .goods-numb { border: solid 1px #bdb9b9; margin-left: -1px; z-index: 10; position: relative;}
+body .list-goods ._goods-btnbuy ._dgi .incr { border: solid 1px #8fc31f; border-radius: 0px 5px 5px 0px; margin-left: -1px; background: url(../_images/j_05.png) no-repeat center center; outline: none; text-indent: -10px;}
+body .list-goods ._goods-btnbuy table { margin-left: 12px;}
+body .list-goods ._goods-btnbuy ._dgi { padding-left: 10px;}
+
+body .pagebar { float: none;}
+body .f_l { margin-left: 10px;}
+
+
+
