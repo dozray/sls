@@ -43,6 +43,7 @@ $_LANG['integral_not_enough'] = '您使用的积分不能超过您现有的积�
 $_LANG['integral_too_much'] = "您使用的积分不能超过%d";
 $_LANG['invalid_bonus'] = "您选择的红包并不存在。";
 $_LANG['no_goods_in_cart'] = '您的购物车中没有商品！';
+$_LANG['no_info'] = '您的代购信息不完善！';
 $_LANG['not_submit_order'] = '您参与本次团购商品的订单已提交，请勿重复操作！';
 $_LANG['pay_success'] = '本次支付已经成功，我们将尽快为您发货。';
 $_LANG['pay_fail'] = '本次支付失败，请及时和我们取得联系。';
