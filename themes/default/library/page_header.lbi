@@ -31,7 +31,9 @@ var process_request = "{$lang.process_request}";
     {/literal}
     </script>
             <form class="search-form" id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()">
-            <input name="keywords" type="text" id="keyword" onClick="value=&quot;&quot;" value="{if $search_keywords}{$search_keywords|escape}{else}你想找什么？{/if}" class="search-text"/><input type="submit" value=" " class="search-btn" /></form>
+            	<!--<input name="keywords" type="text" id="keyword" onClick="value=&quot;&quot;" value="{if $search_keywords}{$search_keywords|escape}{else}你想找什么？{/if}" class="search-text"/><input type="submit" value=" " class="search-btn" />-->
+                <input name="keywords" type="text" id="keyword" onClick="value=&quot;&quot;" value="热搜 橄榄油" class="search-text"/><input type="submit" value=" " class="search-btn" />
+            </form>
 		</td>
 		<td width="220" align="center" valign="bottom" style="padding-top:15px;">
 			<a href="/flow.php?step=cart" ><img src="images/new/ncartico.jpg"/></a>
