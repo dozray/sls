@@ -10,7 +10,7 @@ var process_request = "{$lang.process_request}";
 	<div class="pagebox new-top">
 		<table width="100%" >
 		<tr>
-		<td width="480" style="padding-top:5px;"><a href="/" class="logo-box"><img src="images/new/nlogo.jpg"/></a></td>
+		<td width="480" style="padding-top:5px;"><a href="/" class="logo-box"><img src="themes/default/_images/_logo.png"/></a></td>
 		<td align="right" style="padding-top:5px;">
 			<script type="text/javascript">
     {literal}
