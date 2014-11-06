@@ -67,7 +67,7 @@
     {insert_scripts files='utils.js'}-->
     {insert_scripts files='region.js,utils.js'}
 <div class="pagebox">
-<!--<div class="reg-step"><img src="images/new/reg-step.jpg" /></div>-->
+<!-- <div class="reg-step"><img src="images/new/reg-step.jpg" /></div> -->
 <div class="_reg_step"></div>
 </div>
 
@@ -78,6 +78,7 @@
         	<form action="user.php" method="post" name="formUser" onsubmit="return register();">
             <table >
             	<tr><th><font color="red">*</font>账户名：</th><td><input name="username" type="text" size="25" id="username" onblur="is_registered(this.value);" class="uInput"/></td></tr>
+				<tr><td></td><td><input type = "button" name = "checkUser" onclick = "checkU()" value = "验证手机" />请输入验证码：<input style = "width: 50px" type = "text" name = "check"/></td></tr>
                 <tr><td height="20"></td><td></td></tr>
                 <tr><th><font color="red">*</font>邮箱：</th><td><input name="email" type="text" size="25" id="email" onblur="checkEmail(this.value);"  class="uInput"/></td></tr>
                 <tr><td height="20"></td><td></td></tr>
@@ -122,7 +123,7 @@
             <tr><td ></td><td></td></tr>
             <tr><td ></td><td><input name="act" type="hidden" value="act_register" >
           <input type="hidden" name="back_act" value="{$back_act}" />
-          <input name="Submit" type="submit" value="" class="submit_reg"></td></tr>
+          <input name="Submit" type="submit" value="" class="submit_reg" ></td></tr>
             </table>
             </form>
         </div>
@@ -308,6 +309,10 @@ function daiShouOption(res){
 			
 		}
 		jQuery('#daishou_list').append(option);
+}
+function checkU(){
+	username = $("input[name='username']").val();
+	 Ajax.call( 'user.php?act=authcode', 'username=' + username , 'GET', 'TEXT', true, true );  
 }
 </script>
 </html>
