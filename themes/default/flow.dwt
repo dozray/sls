@@ -145,7 +145,7 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
               </td>
               <td align="right" bgcolor="#ffffff">
                 <input type="button" value="{$lang.clear_cart}" class="bnt_blue_1" onclick="location.href='flow.php?step=clear'" />
-                <input name="submit" type="submit" class="bnt_blue_1" value="{$lang.update_cart}" />
+                
               </td>
             </tr>
           </table>
