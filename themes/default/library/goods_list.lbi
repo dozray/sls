@@ -5,14 +5,23 @@
 	<div class="goods-img"><a href="{$goods.url}"><img src="{$goods.goods_thumb}" alt="{$goods.goods_name}" width="196" height="196"/></a></div>
     <div class="goods-price"><!--{if $goods.promote_price neq "" } -->{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}--></div>
     
-	<div class="goods-name" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="{$goods.goods_name}">{$goods.goods_name}</div>
+	<div class="goods-name _goods-name" title="{$goods.goods_name}">{$goods.goods_name}</div>
     <div class="goods-name">规格：{$goods.guige}</div>
     <div class="goods-name">原产地：{$goods.chandi}</div>
-    <div class="goods-btnbuy">
-    	<table width="100%"><tr>
-       	<td height="39" width="52%"><span class="decr" onclick="setDecr({$goods.goods_id})">&nbsp;</span><input class="goods-numb" type="text" value="1" name="number" id="goods_num_{$goods.goods_id}" goods_number="{$goods.goods_number}" max_number="{$goods.max_number}" /><span class="incr" onclick="setIncr({$goods.goods_id})">&nbsp;</span></td>
-        <td align="center"><a href="javascript:addToCart({$goods.goods_id})" class="addtocart">加入购物车</a></td>
-        </tr></table>
+    <div class="goods-btnbuy _goods-btnbuy">
+    	<table>
+        	<tr>
+            	<td align="center">
+                	<a href="javascript:addToCart({$goods.goods_id})" class="addtocart _addtocart">加入购物车</a>
+                </td>
+       			<td height="39" class="_dgi">
+                	<input class="decr" onclick="setDecr({$goods.goods_id})" value=" " readonly="readonly" />
+                    <input class="goods-numb" type="text" value="1" name="number" id="goods_num_{$goods.goods_id}" goods_number="{$goods.goods_number}" max_number="{$goods.max_number}" />
+                   	<input class="incr" onclick="setIncr({$goods.goods_id})" value=" " readonly="readonly" />
+                </td>
+        		
+        	</tr>
+        </table>
     </div>
 </div>
 <!--{/if}-->
