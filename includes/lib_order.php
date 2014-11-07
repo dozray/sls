@@ -85,7 +85,7 @@ function available_shipping_list($region_id_list)
                 $GLOBALS['ecs']->table('area_region') . ' AS r ' .
             'WHERE r.region_id ' . db_create_in($region_id_list) .
             ' AND r.shipping_area_id = a.shipping_area_id AND a.shipping_id = s.shipping_id AND s.enabled = 1 ORDER BY s.shipping_order';
-
+	
     return $GLOBALS['db']->getAll($sql);
 }
 
@@ -1068,6 +1068,10 @@ function order_allfee($order, $moregoods, $consignee)
  */
 function update_order($order_id, $order)
 {
+	//print_r($order_id);
+	//echo "AAAAAAAAAAA";
+	//print_r($order);
+	//exit;
     return $GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('order_info'),
         $order, 'UPDATE', "order_id = '$order_id'");
 }
@@ -1958,9 +1962,8 @@ function get_cart_goods()
 function get_consignee($user_id)
 {
     if (isset($_SESSION['flow_consignee']))
-    {
+    { 
         /* 如果存在session，则直接返回session中的收货人信息 */
-
         return $_SESSION['flow_consignee'];
     }
     else
@@ -1978,6 +1981,28 @@ function get_consignee($user_id)
         }
         return $arr;
     }
+}
+/**
+ * 取得收货人信息
+ * @param   int     $user_id    用户编号
+ * @return  array
+ */
+function get_consignee1($user_id)
+{
+        /* 如果不存在，则取得用户的默认收货人信息 */
+        $arr = array();
+
+        if ($user_id > 0)
+        {
+            /* 取默认地址 */
+           // $sql = "SELECT ua.*".
+//                    " FROM " . $GLOBALS['ecs']->table('user_address') . "AS ua WHERE ua.user_id='$user_id'";
+            $sql=" SELECT ua.* FROM " . $GLOBALS['ecs']->table('user_address') . "AS ua WHERE ua.name=(SELECT msn FROM "  .$GLOBALS['ecs']->table('users') ." WHERE  user_id='$user_id') ";
+
+            $arr = $GLOBALS['db']->getRow($sql);
+        }
+        return $arr;
+    
 }
 
 /**
