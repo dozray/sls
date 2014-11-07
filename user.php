@@ -348,7 +348,7 @@ elseif ($action == 'act_register')
 		if (($_SESSION['authcode']!=$reg_authcode))
 		{
 			//echo "asdfasdf";
-				show_message($_LANG['reg_authcode']);
+				show_message($_LANG['reg_authcode_error']);
 		}
 		//echo "sssssssssssss";
         /* 验证码检查 */
