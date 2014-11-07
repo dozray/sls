@@ -250,7 +250,7 @@ if (!defined('INIT_NO_USERS'))
         set_affiliate();
     }
 
-    /* session 不存在，检查cookie */
+    /* session 不存在，检查cookie 
     if (!empty($_COOKIE['ECS']['user_id']) && !empty($_COOKIE['ECS']['password']))
     {
         // 找到了cookie, 验证cookie信息
@@ -273,7 +273,7 @@ if (!defined('INIT_NO_USERS'))
             $_SESSION['user_name'] = $row['user_name'];
             update_user_info();
         }
-    }
+    }*/
 
     if (isset($smarty))
     {
