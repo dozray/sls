@@ -13,7 +13,6 @@
 <script type="text/javascript">
 var $j17 = jQuery.noConflict(true);
 $j17(function () {
-	console.log(Object.prototype.toJSONString);
 	window.__Object_toJSONString = Object.prototype.toJSONString;
 	delete Object.prototype.toJSONString;
 	$j17("#sendTime").datetimepicker({
