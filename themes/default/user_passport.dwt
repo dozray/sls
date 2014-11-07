@@ -77,8 +77,8 @@
         <div class="reg-box">
         	<form action="user.php" method="post" name="formUser" onsubmit="return register();">
             <table >
-            	<tr><th><font color="red">*</font>账户名：</th><td><input name="username" type="text" size="25" id="username" onblur="is_registered(this.value);" class="uInput"/></td></tr>
-				<tr><td></td><td><input type = "button" name = "checkUser" onclick = "checkU()" value = "验证手机" />请输入验证码：<input style = "width: 50px" type = "text" name = "check"/></td></tr>
+            	<tr><th><font color="red">*</font>账户名：</th><td><input name="username" placeholder="请输入手机" type="text" size="25" id="username" onblur="is_registered(this.value);" class="uInput"/></td></tr>
+				<tr><td></td><td><input type = "button" name = "checkUser" onclick = "checkU()" value = "发送手机验证码" />请输入验证码：<input style = "width: 50px" type = "text" name = "check"/></td></tr>
                 <tr><td height="20"></td><td></td></tr>
                 <tr><th><font color="red">*</font>邮箱：</th><td><input name="email" type="text" size="25" id="email" onblur="checkEmail(this.value);"  class="uInput"/></td></tr>
                 <tr><td height="20"></td><td></td></tr>
