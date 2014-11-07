@@ -392,7 +392,7 @@ $_LANG['other_home_phone'] = '家庭电话';
 $_LANG['other_mobile_phone'] = '手机';
 $_LANG['remember'] = '请保存我这次的登录信息。';
 
-$_LANG['reg_authcode'] = '注册短信验证码不正确';
+$_LANG['reg_authcode_error'] = '注册短信验证码不正确';
 $_LANG['msg_un_blank'] = '用户名不能为空';
 $_LANG['msg_un_length'] = '用户名最长不得超过7个汉字';
 $_LANG['msg_un_format'] = '用户名含有非法字符';
