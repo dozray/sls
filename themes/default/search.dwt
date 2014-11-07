@@ -18,13 +18,13 @@
 </head>
 <body>
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-
+<!--
 <div class="indexa6">
-	<div class="pagebox pos">
+	<div class="pagebox pos">-->
     	<!--<div class="categoryalpha"></div>-->
     	<!-- BeginLibraryItem "/library/category_tree.lbi" --><!-- EndLibraryItem -->
-    </div>
-</div>
+    <!--</div>
+</div>-->
 <div class="list-bg">
 
       <div class="list-box">
