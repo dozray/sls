@@ -618,12 +618,9 @@ elseif ($_REQUEST['step'] == 'checkout')
     /*------------------------------------------------------ */
     //-- 订单确认
     /*------------------------------------------------------ */
-
     /* 取得购物类型 */
     $flow_type = isset($_SESSION['flow_type']) ? intval($_SESSION['flow_type']) : CART_GENERAL_GOODS;
 	
-	
-
     /* 团购标志 */
     if ($flow_type == CART_GROUP_BUY_GOODS)
     {
@@ -675,7 +672,6 @@ elseif ($_REQUEST['step'] == 'checkout')
 		$consignee = get_consignee($consignee_userid);
 		
 	} else {
-	
 		$consignee = get_consignee($_SESSION['user_id']);
 	
 	}
@@ -743,6 +739,7 @@ elseif ($_REQUEST['step'] == 'checkout')
     $smarty->assign('market_price_desc', sprintf($_LANG['than_market_price'], $total['formated_market_price'], $total['formated_saving'], $total['save_rate']));
 
     /* 取得配送列表 */
+	
     $region            = array($consignee['country'], $consignee['province'], $consignee['city'], $consignee['district']);
     $shipping_list     = available_shipping_list($region);
     
@@ -771,7 +768,6 @@ elseif ($_REQUEST['step'] == 'checkout')
             $cod_disabled    = ($val['support_cod'] == 0);
         }
     }
-    
     $smarty->assign('order', $order);
     $smarty->assign('shipping_list',   $shipping_list);
     $smarty->assign('insure_disabled', $insure_disabled);
@@ -1088,10 +1084,14 @@ elseif ($_REQUEST['step'] == 'select_payment')
     /* 对商品信息赋值 */
     $cart_goods = cart_admin_goods($flow_type); // 取得商品列表，计算合计
 
-    if (empty($cart_goods) || !check_consignee_info($consignee, $flow_type))
+    if (empty($cart_goods))
     {
         $result['error'] = $_LANG['no_goods_in_cart'];
     }
+	else if(!check_consignee_info($consignee, $flow_type))
+	{
+		$result['error'] = $_LANG['no_info'];
+	}
     else
     {
         /* 取得购物流程设置 */
