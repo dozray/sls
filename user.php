@@ -324,6 +324,10 @@ elseif ($action == 'act_register')
         {
             show_message($_LANG['passport_js']['agreement']);
         }
+		if(empty($reg_authcode))
+        {
+            show_message($_LANG['reg_authcode']);
+        }
         if (strlen($username) < 3)
         {
             show_message($_LANG['passport_js']['username_shorter']);
