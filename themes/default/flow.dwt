@@ -6,12 +6,36 @@
 <meta name="Description" content="{$description}" />
 <!-- TemplateBeginEditable name="doctitle" -->
 <title>{$page_title}</title>
+<script type="text/javascript" src="themes/default/_js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="themes/default/_js/jquery-ui-1.8.17.custom.min.js"></script>
+<script type="text/javascript" src="themes/default/_js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="themes/default/_js/jquery-ui-timepicker-zh-CN.js"></script>
+<script type="text/javascript">
+var $j17 = jQuery.noConflict(true);
+$j17(function () {
+	console.log(Object.prototype.toJSONString);
+	window.__Object_toJSONString = Object.prototype.toJSONString;
+	delete Object.prototype.toJSONString;
+	$j17("#sendTime").datetimepicker({
+		//showOn: "button",
+		//buttonImage: "./css/images/icon_calendar.gif",
+		//buttonImageOnly: true,
+		showSecond: true,
+		timeFormat: 'hh:mm:ss',
+		stepHour: 1,
+		stepMinute: 1,
+		stepSecond: 1
+	})
+})
+</script>
 <!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
 {* 包含脚本文件 *}
 {insert_scripts files='common.js,shopping_flow.js'}
+<link type="text/css" href="themes/default/_css/jquery-ui-1.8.17.custom.css" rel="stylesheet" />
+<link type="text/css" href="themes/default/_css/jquery-ui-timepicker-addon.css" rel="stylesheet" />
 </head>
 <body>
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
