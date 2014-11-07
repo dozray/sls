@@ -392,6 +392,7 @@ $_LANG['other_home_phone'] = '家庭电话';
 $_LANG['other_mobile_phone'] = '手机';
 $_LANG['remember'] = '请保存我这次的登录信息。';
 
+$_LANG['reg_authcode'] = '注册短信验证码不正确';
 $_LANG['msg_un_blank'] = '用户名不能为空';
 $_LANG['msg_un_length'] = '用户名最长不得超过7个汉字';
 $_LANG['msg_un_format'] = '用户名含有非法字符';
@@ -415,10 +416,12 @@ $_LANG['birthday'] = '出生日期';
 
 $_LANG['logout'] = '您已经成功的退出了。';
 $_LANG['username_empty'] = '用户名为空';
+$_LANG['username_repeat'] = '用户名重复';
 $_LANG['username_invalid'] = '用户名 %s 含有敏感字符';
 $_LANG['username_exist'] = '用户名 %s 已经存在';
 $_LANG['username_not_allow'] = '用户名 %s 不允许注册';
 $_LANG['confirm_register'] = '确认注册';
+$_LANG['reg_authcode'] = '手机注册码不能为空';
 
 $_LANG['agreement'] = "我已看过并接受《<a href=\"article.php?cat_id=-1\" style=\"color:blue\" target=\"_blank\">用户协议</a>》";
 
