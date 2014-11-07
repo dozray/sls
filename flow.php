@@ -469,7 +469,7 @@ elseif ($_REQUEST['step'] == 'consignee')
 		$smarty->assign('daigou_username', $daigou_username);
 		$smarty->assign('daishou_id', $daishou_id);
 		$smarty->assign('shouhuo_type', $shouhuo_type);
-
+		$smarty->assign('_user_rank', $_SESSION['user_rank']);
         /* 返回收货人页面代码 */
         $smarty->assign('real_goods_count', exist_real_goods(0, $flow_type) ? 1 : 0);
     }
