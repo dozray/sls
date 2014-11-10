@@ -336,12 +336,12 @@
 					
 					 <form  action="user.php?act=affirm_shouhuo&order_id={$item.order_id}" method="post">
 					 <input type="text" id="quhuo_ma" name="quhuo_ma"  class="search_input"/>
-					<a href="/" class="blue" ><input type="submit" />提货码验证</a>
+					<a href="/" class="blue" ><input type="submit" value="提货码验证" /></a>
 					</form>
 					{else}
 					<form  action="user.php?act=affirm_shouhuo&order_id={$item.order_id}" method="post">
 					 <input type="text" id="quhuo_ma" name="quhuo_ma"  class="search_input"/>
-					<a href="/" class="blue" ><input type="submit" />提货码验证</a>
+					<a href="/" class="blue" ><input type="submit" value="提货码验证" /></a>
 					</form>
 	            	<!--	<a href="/user.php?act=affirm_shouhuo&order_id={$item.order_id}" class="blue"  onclick="if (!confirm('确认更改订单为已{if $item.quhuo_fangshi neq 1}送货{/if}吗？')) return false;">已送货</a>-->
                     {/if}
