@@ -47,8 +47,10 @@ if($_GET['phone'])
 
 if (!isset($_REQUEST['step']))
 {
+
     $_REQUEST['step'] = "cart";
 }
+
 $nextstep = isset($_REQUEST['nextstep']) ? $_REQUEST['nextstep'] : 0;
 /*------------------------------------------------------ */
 //-- PROCESSOR
@@ -553,19 +555,34 @@ elseif ($_REQUEST['step'] == 'drop_consignee')
 }
 elseif ( $_REQUEST['step'] == 'getuser') {
 
-	include_once('includes/lib_transaction.php');
-	
-	$username = trim($_GET['username']);
-	$sql = 'SELECT * FROM ' . $ecs->table('users') . " WHERE `user_id` = '" . $db->escape_string($username). "' OR `user_name` = '" . $db->escape_string($username). "'";
+	include_once('includes/lib_transaction.php');		
+	$uns = trim($_GET['username']);
+	$num = strpos($uns,",");
+	$username = substr($uns,0,$num);
+	$dg = substr($uns,$num+1);
+	//print_r($num);
+	//print_r($username);
+	//print_r($dg);
+	$sql = 'SELECT * FROM ' . $ecs->table('users') . " WHERE `user_name` = '" . $db->escape_string($username). "'";
     $userInfo = $db->getRow($sql);
 	$result = array('count' => -1, 'list' => array(), 'info' => '');
 	if( $userInfo ) {
 		//获取收货地址
-		$consignee_list = get_consignee_list($userInfo['user_id']);
+		//$consignee_list = get_consignee_list($userInfo['user_id']);
+			
+		$province = $userInfo['province'];
+		$city = $userInfo['city'];
+		$district = $userInfo['district'];
+		$msn = $userInfo['msn'];				
+		$sqll = "SELECT * FROM " . $GLOBALS['ecs']->table('users') .
+         " WHERE province = '$province' and city = '$city' and district = '$district' and msn = '$msn' and user_name = '$dg' LIMIT 5";
+    	$consignee_list = $GLOBALS['db']->getAll($sqll);
+		//print_r($consignee_list);
 		$result['user_id'] = $userInfo['user_id'];
+		//print_r($userInfo);
 		$result['count'] = count($consignee_list);
 		if( $result['count'] == 0 ) {
-			$result['info'] = '请代购人先完善收货地址';
+			$result['info'] = '代购账号不是本小区账号！';
 		} else {
 		/*
 			$consignee = $consignee_list[0];
@@ -582,14 +599,13 @@ elseif ( $_REQUEST['step'] == 'getuser') {
 		}
 	} else {
 		$result['info'] = '代购帐号不存在';
-	}
-	echo json_encode($result);
+	}	
+	echo json_encode($result);	
 	exit;
 }
 elseif ( $_REQUEST['step'] == 'getdaiuser') {
 
-	include_once('includes/lib_transaction.php');
-	
+	include_once('includes/lib_transaction.php');	
 	$province = intval($_GET['province']);
 	$city = intval($_GET['city']);
 	$district = intval($_GET['district']);

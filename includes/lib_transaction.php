@@ -195,6 +195,7 @@ function get_consignee_list($user_id)
     return $GLOBALS['db']->getAll($sql);
 }
 
+
 /**
  *  给指定用户添加一个指定红包
  *
