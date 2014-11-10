@@ -677,7 +677,7 @@ elseif ($_REQUEST['step'] == 'checkout')
 	$consignee_userid = 0;
 	$shouhuo_type = intval($_SESSION['shouhuo_type']);
 	if($shouhuo_type == 1){
-		$consignee_userid = intval($_SESSION['daigou_id']);
+		$consignee_userid = intval($_SESSION['user_id']);
 	}
 	if($shouhuo_type == 2) {
 		$consignee_userid = intval($_SESSION['daishou_id']);
