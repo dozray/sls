@@ -37,14 +37,21 @@ function reg(str){
 }
 
 </script>
+<link href="themes/default/_css/_category.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
- 
-<div class="goodspagebox">
-	<div class="ur_here">
-	<!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
-	</div>
+
+<div class="_category_tit">
+	<span id="_sy"></span>
+    <span id="_oe"></span>
+    <span id="_to"></span>
+    <span id="_te"></span>
+</div>
+<div class="goodspagebox" style="margin-top: 15px;">
+	<!--<div class="ur_here">-->
+	<!-- BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+	<!--</div>-->
 	
 	
 	<div class="goods-imgbox">
@@ -161,7 +168,7 @@ function reg(str){
 	</div>
 	-->
 </div>
- 
+<span id="ur_here" style="display: none;">{$ur_here}</span>
 <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
 </body>
 <script type="text/javascript">
@@ -219,5 +226,15 @@ function changePriceResponse(res)
   }
 }
 <!-- {/literal} -->
+$(function() {
+	var _c_tit = $("._category_tit");
+	_c_tit.css("background","url(themes/default/_images/c_4.png) no-repeat");
+	var _as = $("#ur_here").find("a");
+	$("#_sy").append(_as.eq(0));
+	$("#_oe").append(_as.eq(1));
+	$("#_to").append(_as.eq(2));
+	$("#ur_here").find("code").remove();
+	$("#_te").append($("#ur_here").html());
+});
 </script>
 </html>

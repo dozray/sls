@@ -1,6 +1,9 @@
 @charset "utf-8";
-._category_tit { height: 41px; width: 1190px; margin: auto; background: url(../_images/c_tit.png) no-repeat; margin-top: 15px; line-height: 40px;}
-	._category_tit span { font-size: 18px; color: #fff; margin-left: 115px;}
+._category_tit { height: 36px; width: 1190px; margin: auto; margin-top: 15px; line-height: 34px;}
+	._category_tit a { font-size: 18px; color: #fff; outline: none;}
+	._category_tit a:hover { color: #9bdef6;}
+	._category_tit span { display: inline-block; width: 236px; text-align: center;}
+	._category_tit span#_te { width: 470px; font-size: 18px; color: #fff;}
 	
 body ._sub-cat { height: 73px; background: #8fc31f; border-radius: 5px;}
 body ._sub-cat ul { padding-top: 25px;}
@@ -8,8 +11,8 @@ body ._sub-cat ul { padding-top: 25px;}
 
 body ._w230 { height: 41px; margin-top: -50px; background: url(../images/new/ngohome.jpg) no-repeat center -27px; border-radius: 5px;}
 
-body .__w230 { margin-top: -87px;/*-127px;*/}
-body ._car { height: 73px; width: 234px; background: url(../_images/nmycart.jpg) 0px 9px; margin: -3px 0px 0px -3px; border-radius: 5px;}
+body .__w230 { margin-top: -86px;}
+body ._car { height: 73px; width: 230px; background: url(../_images/nmycart.jpg) 0px 9px; margin: -3px 0px 0px -1px; border-radius: 5px;}
 body ._total { border-radius: 5px; width: 189px; height: 51px; display: block; overflow: hidden; margin: auto;}
 
 body ._btns { width: 1190px; margin: auto; margin-top: 15px;}

@@ -1,7 +1,20 @@
 var $j = jQuery.noConflict();
 $j(function() {
-	var tit = $j("title").html();
-	$j("._category_tit span").html(tit.substring(0, tit.indexOf("_")));
+	/*var tit = $j("title").html();
+	$j("._category_tit span").html(tit.substring(0, tit.indexOf("_")));*/
+	var uh = $j("#ur_here");
+	var _as = uh.find("a");
+	var _c_tit = $j("._category_tit");
+	if (_as.length == 2) {
+		_c_tit.css("background","url(themes/default/_images/c_2.png) no-repeat");
+		$j("#_sy").append(_as.eq(0));
+		$j("#_oe").append(_as.eq(1));
+	} else if (_as.length == 3) {
+		_c_tit.css("background","url(themes/default/_images/c_3.png) no-repeat");
+		$j("#_sy").append(_as.eq(0));
+		$j("#_oe").append(_as.eq(1));
+		$j("#_to").append(_as.eq(2));
+	}
 	
 	var _btns = $j("._btns input");
 	_btns.click(function() {

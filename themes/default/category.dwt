@@ -21,7 +21,11 @@
 </head>
 <body>
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-<div class="_category_tit"><span></span></div>
+<div class="_category_tit">
+	<span id="_sy"></span>
+    <span id="_oe"></span>
+    <span id="_to"></span>
+</div>
 <div class="pagebox mtop15">
 	<div class="fl w944">
 		<div class="sub-cat _sub-cat">
@@ -32,7 +36,7 @@
 			</ul>
 		</div>
 	</div>
-	<div class="fr w230 _w230"><a href="/"></a></div>
+	<!--<div class="fr w230 _w230"><a href="/"></a></div>-->
 	<div class="cl"></div>
 </div>
 <!--
@@ -76,7 +80,7 @@
 	</div>
 	<div class="cl"></div>
 </div>
-
+<span id="ur_here" style="display: none;">{$ur_here}</span>
 <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
 </body>
 </html>
