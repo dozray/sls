@@ -17,11 +17,11 @@ $j(function() {
 	}
 ;
 	if (_as.eq(1).html() == "肉类") {
-		$("._sub-cat").css("background-position", "0px -93px");
+		$("._sub-cat").css("background-position", "2px -93px");
 	} else if (_as.eq(1).html() == "粮油") {
-		$("._sub-cat").css("background-position", "0px -191px");
+		$("._sub-cat").css("background-position", "0px -192px");
 	} else if (_as.eq(1).html() == "水果产品") {
-		$("._sub-cat").css("background-position", "0px -291px");
+		$("._sub-cat").css("background-position", "3px -291px");
 	}
 	
 	var _btns = $j("._btns input");
