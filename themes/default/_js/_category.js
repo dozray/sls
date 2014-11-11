@@ -1,4 +1,4 @@
-var $j = jQuery.noConflict();
+锘縱ar $j = jQuery.noConflict();
 $j(function() {
 	/*var tit = $j("title").html();
 	$j("._category_tit span").html(tit.substring(0, tit.indexOf("_")));*/
@@ -16,11 +16,11 @@ $j(function() {
 		$j("#_to").append(_as.eq(2));
 	}
 ;
-	if (_as.eq(1).html() == "肉类") {
+	if (_as.eq(1).html() == "鑲夌被") {
 		$("._sub-cat").css("background-position", "0px -93px");
-	} else if (_as.eq(1).html() == "粮油") {
+	} else if (_as.eq(1).html() == "绮补") {
 		$("._sub-cat").css("background-position", "0px -191px");
-	} else if (_as.eq(1).html() == "水果产品") {
+	} else if (_as.eq(1).html() == "姘存灉浜у搧") {
 		$("._sub-cat").css("background-position", "0px -291px");
 	}
 	
