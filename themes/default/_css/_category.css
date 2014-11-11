@@ -5,9 +5,9 @@
 	._category_tit span { display: inline-block; width: 236px; text-align: center;}
 	._category_tit span#_te { width: 470px; font-size: 18px; color: #fff;}
 	
-body ._sub-cat { height: 73px; background: #8fc31f; border-radius: 5px;}
-body ._sub-cat ul { padding-top: 25px;}
-/*body ._sub-cat ul li a { font-size: 12px;}*/
+body ._sub-cat { height: 73px; background: #8fc31f url(../_images/icon.png) no-repeat 0px 5px; border-radius: 5px;}
+body ._sub-cat ul { padding-top: 50px;}
+body ._sub-cat ul li a { font-size: 12px;}
 
 body ._w230 { height: 41px; margin-top: -50px; background: url(../images/new/ngohome.jpg) no-repeat center -27px; border-radius: 5px;}
 
