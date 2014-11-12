@@ -2640,11 +2640,19 @@ function payment_id_list($is_cod)
  */
 function order_query_sql($type = 'finished', $alias = '')
 {
-    /* 已完成订单 */
+    /* 收货确认订单 */
     if ($type == 'finished')
     {
         return " AND {$alias}order_status " . db_create_in(array(OS_CONFIRMED, OS_SPLITED)) .
-               " AND {$alias}shipping_status " . db_create_in(array(SS_SHIPPED, SS_RECEIVED)) .
+               " AND {$alias}shipping_status " . db_create_in(array(SS_RECEIVED)) .
+               " AND {$alias}pay_status " . db_create_in(array(PS_PAYED, PS_PAYING)) . " ";
+    }
+	
+    /* 已完成订单 */
+    if ($type == 'over')
+    {
+        return " AND {$alias}order_status " . db_create_in(array(OS_CONFIRMED, OS_SPLITED)) .
+               " AND {$alias}shipping_status " . db_create_in(array(SS_SHIPPED)) .
                " AND {$alias}pay_status " . db_create_in(array(PS_PAYED, PS_PAYING)) . " ";
     }
     /* 待发货订单 */

@@ -5617,7 +5617,9 @@ function order_list()
             case CS_FINISHED :
                 $where .= order_query_sql('finished');
                 break;
-
+			case OS_SHIPPED :
+                $where .= order_query_sql('over');
+                break;
             case PS_PAYING :
                 if ($filter['composite_status'] != -1)
                 {

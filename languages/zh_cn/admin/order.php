@@ -27,7 +27,7 @@ $_LANG['cs'][OS_CANCELED] = '取消';
 $_LANG['cs'][OS_INVALID] = '无效';
 $_LANG['cs'][OS_RETURNED] = '退货';
 $_LANG['cs'][OS_SHIPPED_PART] = '部分发货';
-
+$_LANG['cs'][OS_SHIPPED] = '已发货';
 /* 订单状态 */
 $_LANG['os'][OS_UNCONFIRMED] = '未确认';
 $_LANG['os'][OS_CONFIRMED] = '已确认';
