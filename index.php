@@ -94,10 +94,10 @@ if ($act == 'cat_rec')
 //-- 判断是否存在缓存，如果存在则调用缓存，反之读取相应内容
 /*------------------------------------------------------ */
 /* 缓存编号 */
-$cache_id = sprintf('%X', crc32($_SESSION['user_rank'] . '-' . $_CFG['lang']));
+//$cache_id = sprintf('%X', crc32($_SESSION['user_rank'] . '-' . $_CFG['lang']));
 
-if (!$smarty->is_cached('index.dwt', $cache_id))
-{
+//if (!$smarty->is_cached('index.dwt', $cache_id))
+//{
     assign_template();
 
     $position = assign_ur_here();
@@ -201,9 +201,10 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
 
     /* 页面中的动态内容 */
     assign_dynamic('index');
-}
+//}
 
-$smarty->display('index.dwt', $cache_id);
+//$smarty->display('index.dwt', $cache_id);
+$smarty->display('index.dwt');
 
 /*------------------------------------------------------ */
 //-- PRIVATE FUNCTIONS

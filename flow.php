@@ -1953,11 +1953,16 @@ elseif ($_REQUEST['step'] == 'done')
                 " FROM " .$ecs->table('cart') .
                 " WHERE session_id = '".SESS_ID."' and admin_id = '". $admin_id ."' AND rec_type = '$flow_type'";
 				
-				
-				
-	
 			 $db->query($sql);
 			 
+	$sqll = " SELECT goods_id ,goods_number".
+                " FROM " .$ecs->table('cart') .
+                " WHERE session_id = '".SESS_ID."' and admin_id = '". $admin_id ."' AND rec_type = '$flow_type'";
+		
+		$row = $db->getRow($sqll);
+		
+        $sqlll = "UPDATE ". $ecs->table('goods') ." SET goods_number=goods_number-".$row['goods_number']." WHERE goods_id=".$row['goods_id'];
+		$db->query($sqlll);
 	
        
         /* 修改拍卖活动状态 */
