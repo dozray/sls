@@ -313,6 +313,7 @@ elseif ($_REQUEST['act'] == 'info')
 
     /* 取得订单商品及货品 */
     $goods_list = array();
+	$goods_list1 = array();
     $goods_attr = array();
 	if($huoquguanli == 1){
     $sql = "SELECT o.*, IF(o.product_id > 0, p.product_number, g.goods_number) AS storage, o.goods_attr, g.suppliers_id, g.admin_id, IFNULL(b.brand_name, '') AS brand_name, p.product_sn
@@ -3154,10 +3155,19 @@ elseif ($_REQUEST['act'] == 'operate')
                
                 $goods_list[] = $row;
             }
+// 查询每家供货商每个商品共多少件
+		$sql1="SELECT g.brand_id,b.brand_name,og.goods_name,SUM( og.goods_number ) AS gsum1 FROM ecs_goods AS g,ecs_brand AS b,ecs_order_info AS oi LEFT JOIN ecs_order_goods AS og ON oi.order_id = og.order_id  WHERE oi.order_sn IN (".$_POST['order_id']." ) AND g.goods_id=og.goods_id AND b.brand_id=g.brand_id GROUP BY g.brand_id,g.goods_id ORDER BY og.goods_name ";
+		$res1 = $db->query($sql1);
+		 while ($row = $db->fetchRow($res1))
+            {
+              
 
-		
+               
+                $goods_list1[] = $row;
+            }
 	
         $smarty->assign('goods_list',$goods_list);
+		 $smarty->assign('goods_list1',$goods_list1);
 		 $smarty->template_dir = '../' . DATA_DIR;
             $html .= $smarty->fetch('order_tongjihuowu.html') .
                 '<div style="PAGE-BREAK-AFTER:always"></div>';
