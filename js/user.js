@@ -56,36 +56,41 @@ function userEdit()
 function editPassword()
 {
   var frm              = document.forms['formPassword'];
-  var old_password     = frm.elements['old_password'].value;
-  var new_password     = frm.elements['new_password'].value;
-  var confirm_password = frm.elements['comfirm_password'].value;
-
+  var old_password     = frm.elements['old_password'].value.trim();
+  var new_password     = frm.elements['new_password'].value.trim();
+  var confirm_password = frm.elements['comfirm_password'].value.trim();
   var msg = '';
   var reg = null;
-
+  
   if (old_password.length == 0)
   {
-    msg += old_password_empty + '\n';
+	msg += "如果要修改密码,必须先输入你的旧密码!" + '\n';
   }
 
   if (new_password.length == 0)
   {
-    msg += new_password_empty + '\n';
+    msg += "新密码不能为空！" + '\n';
   }
 
   if (confirm_password.length == 0)
   {
-    msg += confirm_password_empty + '\n';
+    msg += "确认新密码不能为空！" + '\n';
   }
 
   if (new_password.length > 0 && confirm_password.length > 0)
   {
     if (new_password != confirm_password)
     {
-      msg += both_password_error + '\n';
+      msg += "新密码和确认密码不一致！" + '\n';
     }
   }
-
+  if (new_password.length > 0 && old_password.length > 0)
+  {
+    if (new_password == confirm_password)
+    {
+      msg += "新密码和旧密码不能相同！" + '\n';
+    }
+  }
   if (msg.length > 0)
   {
     alert(msg);
@@ -96,6 +101,7 @@ function editPassword()
     return true;
   }
 }
+
 
 /* *
  * 对会员的留言输入作处理
