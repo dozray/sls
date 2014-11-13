@@ -60,37 +60,29 @@ function editPassword()
   var new_password     = frm.elements['new_password'].value.trim();
   var confirm_password = frm.elements['comfirm_password'].value.trim();
   var msg = '';
-  var reg = null;
+  var reg = /^[0-9a-zA-Z]{6,16}$/;
   
   if (old_password.length == 0)
   {
 	msg += "如果要修改密码,必须先输入你的旧密码!" + '\n';
   }
 
-  if (new_password.length == 0)
+  if (!reg.test(new_password))
   {
-    msg += "新密码不能为空！" + '\n';
-  }
-
-  if (confirm_password.length == 0)
-  {
-    msg += "确认新密码不能为空！" + '\n';
-  }
-
-  if (new_password.length > 0 && confirm_password.length > 0)
-  {
+    msg += "新密码必须是6到16位的字母或数字！" + '\n';
+  } 
     if (new_password != confirm_password)
     {
       msg += "新密码和确认密码不一致！" + '\n';
     }
-  }
-  if (new_password.length > 0 && old_password.length > 0)
-  {
-    if (new_password == confirm_password)
+
+
+
+    if (new_password == old_password)
     {
       msg += "新密码和旧密码不能相同！" + '\n';
     }
-  }
+
   if (msg.length > 0)
   {
     alert(msg);
@@ -101,7 +93,6 @@ function editPassword()
     return true;
   }
 }
-
 
 /* *
  * 对会员的留言输入作处理
