@@ -19,7 +19,7 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 .yx-rotation-focus span.hover{background-position:-10px -126px}
 .rotaion_list{width:0;height:0;overflow:hidden;}
 
-/*首页样式*/
+/*首页样式
 body {background: #f3f3f3;}
 
 ._new_bar { background: #f3f3f3;}
@@ -32,4 +32,4 @@ a._logo_box { margin-left: 38px;}
 
 ._nav { display: table; background: url(../_images/_nav.png) no-repeat; height: 52px; margin-left: 30px; width: 200px;}
 ._nav li { float: left; width: 35px; height: 35px; margin-right: 10px;}
-._nav li a { display:block; width: 35px; height: 35px; outline: none;}
+._nav li a { display:block; width: 35px; height: 35px; outline: none;}*/
