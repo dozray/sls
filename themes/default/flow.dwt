@@ -15,7 +15,7 @@ var $j17 = jQuery.noConflict(true);
 $j17(function () {
 	window.__Object_toJSONString = Object.prototype.toJSONString;
 	delete Object.prototype.toJSONString;
-	$j17("#sendTime").datetimepicker({
+	/*$j17("#sendTime").datetimepicker({
 		//showOn: "button",
 		//buttonImage: "./css/images/icon_calendar.gif",
 		//buttonImageOnly: true,
@@ -24,8 +24,17 @@ $j17(function () {
 		stepHour: 1,
 		stepMinute: 1,
 		stepSecond: 1
-	})
-})
+	})*/
+	if (parseFloat($j17("#showtime").val().split(" ")[1].split(":")[0]) < 16) {
+		$j17("#sendTime").click(function() {
+			WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-{%d+1} 00:00:00',maxDate:'%y-%M-{%d+1} 23:59:59'});
+		});
+	} else {
+		$j17("#sendTime").click(function() {
+			WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-{%d+2} 00:00:00',maxDate:'%y-%M-{%d+2} 23:59:59'});
+		});
+	}
+});
 </script>
 <!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
 <link rel="shortcut icon" href="favicon.ico" />
