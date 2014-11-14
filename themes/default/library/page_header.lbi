@@ -3,14 +3,14 @@
 var process_request = "{$lang.process_request}";
 </script>
 <link href="themes/default/css/style_new.css" rel="stylesheet" type="text/css" />
-	<div class="pagebox new-bar">
+	<div class="pagebox new-bar _new_bar"><!--
 		<table width="100%" ><tr><td align="left" width="400"></td>
-		<td align="right"><span class="collect-bg"><a href="javascript:void(0)" onclick="shoucang('','')">收藏手拉手</a></span>&nbsp;{insert name='member_info'}</td></tr></table>
+		<td align="right"><span class="collect-bg"><a rel="sidebar" href="http://www.slscn.net" onclick="shoucang('','')">收藏手拉手</a></span>&nbsp;{insert name='member_info'}</td></tr></table>-->
 	</div>
-	<div class="pagebox new-top">
+	<div class="pagebox new-top _new_top">
 		<table width="100%" >
 		<tr>
-		<td width="480" style="padding-top:5px;"><a href="/" class="logo-box"><img src="themes/default/_images/_logo.png"/></a></td>
+		<td width="680" style="padding-top:5px;"><a href="/" class="logo-box _logo_box"><img src="themes/default/_images/_logo.png"/></a></td>
 		<td align="right" style="padding-top:5px;">
 			<script type="text/javascript">
     {literal}
@@ -30,13 +30,19 @@ var process_request = "{$lang.process_request}";
     -->
     {/literal}
     </script>
-            <form class="search-form" id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()">
+            <form class="search-form _search-form" id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()">
             	<!--<input name="keywords" type="text" id="keyword" onClick="value=&quot;&quot;" value="{if $search_keywords}{$search_keywords|escape}{else}你想找什么？{/if}" class="search-text"/><input type="submit" value=" " class="search-btn" />-->
-                <input name="keywords" type="text" id="keyword" onClick="value=&quot;&quot;" value="橄榄油" class="search-text"/><input type="submit" value=" " class="search-btn" />
+                <input name="keywords" type="text" id="keyword" onClick="value=&quot;&quot;" value="橄榄油" class="search-text _search-text"/><input type="submit" value=" " class="search-btn _search-btn" />
             </form>
 		</td>
 		<td width="220" align="center" valign="bottom" style="padding-top:15px;">
-			<a href="/flow.php?step=cart" ><img src="images/new/ncartico.jpg"/></a>
+        	<ul class="_nav">
+            	<li><a href="/flow.php?step=cart" ></a></li>
+                <li><a href="javascript:;" ></a></li>
+                <li><a href="javascript:;" onclick="shoucang('','')" ></a></li>
+                <li><a href="javascript:;" ></a></li>
+            </ul>
+			<!--<a href="/flow.php?step=cart" ><img src="images/new/ncartico.jpg"/></a>-->
 		</td>
 		</tr>
 		</table>

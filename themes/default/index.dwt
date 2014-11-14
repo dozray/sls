@@ -29,17 +29,24 @@ delete Object.prototype.toJSONString;
 });
 </script>
 {insert_scripts files='Validform_v5.3.2_min.js,jquery.kinMaxShow-1.0.min.js'}
+<link href="themes/default/_css/_bnr.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="themes/default/_js/_bnrmin.js"></script>
 <script>
-jQuery(function(){
+/*jQuery(function(){
 	jQuery("#kinMaxShow").kinMaxShow({
 		height:336,
 		intervalTime:2,
 		button:{
-			showIndex:false,
-			normal: { display:"none"},
+			showIndex:true,
+			normal: { display:"block"},
 			focus:{ background:"#ffffff",border:"1px solid #cccccc" }
 		}
 	});
+});*/
+$(window).load(function() {
+	$("#_indexa img").removeAttr("width").removeAttr("height");
+	$("#_indexa")._indexa({auto:true});
+	$("#kinMaxShow").css({"width":"1192px","height":"336px"});
 });
 function popGet(){
 	var content = '<img src="images/new/npop.png" width="507" height="265"/>';
@@ -53,7 +60,7 @@ function popGet(){
 	});
 }
 </script>
-<div class="pagebox indexa">
+<div class="pagebox indexa" id="_indexa">
 	<div style="width:1192px; height:336px; overflow:hidden;" id="kinMaxShow">
 	{insert name='ads' id=1 num=5}
 	</div>
@@ -64,18 +71,22 @@ function popGet(){
 	<td width="394" {if $uinfo}class="myslasbg"{/if}>{if $uinfo}
 		<div>
 			<table align="left">
-			<tr><td width="160">今日余额：{$uinfo.user_money}</td>
-			<td>积分：{$uinfo.today_money_points}</td></tr>
-			<tr><td>今日消费：￥{$uinfo.today_consume}元</td>
-			<td>积分：{$uinfo.today_consume_points}</td></tr>
-			<tr><td>今日消费：￥{$uinfo.today_consume}元</td>
-			<td>积分：{$uinfo.today_consume_points}</td></tr>
-			<tr><td>今日自提：{if $info.today_ziti}是{else}否{/if}</td>
-			<td>积分：{$uinfo.today_ziti_points}</td></tr>
-			<tr><td>合计积分：{$uinfo.today_points}</td>
-			<td>已使用积分：{$uinfo.consume_points}</td></tr>
-			<tr><td> </td>
-			<td>剩余积分：{$uinfo.pay_points}</td></tr>
+                <tr>
+                    <td width="160">今日余额：{$uinfo.user_money}</td>
+                    <td>积分：{$uinfo.today_money_points}</td>
+                </tr>
+                <tr>
+                	<td>今日消费：￥{$uinfo.today_consume}元</td>
+                	<td>已使用积分：{$uinfo.consume_points}</td>
+                </tr>
+                <!--<tr><td>今日消费：￥{$uinfo.today_consume}元</td>
+                <td>积分：{$uinfo.today_consume_points}</td></tr
+                <tr><td>今日自提：{if $info.today_ziti}是{else}否{/if}</td>
+                <td>积分：{$uinfo.today_ziti_points}</td></tr>>-->
+                <tr>
+                	<td>合计积分：{$uinfo.today_points}</td>
+                	<td>剩余积分：{$uinfo.pay_points}</td>
+               	</tr>
 			</table>
 		</div>
 	{else}<a href="user.php"><img src="images/new/index-myslas.jpg" /></a>{/if}</td>
@@ -91,12 +102,14 @@ function popGet(){
 		</div>
 	{else}<a href="user.php?act=order_list"><img src="images/new/index-myorder.jpg" /></a>{/if}</td>
 	<td width="4"></td>
-	<td width="261" {if $uinfo}class="myjiazbg"{/if}>{if $uinfo}
+	<td width="261" class="myjiazbg">{if $uinfo}
 	
-	{else}<a href="category.php?id=51"><img src="themes/default/_images/new/index-myjiaz.jpg" /></a>{/if}</td>
+	{else}{/if}<a href="category.php?id=51"></a></td>
 	
 	<td width="4"></td>
-	<td width="262" class="myjiazbg22"></td>
+	<td width="262" class="myjiazbg22">
+	<a href="article.php?id=46"></a>
+	</td>
 	</tr>
 	</table>
 </div>
@@ -114,7 +127,7 @@ function popGet(){
 	<td width="4"></td>
 	<td width="129"><a href="article.php?id=45"><img src="images/new/index-jiaofei.jpg" /></a></td>
 	<td width="4"></td>
-	<td width="129"><a href="javascript:void(0)" onclick="popGet()"><img src="images/new/index-jiazh.jpg" /></a></td>
+	<td width="129"><a href="category.php?id=58"><img src="images/new/index-jiazh.jpg" /></a></td>
 	
 	</tr>
 	</table>
