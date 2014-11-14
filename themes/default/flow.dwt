@@ -36,6 +36,7 @@ $j17(function () {
 	}
 });
 </script>
+<script type="text/javascript" src="themes/default/_js/My97DatePicker/WdatePicker.js"></script>
 <!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
