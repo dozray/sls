@@ -4,6 +4,7 @@
 <a href="user.php" {if $action eq 'default'}class="curs"{/if}>信息中心</a>
 <a href="user.php?act=profile"{if $action eq 'profile'}class="curs"{/if}>帐户信息</a>
 <a href="user.php?act=password"{if $action eq 'password'}class="curs"{/if}>密码管理</a>
+<a href="user.php?act=modifyPhone"{if $action eq 'modifyPhone'}class="curs"{/if}>修改手机</a>
 <a href="user.php?act=message_list"{if $action eq 'message_list'}class="curs"{/if}>意见反馈</a>
 <a href="user.php?act=account_deposit"{if $action eq 'account_deposit' || $action eq 'account_log'}class="curs"{/if}>资金充值</a>
 <a href="user.php?act=account_detail"{if $action eq 'account_detail'}class="curs"{/if}>资金明细</a>

@@ -35,7 +35,7 @@ array('login','act_login','register','act_register','act_edit_password','get_pas
 /* 显示页面的action列表 */
 $ui_arr = array('register', 'login', 'profile', 'password','order_list', 'dgorder_list', 'affirm_shouhuo', 'affirm_daohuo', 'dsorder_list', 'order_detail', 'address_list', 'collection_list',
 'message_list', 'tag_list', 'get_password', 'reset_password', 'booking_list', 'add_booking', 'account_raply',
-'account_deposit', 'account_log', 'account_detail', 'act_account', 'pay', 'default', 'bonus', 'group_buy', 'group_buy_detail', 'affiliate', 'comment_list','validate_email','track_packages', 'transform_points','qpassword_name', 'get_passwd_question', 'check_answer');
+'account_deposit', 'account_log', 'account_detail', 'act_account', 'pay', 'default', 'bonus', 'group_buy', 'group_buy_detail', 'affiliate', 'comment_list','validate_email','track_packages', 'transform_points','qpassword_name', 'get_passwd_question', 'check_answer','modifyPhone');
 
 $special_rank = 0;
 /* 未登录处理 */
@@ -608,7 +608,7 @@ elseif ($action == 'logout')
 }
 
 /* 个人资料页面 */
-elseif ($action == 'profile' || $action == 'password')
+elseif ($action == 'profile' || $action == 'password' || $action == 'modifyPhone')
 {
     include_once(ROOT_PATH . 'includes/lib_transaction.php');
 
@@ -942,6 +942,25 @@ elseif ($action == 'act_edit_password')
         show_message($_LANG['edit_password_failure'], $_LANG['back_page_up'], '', 'info');
     }
 
+}
+
+
+/* 修改用户手机 */
+elseif ($action == 'act_edit_phone')
+{
+	$captcha = isset($_POST['captcha']) ? trim($_POST['captcha']) : '';
+	if ($_SESSION['authcode'] != $captcha || $captcha == "")
+		{
+				//show_message($_LANG['reg_authcode_error']);
+				show_message("验证码输入错误");
+		}
+	else{
+	$user_id = $_SESSION[user_id];
+	$newPhone = isset($_POST['new_phone']) ? trim($_POST['new_phone']) : "";	
+	$sql="UPDATE ".$ecs->table('users'). "SET mobile_phone= '".$newPhone."' WHERE user_id 							= '".$user_id."'";
+	$db->query($sql);
+	show_message("修改成功！"); 
+	}  
 }
 
 /* 添加一个红包 */
