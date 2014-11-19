@@ -1,16 +1,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script type="text/javascript">
 var process_request = "{$lang.process_request}";
+
 </script>
 <link href="themes/default/css/style_new.css" rel="stylesheet" type="text/css" />
-	<div class="pagebox new-bar _new_bar">
+	<!--<div class="pagebox new-bar _new_bar">
 		<table width="100%" ><tr><td align="left" width="400"></td>
 		<td align="right"><span class="collect-bg"><a rel="sidebar" href="http://www.slscn.net" onclick="shoucang('','')">收藏手拉手</a></span>&nbsp;{insert name='member_info'}</td></tr></table>
-	</div>
+	</div>-->
 	<div class="pagebox new-top _new_top">
 		<table width="100%" >
 		<tr>
-		<td width="680" style="padding-top:5px;"><a href="/" class="logo-box _logo_box"><img src="themes/default/_images/_logo.png"/></a></td>
+		<td width="645" style="padding-top:5px;"><a href="/" class="logo-box _logo_box"><img src="themes/default/_images/_logo.png"/></a></td>
 		<td align="right" style="padding-top:5px;">
 			<script type="text/javascript">
     {literal}
@@ -36,13 +37,16 @@ var process_request = "{$lang.process_request}";
             </form>
 		</td>
 		<td width="220" align="center" valign="bottom" style="padding-top:15px;">
-        	<!--<ul class="_nav">
-            	<li><a href="/flow.php?step=cart" ></a></li>
-                <li><a href="javascript:;" ></a></li>
-                <li><a href="javascript:;" onclick="shoucang('','')" ></a></li>
-                <li><a href="javascript:;" ></a></li>
-            </ul>-->
-			<a href="/flow.php?step=cart" ><img src="images/new/ncartico.jpg"/></a>
+        	<ul class="_nav">
+            	<li><a href="/flow.php?step=cart" ><img src="themes/default/_images/_car_logo.png"/></a></li>
+                <li style="position: relative;">
+                	<div class="_bj">城市A</div>
+                    <div class="_cut_c">
+                    	切换城市
+                        <div class="_ly"><a href="javascript:;">城市B</a></div>
+                    </div>
+                </li>
+            </ul>
 		</td>
 		</tr>
 		</table>
@@ -83,3 +87,12 @@ var process_request = "{$lang.process_request}";
         </tr>
     </table>
 </div>
+<script type="text/javascript">
+$(function() {
+	$("._cut_c").hover(function() {
+		$("._ly").stop(false, true).slideDown();
+	}, function() {
+		$("._ly").stop(false, true).slideUp();
+	});	
+});
+</script>

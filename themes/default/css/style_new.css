@@ -222,3 +222,83 @@ a.logo-box { margin-left:60px;}
 #shangmen_box { }
 
 .search_input { border:1px solid #ddd; width:80px; height:16px;}
+
+/*首页样式*/
+
+._new_bar { background: #f3f3f3;}
+
+._new_top { margin-bottom: 9px;}
+a._logo_box { margin-left: 68px;}
+._search-form { width: 265px;}
+.search-form ._search-text { width: 205px; margin-left: 8px;}
+.search-form ._search-btn { width: 28px;}
+
+._nav { display: table; height: 52px; margin-left: 48px; width: 160px; margin-bottom: 5px;}
+._nav li { float: left;}
+._nav li a { display:block; outline: none;}
+
+._mtop5 { margin-top: 5px;}
+
+._b_scene { background: url(../_images/_index-myslas.png) no-repeat;}
+._a_scene { background: url(../_images/_index-my.png) no-repeat;}
+._log_reg { height: 128px; position: relative;}
+._log_reg:hover { background: url(../_images/_index-myslas_00.png) no-repeat;}
+._index_my { height: 128px;}
+._index_my:hover { background: url(../_images/_index-my_00.png) no-repeat;}
+._a_login, ._a_regist { width: 50px; height: 28px; display: inline-block; position: absolute;}
+._a_login { top: 72px; left: 130px;}
+._a_regist { top: 72px; left: 190px;}
+._a_user { display: block; width: 394px; height: 128px;}
+
+.help-menu ._one { background: #a5e7ff; border-radius: 5px;}
+.help-menu ._two { background: #c7f1ff; border-radius: 5px;}
+._g { width: 6px;}
+
+._bj { font-size: 18px; font-family: Microsoft Yahei; width: 99px; text-align: center; margin-top: 8px;}
+._cut_c { font-size: 12px; font-family: Microsoft Yahei; width: 99px; text-align: center; cursor: default;}
+._ly { font-size: 12px; font-family: Microsoft Yahei; width: 99px; display: none; position: absolute; z-index: 1;}
+._nav ._ly a { text-align: center; display: inline-block; padding: 3px 6px; border: solid 1px #01afec; border-radius: 3px; background: #fff; color: #01afec; font-size: 18px;}
+
+._b_scene_01 { background: url(../_images/_index-myorder.png) no-repeat;}
+._a_scene_01 { background: url(../_images/_index_myor.png) no-repeat;}
+._index_myor { height: 128px;}
+._index_myor:hover { background: url(../_images/_index_myor_0.png) no-repeat;}
+._index_myor table { border-collapse: collapse; font-size: 14px; color: #fff; font-family: Microsoft Yahei; position: relative; left: 120px; top: 10px;}
+._index_myor table a { color: #fff;}
+._index_myor table a:hover { color: #fff;}
+.or_info { font-size: 24px; color: #fff; font-family: Microsoft Yahei; width: 262px;}
+.or_info div { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 220px; height: 36px; line-height: 36px; margin-left: 0px;}
+
+._a_scene_02 { background: url(../_images/_index-myjifen.png) no-repeat;}
+._a_scene_02_a { display: block; width: 294px; height: 128px;}
+._a_scene_02_a:hover { background: url(../_images/_index-myjifen_0.png) no-repeat;}
+
+._tab_75 { margin-top: 6px;}
+
+._v_144 { display: block; width: 442px; height: 128px;}
+._v_144:hover { background: url(../_images/_index-myorder_0.png) no-repeat;}
+
+._shucai { background: url(../_images/_shucai.png) no-repeat;}
+._shucai a { display: block; width: 294px; height: 128px;}
+._shucai_a:hover { background: url(../_images/_shucai_0.png) no-repeat;}
+._roulei { background: url(../_images/_roulei.png) no-repeat;}
+._roulei a { display: block; width: 294px; height: 128px;}
+._roulei_a:hover { background: url(../_images/_roulei_0.png) no-repeat;}
+._shuiguo { background: url(../_images/_shuiguo.png) no-repeat;}
+._shuiguo a { display: block; width: 292px; height: 128px;}
+._shuiguo_a:hover { background: url(../_images/_shuiguo_0.png) no-repeat;}
+._liangyou { background: url(../_images/_liangyou.png) no-repeat;}
+._liangyou a { display: block; width: 294px; height: 128px;}
+._liangyou_a:hover { background: url(../_images/_liangyou_00.png) no-repeat;}
+
+._ptop10 { padding-top: 6px;}
+
+._index_my_name { font-size: 24px; color: #fff; width: 220px; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; height: 32px; line-height: 32px; float: left;}
+._index_my_name:hover { color: #fff;}
+._index_my_exit { color: #fff; font-size: 14px; height: 32px; line-height: 32px; float: left; margin-left: 40px;}
+._index_my_exit:hover { color: #fff}
+._index_my { font-family: Microsoft Yahei; color: #fff; font-size: 14px;}
+._index_my table { border-collapse: collapse; position: relative; top: 15px; left: 120px; width: 300px;}
+._index_my table tr { height: 32px;}
+
+._slh { width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block;}
