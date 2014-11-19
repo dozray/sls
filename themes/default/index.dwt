@@ -66,8 +66,38 @@ function popGet(){
 	</div>
 	
 </div>
-<div class="pagebox mtop15">
-	<table width="100%" height="129"><tr>
+<div class="pagebox mtop15 _tab_75">
+	<table width="100%" height="128"><tr>
+    <td width="444" {if $uinfo}class="_a_scene"{else}class="_b_scene"{/if}>
+    	{if $uinfo}
+        	<div class="_index_my">
+            	<table>
+                	<tr>
+                    	<td colspan="2">
+                        	<a title="{$uinfo.username}的账户信息" href="user.php" class="_index_my_name">{$uinfo.username}的账户信息</a>
+                        	<a href="user.php?act=logout" class="_index_my_exit">[退出]</a>
+                        </td>
+                        <!--<td style="text-align: right;"><a href="user.php?act=logout" class="_index_my_exit">[退出]</a></td>-->
+                    </tr>
+                    <tr>
+                    	<td>当前余额：{$uinfo.user_money}元</td>
+                        <td>可用积分：{$uinfo.pay_points}点</td>
+                    </tr>
+                    <tr>
+                    	<td>本次消费：{$uinfo.today_consume}元</td>
+                        <td>消费积分：{$uinfo.today_consume_points}点</td>
+                    </tr>
+                </table>
+            </div>
+        	<!--<a class="_a_user" href="user.php"></a>-->
+        {else}
+        	<div class="_log_reg">
+            	<a class="_a_login" href="user.php"></a>
+	            <a class="_a_regist" href="user.php?act=register"></a>
+            </div>    	
+        {/if}
+    </td>
+    <!--
 	<td width="394" {if $uinfo}class="myslasbg"{/if}>{if $uinfo}
 		<div>
 			<table align="left">
@@ -79,42 +109,85 @@ function popGet(){
                 	<td>今日消费：￥{$uinfo.today_consume}元</td>
                 	<td>已使用积分：{$uinfo.consume_points}</td>
                 </tr>
-                <!--<tr><td>今日消费：￥{$uinfo.today_consume}元</td>
-                <td>积分：{$uinfo.today_consume_points}</td></tr
-                <tr><td>今日自提：{if $info.today_ziti}是{else}否{/if}</td>
-                <td>积分：{$uinfo.today_ziti_points}</td></tr>>-->
                 <tr>
                 	<td>合计积分：{$uinfo.today_points}</td>
                 	<td>剩余积分：{$uinfo.pay_points}</td>
                	</tr>
 			</table>
 		</div>
-	{else}<a href="user.php"><img src="images/new/index-myslas.jpg" /></a>{/if}</td>
+	{else}<a href="user.php"><img src="images/new/index-myslas.jpg" /></a>{/if}
+    </td>
+    -->
+	<td width="6"></td><!--
+	<td width="262" {if $uinfo}class="myorderbg"{/if}>
+        {if $uinfo}
+            <div>
+                <table align="left">
+                    <tr><td>单号：{$orders.order_sn}</td></tr>
+                    <tr><td>详情：{$order_goodsname}</td></tr>
+                    <tr><td>状态：{$orders.status}</td></tr>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr><td><a href="/user.php?act=order_list">查看我的订单</a></td></tr>
+                </table> 
+            </div>
+        {else}
+            <a href="user.php?act=order_list"><img src="images/new/index-myorder.jpg" /></a>
+        {/if}
+    </td>
 	<td width="4"></td>
-	<td width="262" {if $uinfo}class="myorderbg"{/if}>{if $uinfo}
-		<div>
-			<table align="left"><tr><td>单号：{$orders.order_sn}</td></tr>
-			<tr><td>详情：{$order_goodsname}</td></tr>
-			<tr><td>状态：{$orders.status}</td></tr>
-			<tr><td>&nbsp;</td></tr>
-			<tr><td><a href="/user.php?act=order_list">查看我的订单</a></td></tr>
-			</table> 
-		</div>
-	{else}<a href="user.php?act=order_list"><img src="images/new/index-myorder.jpg" /></a>{/if}</td>
-	<td width="4"></td>
-	<td width="261" class="myjiazbg">{if $uinfo}
+	<td width="261" class="myjiazbg">
+    	{if $uinfo}
 	
-	{else}{/if}<a href="category.php?id=51"></a></td>
+		{else}{/if}<a href="category.php?id=51"></a></td>
 	
 	<td width="4"></td>
 	<td width="262" class="myjiazbg22">
 	<a href="article.php?id=46"></a>
-	</td>
-	</tr>
+	</td>-->
+    <td width="442" {if $uinfo}class="_a_scene_01"{else}class="_b_scene_01"{/if}>
+    	{if $uinfo}
+            <div class="_index_myor">
+            	<!--
+                <table>
+                    <tr><td>单号：{$orders.order_sn}</td></tr>
+                    <tr><td>详情：{$order_goodsname}</td></tr>
+                    <tr><td>状态：{$orders.status}</td></tr>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr><td><a href="/user.php?act=order_list">查看我的订单</a></td></tr>
+                </table>
+                -->
+                <table>
+                	<tr height="36">
+                    	<td class="or_info"><div title="{$uinfo.username}的订单信息">{$uinfo.username}的订单信息</div></td>
+                        <td><a href="/user.php?act=order_list">[查看]</a></td>
+                    </tr>
+                    <tr height="22">
+                    	<td class="_slh" colspan="2">订单号：{$orders.order_sn}</td>
+                    </tr>
+                    <tr height="22">
+                    	<td colspan="2" class="_slh">详情：{$order_goodsname}</td>
+                    </tr>
+                    <tr height="22">
+                    	<td colspan="2" class="_slh">送货状态：{$orders.status}</td>
+                    </tr>
+                </table>
+            </div>
+        {else}
+            <a class="_v_144" href="user.php?act=order_list"></a>
+        {/if}
+    </td>
+    <td width="6"></td>
+	<td width="294" class="_a_scene_02">
+    	<a class="_a_scene_02_a" href="article.php?id=46"></a>
+    </td>
+    </tr>
 	</table>
 </div>
-<div class="pagebox mtop5">
-	<table width="100%" height="129"><tr>
+<div class="pagebox mtop5 _mtop5">
+	<table height="128">
+    <!--
+    <table width="100%" height="129">
+    <tr>
 	<td width="261"><a href="category.php?id=6"><img src="images/new/index-youjisc.jpg" /></a></td>
 	<td width="4"></td>
 	<td width="129"><a href="category.php?id=19"><img src="images/new/index-roulei.jpg" /></a></td>
@@ -128,8 +201,31 @@ function popGet(){
 	<td width="129"><a href="article.php?id=45"><img src="images/new/index-jiaofei.jpg" /></a></td>
 	<td width="4"></td>
 	<td width="129"><a href="category.php?id=58"><img src="images/new/index-jiazh.jpg" /></a></td>
-	
 	</tr>
+    -->
+    <!--
+    <tr>
+    	<td width="119"><a href="javascript:;"><img src="themes/default/_images/_shangcheng.png" /></a></td>
+        <td width="118"><a href="javascript:;"><img src="themes/default/_images/_tuangou.png" /></a></td>
+        <td width="118"><a href="javascript:;"><img src="themes/default/_images/_tongcheng.png" /></a></td>
+        <td width="127"><a href="category.php?id=6"><img src="themes/default/_images/_shucai.png" /></a></td>
+        <td width="118"><a href="category.php?id=19"><img src="themes/default/_images/_roulei.png" /></a></td>
+        <td width="119"><a href="category.php?id=21"><img src="themes/default/_images/_liangyou.png" /></a></td>
+        <td width="122"><a href="category.php?id=12"><img src="themes/default/_images/_shuiguo.png" /></a></td>
+        <td width="119"><a href="category.php?id=49"><img src="themes/default/_images/_piaowu.png" /></a></td>
+        <td width="118"><a href="category.php?id=45"><img src="themes/default/_images/_jiaofei.png" /></a></td>
+        <td><a href="category.php?id=58"><img src="themes/default/_images/_jiazheng.png" /></a></td>
+    </tr>
+    -->
+    <tr>
+    	<td width="294" class="_shucai"><a class="_shucai_a" href="category.php?id=6"></a></td>
+        <td width="6"></td>
+        <td width="294" class="_roulei"><a class="_roulei_a" href="category.php?id=19"></a></td>
+        <td width="6"></td>
+        <td width="292" class="_shuiguo"><a class="_shuiguo_a" href="category.php?id=12"></a></td>
+        <td width="6"></td>
+        <td width="294" class="_liangyou"><a class="_liangyou_a" href="category.php?id=21"></a></td>
+    </tr>
 	</table>
 </div>
 
