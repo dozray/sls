@@ -255,7 +255,7 @@ a._logo_box { margin-left: 68px;}
 ._g { width: 6px;}
 
 ._bj { font-size: 18px; font-family: Microsoft Yahei; width: 99px; text-align: center; margin-top: 8px;}
-._cut_c { font-size: 12px; font-family: Microsoft Yahei; width: 99px; text-align: center; cursor: default; position: absolute;}}
+._cut_c { font-size: 12px; font-family: Microsoft Yahei; width: 99px; text-align: center; cursor: default; position: absolute;}
 ._ly { font-size: 12px; font-family: Microsoft Yahei; width: 99px; display: none; position: absolute; z-index: 1;}
 ._nav ._ly a { text-align: center; display: inline-block; padding: 3px 6px; border: solid 1px #01afec; border-radius: 3px; background: #fff; color: #01afec; font-size: 18px;}
 
