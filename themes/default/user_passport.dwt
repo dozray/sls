@@ -310,9 +310,28 @@ function daiShouOption(res){
 		}
 		jQuery('#daishou_list').append(option);
 }
+var InterValObj; //timer变量，控制时间
+var count = 60; //间隔函数，1秒执行
+var curCount;//当前剩余秒数
 function checkU(){
+	curCount = count;
+	$("input[name='checkUser']").attr("disabled","disabled");
+	$("input[name='checkUser']").val("请在"+curCount+"秒内输入");
+	InterValObj = window.setInterval(setRemainTime, 1000);
 	username = $("input[name='username']").val();
-	 Ajax.call( 'user.php?act=authcode', 'username=' + username , 'GET', 'TEXT', true, true );  
+	Ajax.call( 'user.php?act=authcode', 'username=' + username , 'GET', 'TEXT', true, true );  
+}
+function setRemainTime(){
+	if(curCount == 0){
+		window.clearInterval(InterValObj);
+		$("input[name='checkUser']").removeAttr("disabled");
+		$("input[name='checkUser']").val("重新发送验证码");
+	}
+	else{
+		curCount--;
+		$("input[name='checkUser']").val("请在"+curCount+"秒内输入");
+	}
+
 }
 </script>
 </html>
