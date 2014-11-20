@@ -67,7 +67,15 @@ $smarty->assign('helps',            get_shop_help());       // 网店帮助
 $smarty->assign('lang',             $_LANG);
 $smarty->assign('show_marketprice', $_CFG['show_marketprice']);
 $smarty->assign('data_dir',    DATA_DIR);       // 数据目录
+//判断继续购物后退还是跳到主页
 
+if(isset($_REQUEST['re_val'])){
+$re_val = 'true';
+}
+else{
+$re_val = 'false';
+}
+$smarty->assign('re_val',            $re_val);
 /*------------------------------------------------------ */
 //-- 添加商品到购物车
 /*------------------------------------------------------ */
