@@ -89,9 +89,11 @@ var process_request = "{$lang.process_request}";
 </div>
 <script type="text/javascript">
 $(function() {
-	$("._cut_c").hover(function() {
+		$("._cut_c").hover(function() {
+		$("._cut_c").height(50);
 		$("._ly").stop(false, true).slideDown();
 	}, function() {
+		$("._cut_c").height(22);
 		$("._ly").stop(false, true).slideUp();
 	});	
 });
