@@ -230,7 +230,7 @@ a.logo-box { margin-left:60px;}
 ._new_top { margin-bottom: 9px;}
 a._logo_box { margin-left: 68px;}
 ._search-form { width: 265px;}
-.search-form ._search-text { width: 204px; margin-left: 10px;}
+.search-form ._search-text { width: 204px; margin-left: 10px; box-shadow: 0px 0px 0px 1000px white inset;}
 .search-form ._search-btn { width: 28px;}
 
 ._nav { display: table; height: 52px; margin-left: 48px; width: 160px; margin-bottom: 5px;}
