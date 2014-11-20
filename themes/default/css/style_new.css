@@ -47,7 +47,7 @@ a.logo-box { margin-left:60px;}
 
 .search-form { float:left; text-align:left; margin-top:10px; width:450px; height:37px; /*background:url(../images/new/nsearchbg.jpg) no-repeat left;*/background:url(../_images/_search.png) no-repeat left;}
 .search-form .search-text { width:337px; height:26px; margin:5px; margin-left:5px; border:0px; font-size:14px;
- line-height:26px; color:#B2B2CE; }
+ /*line-height:26px;*/ color:#B2B2CE; }
 .search-form .search-btn { width:85px; height:40px; border:0px; background:none; cursor:pointer;  }
 
 .search-key { float:left; clear:both; width:655px;}
@@ -230,7 +230,7 @@ a.logo-box { margin-left:60px;}
 ._new_top { margin-bottom: 9px;}
 a._logo_box { margin-left: 68px;}
 ._search-form { width: 265px;}
-.search-form ._search-text { width: 205px; margin-left: 8px;}
+.search-form ._search-text { width: 205px; margin-left: 10px;}
 .search-form ._search-btn { width: 28px;}
 
 ._nav { display: table; height: 52px; margin-left: 48px; width: 160px; margin-bottom: 5px;}
