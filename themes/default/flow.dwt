@@ -656,7 +656,7 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
     <h6><span>{$lang.other_info}</span></h6>
       <table width="99%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
             <!-- {if $allow_use_surplus } 是否使用余额 -->
-            <tr>
+            <tr id="bal" style="display:none">
               <td width="20%" bgcolor="#ffffff"><strong>{$lang.use_surplus}: </strong></td>
               <td bgcolor="#ffffff"><input name="surplus" type="text" class="inputBg" id="ECS_SURPLUS" size="10" value="{$order.surplus|default:0}" onblur="changeSurplus(this.value)" {if $disable_surplus}disabled="disabled"{/if} />
               {$lang.your_surplus}{$your_surplus|default:0} <span id="ECS_SURPLUS_NOTICE" class="notice"></span></td>
