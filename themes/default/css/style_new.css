@@ -302,3 +302,4 @@ a._logo_box { margin-left: 68px;}
 ._index_my table tr { height: 32px;}
 
 ._slh { width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block;}
+._my_sl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; width: 145px;}
