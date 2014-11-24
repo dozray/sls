@@ -205,7 +205,7 @@ jQuery(function(){
 
 	});
 	
-	jQuery('#daishou_submit').click(function(){
+		jQuery('#daishou_submit').click(function(){
 		var daishou_id = parseInt(jQuery('#daishou_list').val(),10);
 		if( isNaN(daishou_id) ) {
 			daishou_id = 0;
@@ -217,13 +217,18 @@ jQuery(function(){
 		var squhuo_name = $('#squhuo_name').val();
 		var squhuo_tel = $('#squhuo_tel').val();
 		var receiveaddres = $('#receiveaddres').val();
+		var reg = /^1[3|7|5|8|4]\d{9}$/;
 		var sendTime = $('#sendTime').val();
 		if( squhuo_name == '' ){
 			alert('请填写取货人姓名');
 			return false;
 		}
-		if( squhuo_tel == ''){
-			alert('请填写取货人手机号');
+		if( !reg.test(squhuo_tel)){
+			alert('请填写正确的手机号');
+			return false;
+		}
+		if( receiveaddres.trim() == ''){
+			alert('请填写取货人地址');
 			return false;
 		}
 		jQuery('#daishou_id').val(daishou_id);
