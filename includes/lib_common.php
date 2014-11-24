@@ -1912,7 +1912,79 @@ function log_account_change($user_id, $user_money = 0, $frozen_money = 0, $rank_
     $sql .= " WHERE user_id = '$user_id' LIMIT 1";
     $GLOBALS['db']->query($sql);
 }
+/**
+ * 记录帐户变动(积分)
+ * @param   int     $user_id        用户id
+ * @param   float   $user_money     可用余额变动
+ * @param   float   $frozen_money   冻结余额变动
+ * @param   int     $rank_points    等级积分变动
+ * @param   int     $pay_points     消费积分变动
+ * @param   string  $change_desc    变动说明
+ * @param   int     $change_type    变动类型：参见常量文件
+ * @return  void
+ */
+function log_account_point_change($user_id, $user_money = 0, $frozen_money = 0, $rank_points = 0, $pay_points = 0, $change_desc = '', $change_type = ACT_OTHER)
+{
+    
+    $users = $GLOBALS['db']->getRow('select user_rank,user_rankz from '.$GLOBALS['ecs']->table('users').' where user_id='.$user_id);
+    if($rank_points > 0 && $pay_points > 0 && $users['user_rankz'] == 0){
+        return false;
+    }
+    /* 插入帐户变动记录 */
+    $account_log = array(
+        'user_id'       => $user_id,
+        'user_money'    => $user_money,
+        'frozen_money'  => $frozen_money,
+        'rank_points'   => $rank_points,
+        'pay_points'    => $pay_points,
+        'change_time'   => gmtime(),
+        'change_desc'   => $change_desc,
+        'change_type'   => $change_type
+    );
+    $GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('account_log'), $account_log, 'INSERT');
 
+    /* 更新用户信息 */
+    $sql = "UPDATE " . $GLOBALS['ecs']->table('users') .
+            " SET user_money = user_money + ('$user_money')," .
+            " frozen_money = frozen_money + ('$frozen_money')," .
+            " rank_points = rank_points + ('$rank_points')," .
+            " pay_points = pay_points + ('$pay_points')," ;
+            if($pay_points>0){
+                $sql .= " total_points = total_points +('$pay_points')";
+            }else{
+                $sql .= " consume_points = consume_points +('".abs($pay_points)."')";
+            }
+    //购物消费
+    if($user_money < 0){
+        $users = $GLOBALS['db']->getRow('select today_consume_date from '.$GLOBALS['ecs']->table('users').' where user_id='.$user_id);
+        if($users){
+			
+            $today_date = strtotime(date('Y-m-d',time()));
+            if($users['today_consume_date']<$today_date){
+                $sql .=", today_consume_date = ".$today_date.", today_consume = ".abs($user_money).", today_consume_points = '$pay_points'";
+            }else{
+                $sql .=", today_consume=today_consume+".abs($user_money);
+				$sql .=", today_consume_points=today_consume_points+".$pay_points;
+            }
+        }
+    }
+    //是购物消费送积分
+	/*
+    if($rank_points>0 && $pay_points>0){
+        $users = $GLOBALS['db']->getRow('select today_consume_date from '.$GLOBALS['ecs']->table('users').' where user_id='.$user_id);
+        if($users){
+            $today_date = strtotime(date('Y-m-d',time()));
+            if($users['today_consume_date']<$today_date){
+                $sql .=", today_consume_date = ".$today_date.", today_consume_points = ".$today_consume_points;
+            }else{
+                $sql .=", today_consume_points=today_consume_points+".$today_consume_points;
+            }
+        }
+    }*/
+    $sql .= " WHERE user_id = '$user_id' LIMIT 1";
+    $GLOBALS['db']->query($sql);
+	
+}
 
 /**
  * 获得指定分类下的子分类的数组

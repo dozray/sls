@@ -1982,8 +1982,9 @@ elseif ($_REQUEST['step'] == 'done')
         
         /* 处理余额、积分、红包 */
         if ($order['user_id'] > 0 && $order['surplus'] > 0)
-        {
-            log_account_change($order['user_id'], $order['surplus'] * (-1), 0, 0, 0, sprintf($_LANG['pay_order'], $order['order_sn']));
+        {/*
+            log_account_change($order['user_id'], $order['surplus'] * (-1), 0, 0, 0, sprintf($_LANG['pay_order'], $order['order_sn']));*/
+			log_account_point_change($order['user_id'], $order['surplus'] * (-1), 0, 0,  $order['surplus'] * (0.05), sprintf($_LANG['pay_order'], $order['order_sn']));
         }
         if ($order['user_id'] > 0 && $order['integral'] > 0)
         {
