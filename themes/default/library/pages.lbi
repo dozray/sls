@@ -5,7 +5,6 @@
 
 <!--翻页 start-->
  <div id="pager" class="pagebar">
-  <span class="f_l f6" style="margin-right:10px;">{$lang.pager_1}<b>{$pager.record_count}</b> {$lang.pager_2}</span>
   <!-- {if $pager.page_first} --><a href="{$pager.page_first}">{$lang.page_first} ...</a><!-- {/if} -->
   <!-- {if $pager.page_prev} --><a class="prev" href="{$pager.page_prev}">{$lang.page_prev}</a><!-- {/if} -->
   <!-- {if $pager.page_count neq 1} -->
@@ -30,6 +29,7 @@
     <!--{/foreach}-->
     <kbd style="float:left; margin-left:8px; position:relative; bottom:3px;"><input type="text" name="page" onkeydown="if(event.keyCode==13)selectPage(this)" size="3" class="B_blue" /></kbd>
     <!-- {/if} -->
+    <span class="f_l f6" style="margin-right:10px;">{$lang.pager_1}<b>{$pager.record_count}</b> {$lang.pager_2}</span>
 </div>
 <!--翻页 END-->
  
