@@ -11,18 +11,22 @@
     <div class="goods-btnbuy _goods-btnbuy">
     	<table>
         	<tr>
-            	<td align="center">
+				<td height="39" class="_dgi">
+					<div class="_dgi_con">
+						<input class="decr" onclick="setDecr({$goods.goods_id})" value=" " readonly="readonly" />
+						<input class="goods-numb" type="text" value="1" name="number" id="goods_num_{$goods.goods_id}" goods_number="{$goods.goods_number}" max_number="{$goods.max_number}" />
+						<input class="incr" onclick="setIncr({$goods.goods_id})" value=" " readonly="readonly" />
+						<div style="clear: both;"></div>
+					</div>
+					
+                </td>
+            	<td align="center" class="_adc">
                 	<a href="javascript:addToCart({$goods.goods_id})" class="addtocart _addtocart">加入购物车</a>
                 </td>
-       			<td height="39" class="_dgi">
-                	<input class="decr" onclick="setDecr({$goods.goods_id})" value=" " readonly="readonly" />
-                    <input class="goods-numb" type="text" value="1" name="number" id="goods_num_{$goods.goods_id}" goods_number="{$goods.goods_number}" max_number="{$goods.max_number}" />
-                   	<input class="incr" onclick="setIncr({$goods.goods_id})" value=" " readonly="readonly" />
-                </td>
-        		
         	</tr>
         </table>
     </div>
+	<div class="_list_goods_bg"></div>
 </div>
 <!--{/if}-->
 <!--{/foreach}-->

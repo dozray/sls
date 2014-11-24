@@ -27,7 +27,7 @@
     <span id="_to"></span>
 </div>
 <div class="pagebox mtop15">
-	<div class="fl w944">
+	<div class="fl w944 _w944">
 		<div class="sub-cat _sub-cat">
 			<ul>
 				{foreach from=$categories item=cat}
@@ -47,7 +47,7 @@
     <input type="button" value="评论数量" />
 </div>-->
 <div class="pagebox mtop15">
-	<div class="fl w944">
+	<div class="fl w944 _weitiao">
 		 <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem -->
 		 <div class="cl"></div>
   		 <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
