@@ -1,7 +1,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!--{foreach from=$goods_list item=goods}-->
 <!-- {if $goods.goods_id} -->
-<div class="list-goods">
+<div class="list-goods _list_goods">
 	<div class="goods-img"><a href="{$goods.url}"><img src="{$goods.goods_thumb}" alt="{$goods.goods_name}" width="196" height="196"/></a></div>
     <div class="goods-price"><!--{if $goods.promote_price neq "" } -->{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}--></div>
     
