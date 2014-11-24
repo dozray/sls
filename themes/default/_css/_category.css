@@ -26,7 +26,7 @@ body .list-goods .goods-btnbuy a._addtocart { border: solid 1px #f6643d; border-
 
 body .list-goods ._goods-btnbuy ._dgi input{ width: 30px; height: 33px; padding: 0px; margin: 0px; border: 0px; float: left;}
 body .list-goods ._goods-btnbuy ._dgi .decr { /*border: solid 1px #f6643d; border-radius: 5px 0px 0px 5px;*/ background: url(../_images/j_11_0.png) no-repeat center center; outline: none; text-indent: -10px;}
-body .list-goods ._goods-btnbuy ._dgi .goods-numb { border: solid 1px #b8d681; margin-left: -1px; margin-top: 2px; height: 26px; width: 26px; border-radius: 5px; color: #a2a2a2;}
+body .list-goods ._goods-btnbuy ._dgi .goods-numb { border: solid 1px #b8d681; margin-left: -1px; margin-top: 2px; height: 26px; width: 26px; border-radius: 5px; color: #a2a2a2; line-height: 26px;}
 body .list-goods ._goods-btnbuy ._dgi .incr { /*border: solid 1px #8fc31f; border-radius: 0px 5px 5px 0px;*/ margin-left: -1px; background: url(../_images/j_03_0.png) no-repeat center center; outline: none; text-indent: -10px;}
 body .list-goods ._goods-btnbuy table { margin-left: 12px;}
 body .list-goods ._goods-btnbuy ._adc { padding-left: 10px;}
