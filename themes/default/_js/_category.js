@@ -17,15 +17,15 @@ $j(function() {
 	}
 
 	if (_as.eq(1).html() == "蔬菜") {
-		$("._sub-cat").css("background-position", "0px 0px");
+		$j("._sub-cat").css("background-position", "0px 0px");
 	} else if (_as.eq(1).html() == "肉类") {
-		$("._sub-cat").css("background-position", "0px -84px");
+		$j("._sub-cat").css("background-position", "0px -84px");
 	} else if (_as.eq(1).html() == "粮油") {
-		$("._sub-cat").css("background-position", "0px -173px");
+		$j("._sub-cat").css("background-position", "0px -173px");
 	} else if (_as.eq(1).html() == "水果产品") {
-		$("._sub-cat").css("background-position", "0px -261px");
+		$j("._sub-cat").css("background-position", "0px -261px");
 	} else {
-		$("._sub-cat").css("background-image", "none");
+		$j("._sub-cat").css("background-image", "none");
 	}
 
 	var _btns = $j("._btns input");
