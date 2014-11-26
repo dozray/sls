@@ -24,7 +24,7 @@ $j17(function () {
 		stepHour: 1,
 		stepMinute: 1,
 		stepSecond: 1
-	})*/
+	})*//*
 	if (parseFloat($j17("#showtime").val().split(" ")[1].split(":")[0]) < 16) {
 		$j17("#sendTime").click(function() {
 			WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-{%d+1} 00:00:00',maxDate:'%y-%M-{%d+1} 23:59:59'});
@@ -33,7 +33,7 @@ $j17(function () {
 		$j17("#sendTime").click(function() {
 			WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-{%d+2} 00:00:00',maxDate:'%y-%M-{%d+2} 23:59:59'});
 		});
-	}
+	}*/
 });
 </script>
 <script type="text/javascript" src="themes/default/_js/My97DatePicker/WdatePicker.js"></script>
