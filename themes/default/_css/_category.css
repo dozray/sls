@@ -2,8 +2,8 @@
 ._category_tit { height: 36px; width: 1190px; margin: auto; margin-top: 15px; line-height: 34px;}
 	._category_tit a { font-size: 18px; color: #fff; outline: none;}
 	._category_tit a:hover { color: #9bdef6;}
-	._category_tit span { display: inline-block; width: 236px; text-align: center;}
-	._category_tit span#_te { width: 470px; font-size: 18px; color: #fff;}
+	._category_tit span { float: left; width: 239px; text-align: center;}
+	._category_tit span#_te { width: 300px; font-size: 18px; color: #fff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-left: 85px;}
 	
 body ._sub-cat { height: 73px; background: #b8d681 url(../_images/icon.png) no-repeat 0px 0px; border-radius: 5px; box-shadow: 0px 3px 3px #d1ddc9;}
 body ._sub-cat ul { padding-top: 10px;}
