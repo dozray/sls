@@ -40,6 +40,17 @@
 	
 	._fw ._shrxx_dg { line-height: 20px; height: 45px;}
 	
+	._sh_inp { height: 48px; outline: none; font-family: Microsoft Yahei; font-size: 20px; padding: 0px; text-indent: 2px; color: #606060;}
+	._sh_wid1 { width: 190px;}
+	._sh_wid2 { width: 345px;}
+	._sh_wid3 { width: 135px;}
+
+._psfs { background: none; border: 0; padding: 0;}
+	._psfs span { height: 51px; line-height: 51px; width: 1052px; padding: 0px; padding-left: 140px; text-align: left; background: #fbfbfb url(../_images/_qtxx.png) no-repeat 20px -2px; box-shadow: 0px 2px 3px #d7d7d7; border-radius: 5px; font-size: 20px; font-weight: normal;}
+	._psfs_tab th { padding: 0px; font-weight: normal; font-size: 20px; padding: 20px 0px 30px 0px;}
+	._psfs_tab td { padding: 0px; font-weight: normal; font-size: 20px; height: 65px; line-height: 28px;}
+	._psfs_inp { position: relative; top: 5px; left: 90px;}
+
 ._zffs { background: none; border: 0; padding: 0;}
 	._zffs span { height: 51px; line-height: 51px; width: 1052px; padding: 0px; padding-left: 140px; text-align: left; background: #fbfbfb url(../_images/_zffs.png) no-repeat 20px -2px; box-shadow: 0px 2px 3px #d7d7d7; border-radius: 5px; font-size: 20px; font-weight: normal;}
 	._zffs_tab th { padding: 0px; font-weight: normal; font-size: 20px; padding: 20px 0px 30px 0px;}
