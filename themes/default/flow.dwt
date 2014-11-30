@@ -24,7 +24,8 @@ $j17(function () {
 		stepHour: 1,
 		stepMinute: 1,
 		stepSecond: 1
-	})*//*
+	})*/
+	/*
 	if (parseFloat($j17("#showtime").val().split(" ")[1].split(":")[0]) < 16) {
 		$j17("#sendTime").click(function() {
 			WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-{%d+1} 00:00:00',maxDate:'%y-%M-{%d+1} 23:59:59'});
@@ -45,6 +46,7 @@ $j17(function () {
 {insert_scripts files='common.js,shopping_flow.js'}
 <link type="text/css" href="themes/default/_css/jquery-ui-1.8.17.custom.css" rel="stylesheet" />
 <link type="text/css" href="themes/default/_css/jquery-ui-timepicker-addon.css" rel="stylesheet" />
+<link type="text/css" href="themes/default/_css/_checkout.css" rel="stylesheet" />
 </head>
 <body>
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
@@ -403,9 +405,22 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
         var flow_no_payment = "{$lang.flow_no_payment}";
         var flow_no_shipping = "{$lang.flow_no_shipping}";
         </script>
+        <script type="text/javascript">
+        	$(function() {
+				$(".goodspagebox").width(1192);
+				$("#theForm").css({"position":"relative", "margin-top":"15px"});
+				$(".flowBox").css("border","0");
+				$("#ECS_ORDERTOTAL").hide();
+			});
+        </script>
+        <div class="_category_tit">
+            <span id="_sy"><a href=".">首页</a></span>
+            <span id="_oe"><a href="javascript:;">订单支付</a></span>
+            <span id="_to"><a href="javascript:;">核对订单信息</a></span>
+        </div>
         <div class="flowBox">
-        <h6><span>{$lang.goods_list}</span><!--{if $allow_edit_cart} --><a href="flow.php" class="f6">{$lang.modify}</a><!--{/if} --></h6>
-        <table width="99%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+        <h6 class="_splb"><span>{$lang.goods_list}</span><!--{if $allow_edit_cart} --><a href="flow.php" class="f6">{$lang.modify}</a><!--{/if} --></h6>
+        <table class="_splb_tb" width="100%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
             <tr>
               <th bgcolor="#ffffff">{$lang.goods_name}</th>
               
@@ -419,13 +434,13 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
             <!-- {foreach from=$goods_list key=akey item=goods_l} -->
             <!-- {foreach from=$goods_l key=key item=goods} -->
             {if $key eq 0}
-            <tr><td colspan="4" bgcolor="#E8F0D7"><b>供货商：{$goods.adminname} {$goods.areaname}</b></td>
-            <td align="right" bgcolor="#E8F0D7">运费：{$total.shipfees[$akey]}</td></tr>
+            <tr class="_splb_tz_tr"><td colspan="5"></td></tr>
+            <tr><td colspan="5" style="border-radius: 5px;" bgcolor="#d0d0d0"><b class="_splb_ghs">供货商：{$goods.adminname} {$goods.areaname}</b></td>
+            <!--<td align="right" bgcolor="#d0d0d0">运费：{$total.shipfees[$akey]}</td>--></tr>
             {/if}
-            <tr>
-              <td bgcolor="#ffffff">
- 
-          <a href="goods.php?id={$goods.goods_id}" target="_blank" class="f6">{$goods.goods_name}</a>
+            <tr class="_splb_tb_tr">
+              <td bgcolor="#ffffff" class="_splb_tb_td"><img width="78" height="78" src="{$goods.goods_thumb}" />
+          <a href="goods.php?id={$goods.goods_id}" target="_blank" class="f6" title="{$goods.goods_name}">{$goods.goods_name}</a>
                 <!-- {if $goods.parent_id > 0} -->
                 <span style="color:#FF0000">（{$lang.accessories}）</span>
                 <!-- {elseif $goods.is_gift} -->
@@ -436,16 +451,16 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
               </td>
                
               <!-- {if $show_marketprice} -->
-              <td align="center" bgcolor="#ffffff">{$goods.formated_market_price}</td>
+              <td align="center" bgcolor="#ffffff" class="_shijia">{$goods.formated_market_price}</td>
               <!-- {/if} -->
-              <td bgcolor="#ffffff" align="center">{$goods.formated_goods_price}</td>
-              <td bgcolor="#ffffff" align="center">{$goods.goods_number}</td>
-              <td bgcolor="#ffffff" align="center">{$goods.formated_subtotal}</td>
+              <td bgcolor="#ffffff" align="center" class="_benjia">{$goods.formated_goods_price}</td>
+              <td bgcolor="#ffffff" align="center" class="_shul">{$goods.goods_number}</td>
+              <td bgcolor="#ffffff" align="center" class="_xiaoji">{$goods.formated_subtotal}</td>
             </tr>
             <!-- {/foreach} -->
             <!-- {/foreach} -->
             <!-- {if !$gb_deposit} 团购且有保证金时不显示 -->
-            <tr>
+            <tr style="display: none;">
               <td bgcolor="#ffffff" colspan="7">
               <!-- {if $discount gt 0} -->{$your_discount}<br /><!-- {/if} -->
               {$shopping_money}<!-- {if $show_marketprice} -->，{$market_price_desc}<!--{/if}-->
@@ -456,8 +471,36 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
       </div>
       <div class="blank"></div>
       <div class="flowBox">
-      <h6><span>{$lang.consignee_info}</span><a href="flow.php?step=consignee" class="f6">{$lang.modify}</a></h6>
-      <table width="99%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+      	<h6 class="_shrxx"><span>{$lang.consignee_info}</span><a href="javascript: void(0)" onclick="modifyUser()" class="f6">{$lang.modify}</a><!--flow.php?step=consignee--></h6>
+      		<ul class="_fw">
+            	<li class="_fw_1">服务亭：{$consignee.name|escape}</li>
+                <li class="_fw_2">服务亭电话：{$consignee.tel|escape}</li>
+                <li>服务厅手机：{$consignee.mobile|escape}</li>
+                <li class="_shrxx_dg" {if $userinfo.user_rank != 3}style="display: none;"{/if}>
+                	购货方式：
+                    <input type="radio" id="_r_6" value="1" name="shouhuo_type" /><label for="_r_6">代购</label>
+                    <input type="radio" id="_r_7" value="2" name="shouhuo_type" checked/><label for="_r_7">自购</label>
+                </li>
+            </ul>
+            <ul class="_fw _fw_sh">
+            	<li class="_fw_1">收货人姓名：<input class="_sh_inp _sh_wid1" type="text"  name="quhuo_name" style="border: #ffffff; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; background-color: #ffffff;font-family: Microsoft Yahei; font-size: 20px;" value="{if $userinfo.alias}{$userinfo.alias}{else}{$userinfo.user_name}{/if}" /></li>
+                <li class="_fw_2">收货人地址：<input class="_sh_inp _sh_wid2" type="text" style="border: #ffffff; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; background-color: #ffffff;font-family: Microsoft Yahei; font-size: 20px;" name="receiveaddres" value="" /></li>
+                <li>收货人手机号：<input class="_sh_inp _sh_wid3" type="text" style="border: #ffffff; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; background-color: #ffffff;font-family: Microsoft Yahei; font-size: 20px;" name="quhuo_tel" value="{$userinfo.mobile_phone}" /></li>
+            </ul>
+            <ul class="_sh_way">
+            	<li>
+                	收货方式：
+                    <input type="radio" id="_r_1" value="1" name="quhuo_fangshi" /><label for="_r_1">自提</label>
+                    <input type="radio" id="_r_2" value="2" name="quhuo_fangshi" /><label for="_r_2">送货</label>
+                </li>
+                <li>
+                	收货时间：
+                    <input type="radio" id="_r_3" value="上午" name="sendTime" /><label for="_r_2">上午</label>
+                    <input type="radio" id="_r_4" value="中午" name="sendTime" /><label for="_r_3">下午</label>
+                    <input type="radio" id="_r_5" value="下午" name="sendTime" /><label for="_r_5">晚上</label>
+                </li>
+            </ul>
+        <table width="99%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" style="display: none;">
             <tr>
               <td bgcolor="#ffffff" width="120" align="right">{$lang.consignee_name}:</td>
               <td bgcolor="#ffffff">{$consignee.consignee|escape}</td>
@@ -508,28 +551,28 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
 			{/if}
           </table>
       </div>
-     <div class="blank"></div>
+     <!--<div class="blank"></div>-->
     <!--{if $total.real_goods_count neq 0}-->
     <div class="flowBox" {if $shouhuo_type < 3 && $shouhuo_type > 0} style="display:none;"{/if}>
-    <h6><span>{$lang.shipping_method}</span></h6>
-    <table width="99%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" id="shippingTable">
+    <h6 class="_psfs"><span>{$lang.shipping_method}</span></h6>
+    <table class="_psfs_tab" width="100%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" id="shippingTable">
             <tr>
-              <th bgcolor="#ffffff" width="5%">&nbsp;</th>
-              <th bgcolor="#ffffff" width="25%">{$lang.name}</th>
-              <th bgcolor="#ffffff">{$lang.describe}</th>
-              <th bgcolor="#ffffff" width="15%">{$lang.fee}</th>
-              <th bgcolor="#ffffff" width="15%">{$lang.free_money}</th>
-              <th bgcolor="#ffffff" width="15%">{$lang.insure_fee}</th>
+              <th width="139" bgcolor="#ffffff">&nbsp;</th>
+              <th width="120" bgcolor="#ffffff" style="text-align: left;">{$lang.name}</th>
+              <th width="420" bgcolor="#ffffff" align="left">{$lang.describe}</th>
+              <th bgcolor="#ffffff">{$lang.fee}</th>
+              <th bgcolor="#ffffff">{$lang.free_money}</th>
+              <th bgcolor="#ffffff">{$lang.insure_fee}</th>
             </tr>
             <!-- {foreach from=$shipping_list key=key item=shipping} 循环配送方式 -->
             <tr>
-              <td bgcolor="#ffffff" valign="top"><input name="shipping" type="radio" value="{$shipping.shipping_id}" {if $order.shipping_id eq $shipping.shipping_id || $key eq 0}checked="true"{/if} supportCod="{$shipping.support_cod}" insure="{$shipping.insure}" onclick="selectShipping(this)" />
+              <td bgcolor="#ffffff" valign="top"><input class="_psfs_inp" name="shipping" type="radio" value="{$shipping.shipping_id}" {if $order.shipping_id eq $shipping.shipping_id || $key eq 0}checked="true"{/if} supportCod="{$shipping.support_cod}" insure="{$shipping.insure}" onclick="selectShipping(this)" />
               </td>
-              <td bgcolor="#ffffff" valign="top"><strong>{$shipping.shipping_name}</strong></td>
+              <td bgcolor="#ffffff" valign="top">{$shipping.shipping_name}</td>
               <td bgcolor="#ffffff" valign="top">{$shipping.shipping_desc}</td>
-              <td bgcolor="#ffffff" align="right" valign="top">{$shipping.format_shipping_fee}</td>
-              <td bgcolor="#ffffff" align="right" valign="top">{$shipping.free_money}</td>
-              <td bgcolor="#ffffff" align="right" valign="top">{if $shipping.insure neq 0}{$shipping.insure_formated}{else}{$lang.not_support_insure}{/if}</td>
+              <td bgcolor="#ffffff" align="center" valign="top">{$shipping.format_shipping_fee}</td>
+              <td bgcolor="#ffffff" align="center" valign="top">{$shipping.free_money}</td>
+              <td bgcolor="#ffffff" align="center" valign="top">{if $shipping.insure neq 0}{$shipping.insure_formated}{else}{$lang.not_support_insure}{/if}</td>
             </tr>
             <!-- {/foreach} 循环配送方式 -->
             <tr>
@@ -545,22 +588,22 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
         <!--{/if}-->
     <!--{if $is_exchange_goods neq 1 || $total.real_goods_count neq 0}-->
     <div class="flowBox">
-    <h6><span>{$lang.payment_method}</span></h6>
-    <table width="99%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" id="paymentTable">
+    <h6 class="_zffs"><span>{$lang.payment_method}</span></h6>
+    <table class="_zffs_tab" width="100%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" id="paymentTable">
             <tr>
-              <th width="5%" bgcolor="#ffffff">&nbsp;</th>
-              <th width="20%" bgcolor="#ffffff">{$lang.name}</th>
-              <th bgcolor="#ffffff">{$lang.describe}</th>
-              <th bgcolor="#ffffff" width="15%">{$lang.pay_fee}</th>
+              <th width="139" bgcolor="#ffffff">&nbsp;</th>
+              <th width="160" style="text-align: left;" bgcolor="#ffffff">{$lang.name}</th>
+              <th width="755" style="text-align: left;" bgcolor="#ffffff">{$lang.describe}</th>
+              <th bgcolor="#ffffff">{$lang.pay_fee}</th>
             </tr>
             <!-- {foreach from=$payment_list item=payment} -->
 			
             <!-- 循环支付方式 -->
             <tr>
-              <td valign="top" bgcolor="#ffffff"><input type="radio" name="payment" value="{$payment.pay_id}" isCod="{$payment.is_cod}" onclick="selectPayment(this)" {if $cod_disabled and $payment.is_cod eq "1"}disabled="true"{/if}/></td>
-              <td valign="top" bgcolor="#ffffff"><strong>{$payment.pay_name}</strong></td>
+              <td valign="top" bgcolor="#ffffff"><input class="_zffs_inp" type="radio" name="payment" value="{$payment.pay_id}" isCod="{$payment.is_cod}" onclick="selectPayment(this)" {if $cod_disabled and $payment.is_cod eq "1"}disabled="true"{/if}/></td>
+              <td valign="top" bgcolor="#ffffff">{$payment.pay_name}</td>
               <td valign="top" bgcolor="#ffffff">{$payment.pay_desc}</td>
-              <td align="right" bgcolor="#ffffff" valign="top">{$payment.format_pay_fee}</td>
+              <td align="center" bgcolor="#ffffff" valign="top">{$payment.format_pay_fee}</td>
             </tr>
             <!-- {/foreach} 循环支付方式 -->
           </table>
@@ -653,10 +696,10 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
         <!-- {/if} 是否使用贺卡 -->
 
       <div class="flowBox">
-    <h6><span>{$lang.other_info}</span></h6>
-      <table width="99%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+    <h6 class="_qtxx"><span>{$lang.other_info}</span></h6>
+      <table class="_qtxx_tab" width="100%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
             <!-- {if $allow_use_surplus } 是否使用余额 -->
-            <tr id="bal" style="display:none">
+            <tr style="display: none;">
               <td width="20%" bgcolor="#ffffff"><strong>{$lang.use_surplus}: </strong></td>
               <td bgcolor="#ffffff"><input name="surplus" type="text" class="inputBg" id="ECS_SURPLUS" size="10" value="{$order.surplus|default:0}" onblur="changeSurplus(this.value)" {if $disable_surplus}disabled="disabled"{/if} />
               {$lang.your_surplus}{$your_surplus|default:0} <span id="ECS_SURPLUS_NOTICE" class="notice"></span></td>
@@ -710,11 +753,12 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
             </tr>
             <!-- {/if} -->
             <tr>
-              <td valign="top" bgcolor="#ffffff"><strong>{$lang.order_postscript}:</strong></td>
-              <td bgcolor="#ffffff"><textarea name="postscript" cols="80" rows="3" id="postscript" style="border:1px solid #ccc;">{$order.postscript|escape}</textarea></td>
+              <!--<td valign="top" bgcolor="#ffffff">{$lang.order_postscript}:</td>-->
+              <td width="200" align="right" valign="top" bgcolor="#ffffff">备注：</td>
+              <td bgcolor="#ffffff" align="right"><textarea name="postscript" cols="80" rows="3" id="postscript">{$order.postscript|escape}</textarea></td>
             </tr>
             <!-- {if $how_oos_list} 是否使用缺货处理 -->
-            <tr>
+            <tr style="display: none;">
               <td bgcolor="#ffffff"><strong>{$lang.booking_process}:</strong></td>
               <td bgcolor="#ffffff"><!-- {foreach from=$how_oos_list key=how_oos_id item=how_oos_name} -->
                 <label>
@@ -727,15 +771,16 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
           </table>
     </div>
     <div class="blank"></div>
-    <div class="flowBox">
-    <h6><span>{$lang.fee_total}</span></h6>
+    <div class="flowBox _fyzj_fb">
+    <h6 class="_fyzj"><!--<span>{$lang.fee_total}</span>--><span>总计：<b>{$total.goods_price_formated}</b></span></h6>
           <!-- #BeginLibraryItem "/Library/order_total.lbi" --><!-- #EndLibraryItem -->
-		  <div id="yuyanzhengma" style=" margin-left:300px; display:none;">
-			 接受验证码的手机号必须则是用户信息里的手机号码，如果您使用余额支付请获取短信验证码：<input id="vdcode" class="text login_from3" type="text" style="width: 50px;  text-transform: uppercase;" name="vdcode"/>
+		  <div id="yuyanzhengma">
+			 <span style="color: red;">*接受验证码的手机号必须则是用户信息里的手机号码，如果您使用余额支付请获取短信验证码：</span><input id="vdcode" class="text login_from3" type="text" style="width: 50px;  text-transform: uppercase;" name="vdcode"/>
           <input type="button" id="getcode" value="获取短信验证码"/>			
 		</div>
-           <div align="center" style="margin:8px auto;">
-            <input type="image" src="images/bnt_subOrder.gif" />
+           <div align="center" class="_fyzj_div">
+            <!--<input type="image" src="images/bnt_subOrder.gif" />-->
+            <input type="submit" value="提交订单" />
             <input type="hidden" name="step" value="done" />
             </div>
     </div>
@@ -966,8 +1011,15 @@ $(function(){
 		  }
 		  return false;
 		});
-	})
-})
+	});
+	$("._zffs_inp").each(function(){
+		if($(this).val() == 1 && $(this).attr("checked")){
+			$("#yuyanzhengma").show();
+			return false;
+			}
+	});
+		
+});
 
 var countdown=60;
 function settime(countdown) {
@@ -983,7 +1035,35 @@ function settime(countdown) {
 		settime(countdown);
 	},1000)
 }
-
+function modifyUser(){
+	$("input[name='quhuo_name']").attr("style","");
+	$("input[name='receiveaddres']").attr("style","");
+	$("input[name='quhuo_tel']").attr("style","");
+	//alert($("input[name='quhuo_name']").attr("style"));
+	return false;
+}
+$("input[name='quhuo_name']").blur(function(){
+	
+	$(this).attr("style","border: #ffffff; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; background-color: #ffffff;font-family: Microsoft Yahei; font-size: 20px;");
+});
+$("input[name='quhuo_name']").focus(function(){
+	$(this).attr("style","");
+});
+	
+$("input[name='receiveaddres']").blur(function(){	
+	$(this).attr("style","border: #ffffff; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; background-color: #ffffff;font-family: Microsoft Yahei; font-size: 20px;");
+});
+$("input[name='receiveaddres']").focus(function(){
+	$(this).attr("style","");
+});
+	
+$("input[name='quhuo_tel']").blur(function(){	
+	$(this).attr("style","border: #ffffff; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; background-color: #ffffff;font-family: Microsoft Yahei; font-size: 20px;");
+});
+$("input[name='quhuo_tel']").focus(function(){
+	$(this).attr("style","");
+});
+	
 </script>
 <script type="text/javascript">
 var process_request = "{$lang.process_request}";

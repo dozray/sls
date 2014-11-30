@@ -505,7 +505,38 @@ function checkOrderForm(frm)
     alert(flow_no_payment);
     return false;
   }
+  var reg = /^1[3|4|5|8|7]\d{9}$/;
+  var quhuo_name = $("input[name='quhuo_name']").val();
+  var receiveaddres = $("input[name='receiveaddres']").val(); 
+ // alert(receiveaddres);return false;
+  var quhuo_tel = $("input[name='quhuo_tel']").val();
+  var quhuo_fangshi1 = $("#_r_1").attr('checked');
 
+  var quhuo_fangshi2 = $("#_r_2").attr('checked');
+
+  var sendTime1 = $("#_r_3").attr('checked');
+  var sendTime2 = $("#_r_4").attr('checked');
+  var sendTime3 = $("#_r_5").attr('checked');
+  if($.trim(quhuo_name) == ""){
+	  alert("收货人姓名不能为空！");
+	  return false;
+  }
+  if($.trim(receiveaddres) == ""){
+	  alert("收货人地址不能为空！");
+	  return false;
+  }
+  if(!reg.test(quhuo_tel)){
+	  alert("请填写正确的手机号！");
+	  return false;
+  }
+  if(!quhuo_fangshi1 && !quhuo_fangshi2){
+  	alert("请选择收货方式！");
+	return false;
+  }
+  if(!sendTime1 && !sendTime2 && !sendTime3){
+  	alert("请选择收货时间！");
+	return false;
+  }
   // 检查用户输入的余额
   if (document.getElementById("ECS_SURPLUS"))
   {

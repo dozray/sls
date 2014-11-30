@@ -679,47 +679,81 @@ elseif ($_REQUEST['step'] == 'checkout')
     if (empty($_SESSION['direct_shopping']) && $_SESSION['user_id'] == 0)
     {
         /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
-        ecs_header("Location: flow.php?step=login\n");
+        ecs_header("Location: user.php\n");
         exit;
     }
-	$consignee_userid = 0;
-	$shouhuo_type = intval($_SESSION['shouhuo_type']);
+	//$consignee_userid = 0;
+	//$shouhuo_type = intval($_SESSION['shouhuo_type']);
+	
+	$sql = "select * from ".$ecs->table('users')."where user_id = ".$_SESSION['user_id'];
+	//用户默认信息
+	$userinfo = $GLOBALS['db']->getRow($sql);
+	
+	$sql = "select * from ".$ecs->table('users')."where user_id = ".$_SESSION['user_id'];
+	//用户默认信息
+	$userinfo = $GLOBALS['db']->getRow($sql);
+	$province = $userinfo['province'];
+	$city = $userinfo['city'];
+	$district = $userinfo['district'];
+	$name = $userinfo['msn'];
+	$sqll = "select * from ".$ecs->table('user_address')."where province = '$province' and city = '$city' and district = '$district' and name = '$name'";
+	//代收或者代购的信息 
+	$consignee = $GLOBALS['db']->getRow($sqll);
+	$_SESSION['dai_id'] = $consignee['user_id'];
+	/*
 	if($shouhuo_type == 1){
-		$consignee_userid = intval($_SESSION['user_id']);
+		$consignee_userid = intval($_SESSION['daigou_id']);
 	}
 	if($shouhuo_type == 2) {
 		$consignee_userid = intval($_SESSION['daishou_id']);
 	}
-
+	//print_r($consignee_userid);exit;
 	if( $consignee_userid > 0 ) {
 		
 		$consignee = get_consignee($consignee_userid);
 		
 	} else {
+	
 		$consignee = get_consignee($_SESSION['user_id']);
 	
 	}
- 
+ 	//print_r(isset($_SESSION['daigou_id']));exit;
     /* 检查收货人信息是否完整 */
-    if (!check_consignee_info($consignee, $flow_type) && !isset($_SESSION['daigou_id']))
-    {
-        /* 如果不完整则转向到收货人信息填写界面 */
+	//print_r($_SESSION);exit;
+	
+    //if (!check_consignee_info($consignee, $flow_type) && !isset($_SESSION['daigou_id']))
+    //{
+        /* 如果不完整则转向到收货人信息填写界面 *//*
         ecs_header("Location: flow.php?step=consignee\n");
         exit;
-    }
-
-    $_SESSION['flow_consignee'] = $consignee;
+    }*/
+	//print_r("##");exit;
+    //$_SESSION['flow_consignee'] = $consignee;
     $smarty->assign('consignee', $consignee);
-	
+	$smarty->assign('userinfo', $userinfo);
+	/*
 	//取货人信息
 	$smarty->assign('shouhuo_type', intval($_SESSION['shouhuo_type']));
 	$smarty->assign('quhuo_name', $_SESSION['shouhuo_type'] == 1? $_SESSION['gquhuo_name'] : $_SESSION['squhuo_name']);
 	$smarty->assign('receiveaddres', $_SESSION['receiveaddres']);
 	$smarty->assign('sendTime', $_SESSION['sendTime']);
 	$smarty->assign('quhuo_tel', $_SESSION['shouhuo_type'] == 1? $_SESSION['gquhuo_tel'] : $_SESSION['squhuo_tel']);
-    $smarty->assign('quhuo_fangshi',$_SESSION['shouhuo_type'] == 1? $_SESSION['gquhuo_fangshi'] : $_SESSION['squhuo_fangshi']);
+    $smarty->assign('quhuo_fangshi',$_SESSION['shouhuo_type'] == 1? $_SESSION['gquhuo_fangshi'] : $_SESSION['squhuo_fangshi']);*/
     /* 对商品信息赋值 */
     $cart_admin_goods = cart_admin_goods($flow_type); // 取得商品列表，计算合计
+	//添加缩略图
+	if ($cart_admin_goods) {
+		foreach($cart_admin_goods as $k => $goods){		
+			foreach($goods as $key => $values) {
+				$goodsinfo = $db->getRow('select goods_thumb , goods_img from '.$ecs->table('goods').' where goods_id = '.$values['goods_id']);
+				$values['goods_thumb']      = get_image_path($goodsinfo['goods_id'], $goodsinfo['goods_thumb'], true);
+				$values['goods_img']        = get_image_path($goodsinfo['goods_id'], $goodsinfo['goods_img']);
+				$goods[$key] = $values;
+			}
+			$cart_admin_goods[$k] = $goods;
+		}
+	}
+	
     $smarty->assign('goods_list', $cart_admin_goods);
 
     /* 对是否允许修改购物车赋值 */
@@ -1112,10 +1146,12 @@ elseif ($_REQUEST['step'] == 'select_payment')
     {
         $result['error'] = $_LANG['no_goods_in_cart'];
     }
+	/*
 	else if(!check_consignee_info($consignee, $flow_type))
 	{
 		$result['error'] = $_LANG['no_info'];
 	}
+	*/
     else
     {
         /* 取得购物流程设置 */
@@ -1558,10 +1594,9 @@ elseif ($_REQUEST['step'] == 'done')
     include_once('includes/lib_clips.php');
     include_once('includes/lib_payment.php');
 
-    /* 取得购物类型 */
+    /* 取得购物类型  默认为0（普通购物）*/
     $flow_type = isset($_SESSION['flow_type']) ? intval($_SESSION['flow_type']) : CART_GENERAL_GOODS;
-
-    /* 检查购物车中是否有商品 */
+	//购物车中是否有商品
     $sql = "SELECT COUNT(*) FROM " . $ecs->table('cart') .
         " WHERE session_id = '" . SESS_ID . "' " .
         "AND parent_id = 0 AND is_gift = 0 AND rec_type = '$flow_type'";
@@ -1569,7 +1604,7 @@ elseif ($_REQUEST['step'] == 'done')
     {
         show_message($_LANG['no_goods_in_cart'], '', '', 'warning');
     }
-
+	
     /* 检查商品库存 */
     /* 如果使用库存，且下订单时减库存，则减少库存 */
     if ($_CFG['use_storage'] == '1' && $_CFG['stock_dec_time'] == SDT_PLACE)
@@ -1592,20 +1627,37 @@ elseif ($_REQUEST['step'] == 'done')
     if (empty($_SESSION['direct_shopping']) && $_SESSION['user_id'] == 0)
     {
         /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
-        ecs_header("Location: flow.php?step=login\n");
+        ecs_header("Location: user.php\n");
         exit;
     }
 
-    $consignee = get_consignee($_SESSION['user_id']);
-
-    /* 检查收货人信息是否完整 */
+    $consignee = get_consignee($_SESSION['dai_id']);
+	//print_r($consignee);exit;
+    /* 检查收货人信息是否完整 
     if (!check_consignee_info($consignee, $flow_type))
     {
-        /* 如果不完整则转向到收货人信息填写界面 */
+        /* 如果不完整则转向到收货人信息填写界面
         ecs_header("Location: flow.php?step=consignee\n");
         exit;
-    }
-
+    }*/
+	$shouhuo_type = $_POST['shouhuo_type'];
+	$_SESSION['shouhuo_type'] = $shouhuo_type;
+	if($_POST['shouhuo_type'] == 2){
+		$_SESSION['daishou_id'] = $_SESSION['dai_id'];			
+		$_SESSION['squhuo_name'] = $_POST['quhuo_name'];
+		$_SESSION['squhuo_tel'] = $_POST['quhuo_tel'];
+		$_SESSION['squhuo_fangshi'] = $_POST['quhuo_fangshi'];
+	}else{
+		$_SESSION['gquhuo_name'] = $_POST['quhuo_name'];
+		$_SESSION['gquhuo_tel'] = $_POST['quhuo_tel'];
+		$_SESSION['gquhuo_fangshi'] = $_POST['quhuo_fangshi'];
+		$_SESSION['daigou_id'] = $_SESSION['dai_id'];		
+	}
+	$_SESSION['receiveaddres'] = $_POST['receiveaddres'];
+	$_SESSION['sendTime'] = $_POST['sendTime'];
+	
+	//print_r($_SESSION);exit;	
+	
     $_POST['how_oos'] = isset($_POST['how_oos']) ? intval($_POST['how_oos']) : 0;
     $_POST['card_message'] = isset($_POST['card_message']) ? htmlspecialchars($_POST['card_message']) : '';
     $_POST['inv_type'] = !empty($_POST['inv_type']) ? htmlspecialchars($_POST['inv_type']) : '';
@@ -1613,7 +1665,7 @@ elseif ($_REQUEST['step'] == 'done')
     $_POST['inv_content'] = isset($_POST['inv_content']) ? htmlspecialchars($_POST['inv_content']) : '';
     $_POST['postscript'] = isset($_POST['postscript']) ? htmlspecialchars($_POST['postscript']) : '';
 	$yanzhengshifouyue= isset($_POST['payment']) ? htmlspecialchars($_POST['payment']) : '';
-	
+	/*
 	if($yanzhengshifouyue==1){
 		$vdcode  = isset($_POST['vdcode']) ? htmlspecialchars($_POST['vdcode']) : '';			
 		if($vdcode!=$_SESSION['phone_code'] || $_SESSION['phone_code']=='')
@@ -1621,7 +1673,7 @@ elseif ($_REQUEST['step'] == 'done')
 			   echo "<script language=javascript>alert('您输入的验证码错误！');history.back();</script>";
 			   exit();
 			}
-	}
+	}*/
     $order = array(
         'shipping_id'     => intval($_POST['shipping']),
         'pay_id'          => intval($_POST['payment']),
