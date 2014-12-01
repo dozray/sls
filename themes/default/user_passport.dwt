@@ -11,6 +11,12 @@
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
 <link href="css/style_new.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.login-box .username-txt ._login_inp, .login-box .password-txt ._login_inp {font:12px "Lucida Sans Unicode","Lucida Grande","Arial",sans-serif;}
+body .reg-box .uInput, body .reg-box .yinput {font:12px "Lucida Sans Unicode","Lucida Grande","Arial",sans-serif;}
+}
+</style>
 {* 包含脚本文件 *}
 {insert_scripts files='common.js,user.js,transport.js'}
 <body>
