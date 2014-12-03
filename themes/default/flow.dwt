@@ -474,8 +474,8 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
       	<h6 class="_shrxx"><span>{$lang.consignee_info}</span><a href="javascript: void(0)" onclick="modifyUser()" class="f6">{$lang.modify}</a><!--flow.php?step=consignee--></h6>
       		<ul class="_fw">
             	<li class="_fw_1">服务亭：{$consignee.name|escape}</li>
+                <li style="width: 395px;">服务亭手机：{$consignee.mobile|escape}</li>
                 <li class="_fw_2">服务亭电话：{$consignee.tel|escape}</li>
-                <li>服务厅手机：{$consignee.mobile|escape}</li>
                 <li class="_shrxx_dg" {if $userinfo.user_rank != 3}style="display: none;"{/if}>
                 	购货方式：
                     <input type="radio" id="_r_6" value="1" name="shouhuo_type" /><label for="_r_6">代购</label>
@@ -484,16 +484,17 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
             </ul>
             <ul class="_fw _fw_sh">
             	<li class="_fw_1">收货人姓名：<input class="_sh_inp _sh_wid1" type="text"  name="quhuo_name" style="border: #ffffff; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; background-color: #ffffff;font-family: Microsoft Yahei; font-size: 20px;" value="{if $userinfo.alias}{$userinfo.alias}{else}{$userinfo.user_name}{/if}" /></li>
-                <li class="_fw_2">收货人地址：<input class="_sh_inp _sh_wid2" type="text" style="border: #ffffff; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; background-color: #ffffff;font-family: Microsoft Yahei; font-size: 20px;" name="receiveaddres" value="" /></li>
-                <li>收货人手机号：<input class="_sh_inp _sh_wid3" type="text" style="border: #ffffff; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; background-color: #ffffff;font-family: Microsoft Yahei; font-size: 20px;" name="quhuo_tel" value="{$userinfo.mobile_phone}" /></li>
+                <!---->
+                <li>收货人手机：<input class="_sh_inp _sh_wid3" type="text" style="border: #ffffff; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; background-color: #ffffff;font-family: Microsoft Yahei; font-size: 20px;" name="quhuo_tel" value="{$userinfo.mobile_phone}" /></li>
             </ul>
             <ul class="_sh_way">
-            	<li>
+            	<li style="float: left;">
                 	收货方式：
                     <input type="radio" id="_r_1" value="1" name="quhuo_fangshi" /><label for="_r_1">自提</label>
                     <input type="radio" id="_r_2" value="2" name="quhuo_fangshi" /><label for="_r_2">送货</label>
                 </li>
-                <li>
+                <li style="float: left; margin-left: 108px; display: none;">收货人地址：<input class="_sh_inp _sh_wid2" type="text" style="border: solid 1px #ccc; background-color: #ffffff;font-family: Microsoft Yahei; font-size: 20px;" name="receiveaddres" value="" /></li>
+                <li style="clear: both;">
                 	收货时间：
                     <input type="radio" id="_r_3" value="上午" name="sendTime" /><label for="_r_3">上午</label>
                     <input type="radio" id="_r_4" value="中午" name="sendTime" /><label for="_r_4">下午</label>
@@ -558,10 +559,10 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
     <table class="_psfs_tab" width="100%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" id="shippingTable">
             <tr>
               <th width="139" bgcolor="#ffffff">&nbsp;</th>
-              <th width="120" bgcolor="#ffffff" style="text-align: left;">{$lang.name}</th>
-              <th width="420" bgcolor="#ffffff" align="left">{$lang.describe}</th>
+              <th width="160" bgcolor="#ffffff" style="text-align: left;">{$lang.name}</th>
+              <th width="600" bgcolor="#ffffff" align="left">{$lang.describe}</th>
               <th bgcolor="#ffffff">{$lang.fee}</th>
-              <th bgcolor="#ffffff">{$lang.free_money}</th>
+              <!--<th bgcolor="#ffffff">{$lang.free_money}</th>-->
               <th bgcolor="#ffffff">{$lang.insure_fee}</th>
             </tr>
             <!-- {foreach from=$shipping_list key=key item=shipping} 循环配送方式 -->
@@ -571,7 +572,7 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
               <td bgcolor="#ffffff" valign="top">{$shipping.shipping_name}</td>
               <td bgcolor="#ffffff" valign="top">{$shipping.shipping_desc}</td>
               <td bgcolor="#ffffff" align="center" valign="top">{$shipping.format_shipping_fee}</td>
-              <td bgcolor="#ffffff" align="center" valign="top">{$shipping.free_money}</td>
+              <!--<td bgcolor="#ffffff" align="center" valign="top">{$shipping.free_money}</td>-->
               <td bgcolor="#ffffff" align="center" valign="top">{if $shipping.insure neq 0}{$shipping.insure_formated}{else}{$lang.not_support_insure}{/if}</td>
             </tr>
             <!-- {/foreach} 循环配送方式 -->
@@ -1018,7 +1019,16 @@ $(function(){
 			return false;
 			}
 	});
-		
+	$("#_r_2").click(function() {
+		$("input[name='receiveaddres']").parent().show();
+		$("input[name='receiveaddres']").focus();
+	});
+	$("#_r_1").click(function() {
+		$("input[name='receiveaddres']").parent().hide();
+	});
+	if ($("#_r_1")[0].checked) {
+		$("input[name='receiveaddres']").parent().hide();
+	}
 });
 
 var countdown=60;
@@ -1037,7 +1047,7 @@ function settime(countdown) {
 }
 function modifyUser(){
 	$("input[name='quhuo_name']").attr("style","");
-	$("input[name='receiveaddres']").attr("style","");
+	//$("input[name='receiveaddres']").attr("style","");
 	$("input[name='quhuo_tel']").attr("style","");
 	//alert($("input[name='quhuo_name']").attr("style"));
 	return false;
@@ -1049,13 +1059,13 @@ $("input[name='quhuo_name']").blur(function(){
 $("input[name='quhuo_name']").focus(function(){
 	$(this).attr("style","");
 });
-	
+/*
 $("input[name='receiveaddres']").blur(function(){	
 	$(this).attr("style","border: #ffffff; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; background-color: #ffffff;font-family: Microsoft Yahei; font-size: 20px;");
 });
 $("input[name='receiveaddres']").focus(function(){
 	$(this).attr("style","");
-});
+});*/
 	
 $("input[name='quhuo_tel']").blur(function(){	
 	$(this).attr("style","border: #ffffff; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; background-color: #ffffff;font-family: Microsoft Yahei; font-size: 20px;");
