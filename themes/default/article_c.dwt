@@ -17,10 +17,17 @@
 <body>{$_CFG}
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
 <div class="pagebox mtop20">
-    <div style="border:1px solid #ededed; background-color:#fff; padding:20px 0px;">
+    <div style="border:1px solid #ededed; background-color:#fff; padding:20px 0px; position: relative;">
     	<p style="text-align: center; font-size: 14px; font-weight: bold; color: #666;">关于我们</p>
         <div class="tc" style="padding:8px; border-bottom:1px solid #ededed; " ></div>
         <img src="themes/default/_images/_gywm.jpg" />
+        <div style="position: absolute; width: 390px; top: 110px; right: 85px;">
+        	<div style="color: #3b82c5; font-size: 31px; font-family: Microsoft Yahei;">关于我们</div>
+            <div style="color: #9fa0a0; font-size: 13px; font-family: Microsoft Yahei; margin-top: 12px;">About Us</div>
+            <p style="font-size: 14px; margin-top: 30px;">
+            	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手拉手（北京）社区服务有限公司（以下简称手拉手）于2014年4月投资成立，注册资金一千万元。2014年8月与团中央“中国青年创业就业基金会”共同成立“手拉手专项基金”，基金规模一亿元人民币，面向社会待业青年加入手拉手便民服务创业项目给予贷款及贷款贴息支持，以降低创业成本，促进创业就业；同时又以满足社区生活需求，提高社区幸福指数为目的，为社区居民提供便民缴费、便民家政、社区电商、社区菜篮、社区公益等服务，打造全国最具规模的一站式社区O2O服务平台。
+            </p>
+        </div>
     </div>
 </div>
 <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
