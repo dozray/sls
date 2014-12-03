@@ -495,8 +495,8 @@ document.getElementById('market_amount_desc').innerHTML = result.market_amount_d
                 </li>
                 <li>
                 	收货时间：
-                    <input type="radio" id="_r_3" value="上午" name="sendTime" /><label for="_r_2">上午</label>
-                    <input type="radio" id="_r_4" value="中午" name="sendTime" /><label for="_r_3">下午</label>
+                    <input type="radio" id="_r_3" value="上午" name="sendTime" /><label for="_r_3">上午</label>
+                    <input type="radio" id="_r_4" value="中午" name="sendTime" /><label for="_r_4">下午</label>
                     <input type="radio" id="_r_5" value="下午" name="sendTime" /><label for="_r_5">晚上</label>
                 </li>
             </ul>
