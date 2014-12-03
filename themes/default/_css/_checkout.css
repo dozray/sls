@@ -4,7 +4,7 @@
 	._category_tit a { font-size: 18px; color: #fff; outline: none;}
 	._category_tit a:hover { color: #9bdef6;}
 	._category_tit span { float: left; width: 239px; text-align: center;}
-	._category_tit span#_te { width: 300px; font-size: 18px; color: #fff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-left: 85px;}
+	._category_tit span#_te { width: 300px; font-size: 18px; color: #fff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-left: 85px; word-wrap: normal;}
 	
 ._splb { background: none; border: 0; padding: 0px;}
 	._splb span { height: 51px; line-height: 51px; width: 820px; padding: 0px; padding-left: 140px; text-align: left; background: #fbfbfb url(../_images/_splb.png) no-repeat 20px -2px; box-shadow: 0px 2px 3px #d7d7d7; border-radius: 5px; font-size: 20px; font-weight: normal;}
@@ -17,8 +17,8 @@
 	._splb_ghs { color: #646464; font-size: 20px; font-weight: normal; display: block; height: 55px; line-height: 55px; margin-left: 135px;}
 	._splb_tb_tr { height: 88px; border-bottom: solid 1px #eaeaea;}
 	._splb_tb_td { width: 500px;}
-	._splb_tb_td img { position: relative; top: 3px;}
-	._splb_tb_td a { font-size: 24px; color: #858585; position: relative; top: -22px; width: 400px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; height: 30px; line-height: 30px; margin-left: 10px;}
+	._splb_tb_td img { position: relative; top: 3px; margin-left: 40px;}
+	._splb_tb_td a { font-size: 24px; color: #858585; position: relative; top: -22px; width: 350px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; height: 30px; line-height: 30px; margin-left: 20px; word-wrap: nromal;}
 	._shijia { width: 165px; font-size: 20px; color: #858585;}
 	._benjia { width: 165px; font-size: 20px; color: #858585;}
 	._shul { font-size: 20px; color: #858585;}
@@ -33,10 +33,10 @@
 	._fw { display: table; width: 1120px; border-bottom: solid 2px #d0d0d0; margin: auto; padding-left: 20px;}
 	._fw li { float: left; color: #858585; font-size: 20px; height: 85px; line-height: 85px;}
 	._fw_1 { width: 342px;}
-	._fw_2 { width: 498px;}
+	._fw_2 { width: 270px;}
 	._fw_sh { border: 0;}
 	._sh_way { font-size: 20px; color: #858585; margin-left: 45px;}
-	._sh_way li { line-height: 45px;}
+	._sh_way li { line-height: 50px;}
 	
 	._fw ._shrxx_dg { line-height: 20px; height: 45px;}
 	

@@ -1,9 +1,10 @@
 @charset "utf-8";
+a { outline: none;}
 ._category_tit { height: 36px; width: 1190px; margin: auto; margin-top: 15px; line-height: 34px;}
 	._category_tit a { font-size: 18px; color: #fff; outline: none;}
 	._category_tit a:hover { color: #9bdef6;}
 	._category_tit span { float: left; width: 239px; text-align: center;}
-	._category_tit span#_te { width: 300px; font-size: 18px; color: #fff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-left: 85px;}
+	._category_tit span#_te { width: 300px; font-size: 18px; color: #fff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-left: 85px; word-wrap: normal;}
 	
 body ._sub-cat { height: 73px; background: #b8d681 url(../_images/icon.png) no-repeat 0px 0px; border-radius: 5px; box-shadow: 0px 3px 3px #d1ddc9;}
 body ._sub-cat ul { padding-top: 10px;}
@@ -19,7 +20,7 @@ body ._total { border-radius: 5px; width: 189px; height: 51px; display: block; o
 body ._btns { width: 1190px; margin: auto; margin-top: 15px;}
 body ._btns input { border: solid 1px #8fc31f; height: 26px; width: 93px; border-radius: 5px; background: #fff; color: #8fc31f; margin-right: 5px; outline: none;}
 
-body ._goods-name {overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+body ._goods-name {overflow:hidden; text-overflow:ellipsis; white-space:nowrap; word-wrap: normal;}
 
 body .list-goods ._goods-btnbuy { background: none; padding-bottom: 12px;}
 body .list-goods .goods-btnbuy a._addtocart { border: solid 1px #f6643d; border-radius: 5px; height: 33px; width: 92px; color: #f6643d; display: inline-block; line-height: 32px;}
