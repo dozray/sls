@@ -1021,7 +1021,7 @@ $(function(){
 	$("#_r_1").click(function() {
 		$("input[name='receiveaddres']").parent().hide();
 	});
-	if ($("#_r_1")[0].checked) {
+	if ($("#_r_1")[0] && $("#_r_1")[0].checked) {
 		$("input[name='receiveaddres']").parent().hide();
 	}
 });
