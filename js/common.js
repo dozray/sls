@@ -33,7 +33,29 @@ function addToCart(goodsId, parentId)
   goods.number   = number;
   goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
 
-  Ajax.call('flow.php?step=add_to_cart', 'goods=' + goods.toJSONString(), addToCartResponse, 'POST', 'JSON');
+  Ajax.call('flow.php?step=add_to_cart', 'goods=' + goods.toJSONString(),update_cart, 'POST', 'JSON');
+}
+function update_cart(cart){
+	/*
+	$("#update_cart").html('<table width="100%">'+
+			$.each(cart,function(key,val){
+				+ '<tr><td width="80" style="border-bottom:1px dashed #F8AC00"><div><img src='+ 333+' width="60" height="60" /></div><div>购买数量：'+2222+'</div></td><td style="border-bottom:1px dashed #F8AC00"><div>'+ 333+'</div><div><b style="color:red;">'+cddd+'</b></div></td></tr>' +
+			});	
+			'<tr><td colspan="2" height="30" align="center">共<b>{$cart_goodsnum}</b>件商品，共计：<b>{$cart_goodsprice}</b>元</td></tr></table>');
+*/	
+	var table = $("<table></table>");
+	var cart_goodsnum = 0;
+	var cart_goodsprice = 0;
+	$.each(cart,function(key,val){
+		var tr = $('<tr><td width="80" style="border-bottom:1px dashed #F8AC00"><div><img src='+val.goods_thumb+' width="60" height="60" /></div><div>购买数量：'+val.goods_number+'</div></td><td style="border-bottom:1px dashed #F8AC00"><div>'+val.goods_name+'</div><div><b style="color:red;">'+val.formated_goods_price+'</b></div></td></tr>');
+		cart_goodsnum += parseInt(val.goods_number);
+		cart_goodsprice += val.goods_number * val.goods_price;
+		table.append(tr);
+	});
+	table.append($('<tr><td colspan="2" height="30" align="center">共<b>'+cart_goodsnum+'</b>件商品，共计：<b>'+cart_goodsprice.toFixed(2)+'</b>元</td></tr>'));
+	
+	$("#update_cart").html(table.html());
+	return false;
 }
 //立即购物
 function addToBuy(goodsId, parentId)
@@ -95,7 +117,6 @@ function getSelectedAttributes(formBuy)
  */
 function addToCartResponse(result)
 {
-		
   if (result.error > 0)
   {
     // 如果需要缺货登记，跳转
@@ -120,6 +141,7 @@ function addToCartResponse(result)
   {
     var cartInfo = document.getElementById('ECS_CARTINFO');
     var cart_url = 'flow.php?step=cart&re_val=reval';
+	
     var check_url = 'flow.php?step=checkout';
     if (cartInfo)
     {
@@ -130,7 +152,6 @@ function addToCartResponse(result)
     {
       location.href = check_url;
     }
-
     else
     {
       switch(result.confirm_type)
