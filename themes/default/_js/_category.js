@@ -64,13 +64,13 @@ $j(function() {
 	$(".decr").hover(function() {
 		$(this).css({"background-image":"url(themes/default/_images/j_y_s.png)"});
 	}, function() {
-		$(this).css({"background-image":"url(themes/default/_images/j_08_0.png)"});
+		$(this).css({"background-image":"url(themes/default/_images/j_11_0.png)"});
 	});
 	
 	$(".incr").hover(function() {
 		$(this).css({"background-image":"url(themes/default/_images/j_y_a.png)"});
 	}, function() {
-		$(this).css({"background-image":"url(themes/default/_images/j_05_0.png)"});
+		$(this).css({"background-image":"url(themes/default/_images/j_03_0.png)"});
 	});
 	
 	//alert(navigator.userAgent);
