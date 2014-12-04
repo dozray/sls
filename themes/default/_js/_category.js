@@ -48,7 +48,7 @@ $j(function() {
 	}, function() {
 		$j(this).css({"background":"#fff", "color":"#f6643d"});
 	});
-	
+	/*
 	$j("._dgi_con").hover(function() {
 		$j(this).css("background", "#b8d681");
 		$j(this).find(".goods-numb").css({"background":"#aecd74", "box-shadow":"0px 3px 3px #689547 inset", "border-color":"#9fc16c", "color":"#fff"});
@@ -59,17 +59,17 @@ $j(function() {
 		$j(this).find(".goods-numb").css({"background":"#fff", "box-shadow":"none", "border-color":"#b8d681", "color":"#a2a2a2"});
 		$j(this).find(".decr").css({"background-image":"url(themes/default/_images/j_11_0.png)"});
 		$j(this).find(".incr").css({"background-image":"url(themes/default/_images/j_03_0.png)"});
-	});
+	});*/
 	
-	$(".decr").mousedown(function() {
+	$(".decr").hover(function() {
 		$(this).css({"background-image":"url(themes/default/_images/j_y_s.png)"});
-	}).mouseup(function() {
+	}, function() {
 		$(this).css({"background-image":"url(themes/default/_images/j_08_0.png)"});
 	});
 	
-	$(".incr").mousedown(function() {
+	$(".incr").hover(function() {
 		$(this).css({"background-image":"url(themes/default/_images/j_y_a.png)"});
-	}).mouseup(function() {
+	}, function() {
 		$(this).css({"background-image":"url(themes/default/_images/j_05_0.png)"});
 	});
 	
