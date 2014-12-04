@@ -38,25 +38,40 @@ $j(function() {
 	$j(".list-goods").hover(function() {
 		var _this = $j(this);
 		_this.find("._list_goods_bg").show();
-		_this.find("._addtocart").css({"background":"#f6643d", "color":"#fff"});
-		/*_this.find(".decr").css({"background-image":"url(themes/default/_images/j_08_0.png)","background-color":"#f6643d"});
-		_this.find(".incr").css({"background-image":"url(themes/default/_images/j_05_0.png)","background-color":"#8fc31f"});*/
-		_this.find(".decr").css({"background-image":"url(themes/default/_images/j_08_0.png)"});
-		_this.find(".incr").css({"background-image":"url(themes/default/_images/j_05_0.png)"});
-		_this.find("._dgi_con").css("background", "#b8d681");
-		_this.find(".goods-numb").css({"background":"#aecd74", "box-shadow":"0px 3px 3px #689547 inset", "border-color":"#9fc16c", "color":"#fff"});
 	}, function() {
 		var _this = $j(this);
 		_this.find("._list_goods_bg").hide();
-		_this.find("._addtocart").css({"background":"#fff", "color":"#f6643d"});
-		/*_this.find(".decr").css({"background-image":"url(themes/default/_images/j_11_0.png)","background-color":"#fff"});
-		_this.find(".incr").css({"background-image":"url(themes/default/_images/j_03_0.png)","background-color":"#fff"});*/
-		_this.find(".decr").css({"background-image":"url(themes/default/_images/j_11_0.png)"});
-		_this.find(".incr").css({"background-image":"url(themes/default/_images/j_03_0.png)"});
-		_this.find("._dgi_con").css("background", "#fff");
-		_this.find(".goods-numb").css({"background":"#fff", "box-shadow":"none", "border-color":"#b8d681", "color":"#a2a2a2"});
 	});
 	
+	$j("._addtocart").hover(function() {
+		$j(this).css({"background":"#f6643d", "color":"#fff"});
+	}, function() {
+		$j(this).css({"background":"#fff", "color":"#f6643d"});
+	});
+	
+	$j("._dgi_con").hover(function() {
+		$j(this).css("background", "#b8d681");
+		$j(this).find(".goods-numb").css({"background":"#aecd74", "box-shadow":"0px 3px 3px #689547 inset", "border-color":"#9fc16c", "color":"#fff"});
+		$j(this).find(".decr").css({"background-image":"url(themes/default/_images/j_08_0.png)"});
+		$j(this).find(".incr").css({"background-image":"url(themes/default/_images/j_05_0.png)"});
+	}, function() {
+		$j(this).css("background", "#fff");
+		$j(this).find(".goods-numb").css({"background":"#fff", "box-shadow":"none", "border-color":"#b8d681", "color":"#a2a2a2"});
+		$j(this).find(".decr").css({"background-image":"url(themes/default/_images/j_11_0.png)"});
+		$j(this).find(".incr").css({"background-image":"url(themes/default/_images/j_03_0.png)"});
+	});
+	
+	$(".decr").mousedown(function() {
+		$(this).css({"background-image":"url(themes/default/_images/j_y_s.png)"});
+	}).mouseup(function() {
+		$(this).css({"background-image":"url(themes/default/_images/j_08_0.png)"});
+	});
+	
+	$(".incr").mousedown(function() {
+		$(this).css({"background-image":"url(themes/default/_images/j_y_a.png)"});
+	}).mouseup(function() {
+		$(this).css({"background-image":"url(themes/default/_images/j_05_0.png)"});
+	});
 	
 	//alert(navigator.userAgent);
 });
