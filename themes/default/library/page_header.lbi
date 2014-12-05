@@ -38,7 +38,14 @@ var process_request = "{$lang.process_request}";
 		</td>
 		<td width="220" align="center" valign="bottom" style="padding-top:15px;">
         	<ul class="_nav">
-            	<li><a href="/flow.php?step=cart" ><img src="themes/default/_images/_car_logo.png"/></a></li>
+            	<li>
+                	<a style="position: relative;" href="/flow.php?step=cart" >
+                    	<img src="themes/default/_images/_car_logo.png"/>
+                        <div style="position: absolute; top: -7px; left: 36px; width: 38px; height: 38px; background: url(themes/default/_images/_qipao.png);">
+                        	<span style="color: #fff; position: relative; top: 7px; left: 10px;">99+</span>
+                        </div>
+                    </a>
+                </li>
                 <li style="position: relative;">
                 	<div class="_bj">城市A</div>
                     <div class="_cut_c">
@@ -89,7 +96,7 @@ var process_request = "{$lang.process_request}";
 </div>
 <script type="text/javascript">
 $(function() {
-		$("._cut_c").hover(function() {
+	$("._cut_c").hover(function() {
 		$("._cut_c").height(50);
 		$("._ly").stop(false, true).slideDown();
 	}, function() {
