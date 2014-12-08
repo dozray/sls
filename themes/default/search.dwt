@@ -25,7 +25,7 @@
     	<!-- BeginLibraryItem "/library/category_tree.lbi" --><!-- EndLibraryItem -->
     <!--</div>
 </div>-->
-<div class="list-bg">
+<div class="list-bg" style="background: none;">
 
       <div class="list-box">
 <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem -->
