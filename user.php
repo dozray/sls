@@ -30,7 +30,7 @@ $back_act='';
 
 // 不需要登录的操作或自己验证是否登录（如ajax处理）的act
 $not_login_arr =
-array('login','act_login','register','act_register','act_edit_password','get_password','send_pwd_email','password', 'signin', 'add_tag', 'collect', 'return_to_cart', 'logout', 'email_list', 'validate_email', 'send_hash_mail', 'order_query', 'is_registered', 'check_email','clear_history','qpassword_name', 'get_passwd_question', 'check_answer','authcode','checkAV');
+array('login','act_login','register','act_register','act_edit_password','get_password','send_pwd_email','password', 'signin', 'add_tag', 'collect', 'return_to_cart', 'logout', 'email_list', 'validate_email', 'send_hash_mail', 'order_query', 'is_registered', 'check_email','clear_history','qpassword_name', 'get_passwd_question', 'check_answer','authcode','checkAV','collection');
 
 /* 显示页面的action列表 */
 $ui_arr = array('register', 'login', 'profile', 'password','order_list', 'dgorder_list', 'affirm_shouhuo', 'affirm_daohuo', 'dsorder_list', 'order_detail', 'address_list', 'collection_list',
@@ -284,6 +284,30 @@ elseif($action == 'authcode')
 	echo json_encode($re_arr);
     exit();
 	
+}
+
+//收藏
+elseif($action == 'collection')
+{
+	$data = '';
+	if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] == 0)
+    {
+        $data = 0;  
+    } else{	
+		$goods_id = $_REQUEST['id'];
+		$sql = "select count(*) from ".$ecs->table('collect_goods'). " where goods_id = '$goods_id' and user_id = '$user_id'";
+		$number = $db->getOne($sql);
+		if($number > 0){
+			$data = 1;
+		}else{
+			$time = time();
+			$sqll = "insert into ".$ecs->table('collect_goods')." (user_id,goods_id,add_time) "." values('$user_id','$goods_id','$time')";
+			$db->query($sqll);
+			$data = 2;
+		}
+	}
+	echo json_encode($data);
+	exit();
 }
 /* 注册会员的处理 */
 elseif ($action == 'act_register')
@@ -1359,7 +1383,7 @@ elseif ($action == 'collection_list')
     $record_count = $db->getOne("SELECT COUNT(*) FROM " .$ecs->table('collect_goods').
                                 " WHERE user_id='$user_id' ORDER BY add_time DESC");
 
-    $pager = get_pager('user.php', array('act' => $action), $record_count, $page);
+    $pager = get_pager('user.php', array('act' => $action), $record_count, $page, 4);
     $smarty->assign('pager', $pager);
     $smarty->assign('goods_list', get_collection_goods($user_id, $pager['size'], $pager['start']));
     $smarty->assign('url',        $ecs->url());
