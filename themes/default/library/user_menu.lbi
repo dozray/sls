@@ -8,6 +8,7 @@
 <a href="user.php?act=message_list"{if $action eq 'message_list'}class="curs"{/if}>意见反馈</a>
 <a href="user.php?act=account_deposit"{if $action eq 'account_deposit' || $action eq 'account_log'}class="curs"{/if}>资金充值</a>
 <a href="user.php?act=account_detail"{if $action eq 'account_detail'}class="curs"{/if}>资金明细</a>
+<a href="user.php?act=collection_list"{if $action eq 'collection_list'}class="curs"{/if}>{$lang.label_collection}</a>
 <div class="menu-title">订单管理</div>
 <a href="user.php?act=order_list"{if $action eq 'order_list'|| $action eq 'order_detail'}class="curs"{/if}>{$lang.label_order}</a>
 <a href="user.php?act=address_list"{if $action eq 'address_list'}class="curs"{/if}>{$lang.label_address}</a>

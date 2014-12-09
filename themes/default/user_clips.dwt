@@ -17,6 +17,15 @@
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
 <style type="text/css">
 .box_1 { border:0px;}
+
+	body ._wdsc ._wdsc_ul { height: auto;}
+	._wdsc_ul li { float: left; width: 204px; border: solid 1px #ddd; padding-bottom: 15px; margin-left: 8px;}
+		._wdsc_img { width: 182px; height: 182px; margin-top: 12px;}
+		._wdsc_name { padding-left: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-wrap: normal;}
+		._wdsc_gg, ._wdsc_ycd { padding-left: 15px;}
+		._wdsc_jg { font-size: 14px; font-weight: bold; color: red; padding-left: 15px; float: left; padding-top: 6px;}
+		._wdsc ._wdsc_sc { display: block; float: right; width: 85px; height: 30px; border: solid 1px #f88364; border-radius: 5px; color: #f88364; text-align: center; line-height: 30px; font-size: 16px; margin-right: 15px;}
+		._wdsc ._wdsc_sc:hover { background: #f88364; color: #fff;}
 </style>
 <div class="blank"></div>
 <div class="block clearfix">
@@ -237,9 +246,27 @@
     <!--*收藏商品列表页面 start-->
     <!--{if $action eq 'collection_list'} -->
   {insert_scripts files='transport.js,utils.js'}
+  <div class="_wdsc">
     <h5><span>{$lang.label_collection}</span></h5>
     <div class="blank"></div>
-     <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+    <ul class="_wdsc_ul" style="position: relative; z-index: 0; height: 315px;">
+    	<!--{foreach from=$goods_list item=goods}-->
+        <li class="_wdsc_li" style="position: relative; background: #fff;">
+        	<div class="_wdsc_img"><a href="{$goods.url}"><img style="border: 0px;" width="182" height="182" src="{$goods.goods_thumb}" /></a></div>
+            <div class="_wdsc_name" title="{$goods.goods_name|escape:html}">{$goods.goods_name|escape:html}</div>
+            <div class="_wdsc_gg">规格：{$goods.guige}</div>
+            <div class="_wdsc_ycd">原产地：{$goods.chandi}</div>
+            <div class="_wdsc_jg">{$goods.shop_price}</div>
+            <a href="javascript:if (confirm('你确认要删除收藏吗？')) location.href='user.php?act=delete_collection&collection_id={$goods.rec_id}'" class="_wdsc_sc">删除</a>
+        	<div class="_wdsc_bg" style="display: none; border-radius: 5px; width: 214px; height: 312px; background: #f5f5f5; position: absolute; left: -5px; top: -5px; z-index: -1;"></div>
+        </li>
+        <!--{/foreach} -->
+        <!--{if empty($goods_list)}-->
+        	<div style="color: red; height: 300px; line-height: 300px; font-size: 50px; text-align: center;">暂无收藏</div>
+        <!--{/if}-->
+        <div style="clear: both;"></div>
+    </ul>
+     <table style="display: none;" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
       <tr align="center">
         <th width="35%" bgcolor="#ffffff">{$lang.goods_name}</th>
         <th width="30%" bgcolor="#ffffff">{$lang.price}</th>
@@ -310,7 +337,6 @@
   </tr>
   </table>
      </form>
-	 <!--{/if}-->
       <script language="JavaScript">
       var elements = document.forms['theForm'].elements;
       var url = '{$url}';
@@ -362,6 +388,8 @@
   var is_cancel = "{$lang.is_cancel}";
   var select_spe = "{$lang.select_spe}";
   </script>
+  <!--{/if}-->
+  </div>
   <!--{/if} -->
     <!--#收藏商品列表页面 end-->
     <!--*缺货登记列表页面 start-->
@@ -634,5 +662,14 @@ copyToClipboard = function(txt)
 {foreach from=$lang.clips_js item=item key=key}
 var {$key} = "{$item}";
 {/foreach}
+
+
+$(function() {
+	$("._wdsc_li").hover(function() {
+		$(this).find("._wdsc_bg").show();
+	}, function() {
+		$(this).find("._wdsc_bg").hide();
+	});	
+});
 </script>
 </html>
