@@ -10,6 +10,7 @@
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link href="themes/default/_css/_goods.css" rel="stylesheet" type="text/css" />
 {* 包含脚本文件 *}
 {insert_scripts files='common.js,transport.js'}
 <script type="text/javascript">
@@ -48,16 +49,17 @@ function reg(str){
     <span id="_to"></span>
     <span id="_te"></span>
 </div>
-<div class="goodspagebox" style="margin-top: 15px;">
+<div class="goodspagebox _goodspagebox" style="margin-top: 15px;">
 	<!--<div class="ur_here">-->
 	<!-- BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
 	<!--</div>-->
 	
-	
-	<div class="goods-imgbox">
-    	<div class="imginfo">
+	<div class="_goods_detail"><!-- _goods_detail start -->
+    
+	<div class="goods-imgbox _goods_imgbox">
+    	<div class="imginfo _imginfo">
     	 <!-- {if $pictures}-->
-	     <a href="javascript:;" onclick="window.open('gallery.php?id={$goods.goods_id}'); return false;">
+	     <a class="_goods_imgbox_a" href="javascript:;" onclick="window.open('gallery.php?id={$goods.goods_id}'); return false;">
 	      <img src="{$goods.goods_img}" alt="{$goods.goods_name|escape:html}" width="360" height="360"/>
 	     </a>
          <!-- {else} -->
@@ -66,7 +68,7 @@ function reg(str){
     	</div>
         
         
-        <div class="imgbox">
+        <div class="imgbox _imgbox">
 		     <!--相册 START-->
 		     <!-- #BeginLibraryItem "/library/goods_gallery.lbi" --><!-- #EndLibraryItem -->
 		     <!--相册 END-->
@@ -74,10 +76,10 @@ function reg(str){
             <div class="cl"></div>
         </div>
     </div>
-    <div class="goods-infobox">
+    <div class="goods-infobox _goods_infobox">
     	<form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
-    	<div class="goods-title">{$goods.goods_style_name}</div>
-        <div class="goods-price">
+    	<div class="goods-title _goods_title" title="{$goods.goods_style_name}">{$goods.goods_style_name}</div>
+        <div class="goods-price _goods_price">
         <!--{if $goods.is_promote and $goods.gmt_end_time } 促销-->
       	{insert_scripts files='lefttime.js'}
 
@@ -86,10 +88,11 @@ function reg(str){
         <span class="cu-time">剩余时间： <span id="leftTime">{$lang.please_waiting}</span></span>
         
         <!--{else}-->
-        {$goods.shop_price_formated}
+        <span style="color: #f6643d; font-size: 50px;">单价：</span><span style="color: #f6643d; font-size: 60px;">{$goods.shop_price_formated}</span><span style="color: #8b8b8b; font-size: 16px;">({$goods.shop_jifen}积分)</span>
         <!--{/if}-->
         </div>
-        <table>
+        
+        <table style="display: none;">
         
             <!--{if $volume_price_list } -->
             <tr>
@@ -119,7 +122,12 @@ function reg(str){
             	<td></td> <td></td>
             </tr>
             <tr>
-            	<td>购买数量： <input name="number" max_number="{$goods.max_number}" type="text" id="number" value="1" class="buy-num" size="4" onblur="changePrice()" /></td>
+            	<td>
+                	<!--
+                    购买数量： 
+                    <input name="number" max_number="{$goods.max_number}" type="text" id="number" value="1" class="buy-num" size="4" onblur="changePrice()" />
+                	-->
+                </td>
             	<td> 
             	<!-- {if $goods.goods_number neq "" and $cfg.show_goodsnumber} 商品库存-->
         <!-- {if $goods.goods_number eq 0} -->
@@ -134,11 +142,58 @@ function reg(str){
             </tr>
         </table> 
         
-        <div class="goods-btn">
-        	<a href="javascript:addToBuy({$goods.goods_id})"><img src="images/new/goods-buynow.jpg" /></a> <a href="javascript:addToCart({$goods.goods_id})"><img src="images/new/putcart.jpg" /></a>
+        <!--<div class="goods-btn">
+        	<a id="_atb" href="javascript:;"><img src="images/new/goods-buynow.jpg" /></a> <a id="_atc" href="javascript:;"><img src="images/new/putcart.jpg" /></a>
+        </div>-->
+        <div style="margin-top: 72px;">
+        	<ul style="width: 300px; height: 80px; background: #b8d681; border-radius: 5px; float: left;">
+                <li style="float: left;">
+                    <ul style="color: #fff; font-size: 20px; padding-top: 16px; padding-left: 18px; font-weight: bold;">
+                        <li>数</li>
+                        <li style="padding-top: 7px;">量</li>
+                    </ul>
+                </li>
+               
+                <li style="float: left; width: 7px; height: 68px; background: url(themes/default/_images/_gdt.png); margin: 6px 0px 0px 12px;"></li>
+                <li id="_gdt_s" style="float: left; width: 50px; height: 50px; margin-top: 14px; margin-left: 15px; margin-right: 20px; background: url(themes/default/_images/_gdt_s.png) no-repeat center center; cursor: pointer;"></li>
+                <li style="float: left; padding-top: 6px;"><input style="width: 63px; height: 63px; line-height: 63px; border-radius: 5px; border: solid 1px #94b968; box-shadow: 0px 5px 10px #75a052 inset; background: #b8d681; color: #fff; font-size: 36px; font-family: Microsoft Yahei;" name="number" max_number="{$goods.max_number}" type="text" id="number" value="1" class="buy-num" size="4" onblur="changePrice()" /></li>
+                <li id="_gdt_a" style="float: left; width: 50px; height: 50px; margin-top: 14px; margin-left: 20px; background: url(themes/default/_images/_gdt_a.png) no-repeat center center; cursor: pointer;"></li>
+            </ul>
+            <ul id="_gdt_sc" style="float: left; margin-left: 25px; cursor: pointer; background: #88c6dc url(themes/default/_images/_gdt_sta.png) no-repeat 70px 12px; border-radius: 5px;">
+            	<li style="float: left;">
+                	<!--<a id="_atc" href="javascript:;"><img src="images/new/putcart.jpg" /></a>-->
+                    <ul style="width: 144px; height: 80px;">
+                    	<li style="float: left;">
+                            <ul style="color: #fff; font-size: 20px; padding-top: 16px; padding-left: 18px; font-weight: bold;">
+                                <li>收</li>
+                                <li style="padding-top: 7px;">藏</li>
+                            </ul>
+                        </li>
+                        <li style="float: left; width: 7px; height: 68px; background: url(themes/default/_images/_gdt_01.png); margin: 6px 0px 0px 12px;"></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul id="_gdt_gw" style="float: left; margin-left: 25px; cursor: pointer; background: #fd6b6b url(themes/default/_images/_gdt_car.png) no-repeat 70px 12px; border-radius: 5px;">
+            	<li style="float: left;">
+                	<!--<a id="_atc" href="javascript:;"><img src="images/new/putcart.jpg" /></a>-->
+                    <ul style="width: 144px; height: 80px;">
+                    	<li style="float: left;">
+                            <ul style="color: #fff; font-size: 20px; padding-top: 16px; padding-left: 18px; font-weight: bold;">
+                                <li>购</li>
+                                <li style="padding-top: 7px;">物</li>
+                            </ul>
+                        </li>
+                        <li style="float: left; width: 7px; height: 68px; background: url(themes/default/_images/_gdt_02.png); margin: 6px 0px 0px 12px;"></li>
+                    </ul>
+                </li>
+            </ul>
+            <div style="clear: both;"></div>
         </div>
         </form>
     </div>
+    <div style="clear: both;"></div>
+    </div><!-- _goods_detail end -->
+    
     <div class="cl"></div>
     
     <div class="goods-ititle">
@@ -195,17 +250,22 @@ onload = function(){
  */
 function changePrice()
 {
-  var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);
-  var qty = document.forms['ECS_FORMBUY'].elements['number'].value;
-  if(max_number > 0){
-	if(qty > max_number){
-		alert('该商品最多只能购买 '+max_number+' 件');
-		document.forms['ECS_FORMBUY'].elements['number'].value = max_number;
-		qty = max_number;
+	if (num_val()) {
+		var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);
+	  var qty = document.forms['ECS_FORMBUY'].elements['number'].value;
+	  if(max_number > 0){
+		if(qty > max_number){
+			alert('该商品最多只能购买 '+max_number+' 件');
+			document.forms['ECS_FORMBUY'].elements['number'].value = max_number;
+			qty = max_number;
+		}
+	  }
+	  
+	  Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');
+	} else {
+		alert("对不起，您输入了一个非法的商品数量。");
+		if(window.getSelection()) window.getSelection().removeAllRanges();
 	}
-  }
-  
-  Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');
 }
 
 /**
@@ -235,6 +295,98 @@ $(function() {
 	$("#_to").append(_as.eq(2));
 	$("#ur_here").find("code").remove();
 	$("#_te").append($("#ur_here").html());
+	
+	/*
+	$("#_atb").click(function() {
+		if (num_val()) {
+			addToBuy({$goods.goods_id});
+		} else {
+			alert("对不起，您输入了一个非法的商品数量。");
+		}
+	});
+	*/
+	//收藏事件
+	$("#_gdt_sc").click(function() {
+		if (num_val()) {
+			myCollection({$goods.goods_id});
+			//addToBuy({$goods.goods_id});
+		} else {
+			alert("对不起，您输入了一个非法的商品数量。");
+		}
+	});
+	
+	/*
+	$("#_atc").click(function() {
+		if (num_val()) {
+			addToCart({$goods.goods_id});
+		} else {
+			alert("对不起，您输入了一个非法的商品数量。");
+		}
+	});*/
+	//购物事件
+	$("#_gdt_gw").click(function() {
+		if (num_val()) {
+			addToCart({$goods.goods_id});
+		} else {
+			alert("对不起，您输入了一个非法的商品数量。");
+		}
+	});
+	
+	$("#_gdt_s").hover(function() {
+		$(this).css("background","url(themes/default/_images/_gdt_s_y.png) no-repeat center center");
+	}, function() {
+		$(this).css("background","url(themes/default/_images/_gdt_s.png) no-repeat center center");
+	});
+	$("#_gdt_a").hover(function() {
+		$(this).css("background","url(themes/default/_images/_gdt_a_y.png) no-repeat center center");
+	}, function() {
+		$(this).css("background","url(themes/default/_images/_gdt_a.png) no-repeat center center");
+	});
+	$("#_gdt_s").click(function() {
+		var num = $("#number").val();
+		num--;
+		if (num <= 0) {
+			$("#number").val(1);
+		} else {
+			$("#number").val(num);
+		}
+	});
+	$("#_gdt_a").click(function() {
+		var num = $("#number").val();
+		num++;
+		$("#number").val(num);
+	});
+	
+	//收藏
+	function myCollection(id){
+		Ajax.call('user.php?act=collection', 'id=' + id , collection_callback, 'GET', 'TEXT', true, true );
+	}
+	function collection_callback(data){
+		if (eval(data) == 0){
+			alert("请先登录再收藏");
+		} else if (eval(data) == 1){
+			alert("您已收藏过该商品");
+		} else if (eval(data) == 2) {
+			alert("收藏成功");
+		}
+	}
 });
+function num_val() {
+	var num = $("#number").val();
+	if (!isNaN(num)) {
+		if (num < 0) {
+			return false;	
+		}
+		if (num > 0 && num < 1) {
+			return false;
+		}
+		if (num.indexOf(".") != -1) {
+			return false;	
+		}
+		return true;
+	} else {
+		return false;	
+	}
+}
 </script>
 </html>
