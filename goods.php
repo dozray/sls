@@ -167,6 +167,7 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
         }
 
         $shop_price   = $goods['shop_price'];
+		$goods['shop_jifen'] = $goods['shop_price'] * 0.05;
         $linked_goods = get_linked_goods($goods_id);
 
         $goods['goods_style_name'] = add_style($goods['goods_name'], $goods['goods_name_style']);
