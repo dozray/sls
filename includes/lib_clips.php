@@ -30,7 +30,7 @@ if (!defined('IN_ECS'))
  */
 function get_collection_goods($user_id, $num = 10, $start = 0)
 {
-    $sql = 'SELECT g.goods_id, g.goods_name, g.market_price, g.shop_price AS org_price, '.
+    $sql = 'SELECT g.goods_id, g.chandi, g.guige, g.goods_thumb, g.goods_name, g.market_price, g.shop_price AS org_price, '.
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, ".
                 'g.promote_price, g.promote_start_date,g.promote_end_date, c.rec_id, c.is_attention' .
             ' FROM ' . $GLOBALS['ecs']->table('collect_goods') . ' AS c' .
@@ -54,6 +54,9 @@ function get_collection_goods($user_id, $num = 10, $start = 0)
         }
 
         $goods_list[$row['goods_id']]['rec_id']        = $row['rec_id'];
+		$goods_list[$row['goods_id']]['chandi']        = $row['chandi'];
+		$goods_list[$row['goods_id']]['guige']        = $row['guige'];
+		$goods_list[$row['goods_id']]['goods_thumb']        = $row['goods_thumb'];
         $goods_list[$row['goods_id']]['is_attention']  = $row['is_attention'];
         $goods_list[$row['goods_id']]['goods_id']      = $row['goods_id'];
         $goods_list[$row['goods_id']]['goods_name']    = $row['goods_name'];
