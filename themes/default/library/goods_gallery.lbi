@@ -1,11 +1,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- {if $pictures}-->
 
-	<span class="goodsimg-left" onmouseover="moveLeft()" onmousedown="clickLeft()" onmouseup="moveLeft()" onmouseout="scrollStop()"><img src="images/new/goodsleft.jpg" /></span>
+	<span class="goodsimg-left" onmouseover="moveLeft()" onmousedown="clickLeft()" onmouseup="moveLeft()" onmouseout="scrollStop()"><!--<img src="images/new/goodsleft.jpg" />--><img src="themes/default/_images/_gdt_l.png" /></span>
     
-    <span class="goodsimg-right" onmouseover="moveRight()" onmousedown="clickRight()" onmouseup="moveRight()" onmouseout="scrollStop()"><img src="images/new/goodsright.jpg" /></span>
+    <span class="goodsimg-right" onmouseover="moveRight()" onmousedown="clickRight()" onmouseup="moveRight()" onmouseout="scrollStop()"><!--<img src="images/new/goodsright.jpg" />--><img src="themes/default/_images/_gdt_r.png" /></span>
       
-      <div class="gallery">
+      <div class="gallery _gallery">
         <div id="demo">
           <div id="demo1" style="float:left">
             <ul>
