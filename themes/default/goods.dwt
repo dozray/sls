@@ -83,9 +83,10 @@ function reg(str){
         <!--{if $goods.is_promote and $goods.gmt_end_time } 促销-->
       	{insert_scripts files='lefttime.js'}
 
-        <span class="old-price">{$goods.shop_price_formated}</span>
-        <span class="cu-price">促 {$goods.promote_price}元</span>
-        <span class="cu-time">剩余时间： <span id="leftTime">{$lang.please_waiting}</span></span>
+        <span class="cu-price" style="color: #f6643d; font-size: 55px;">{$goods.promote_price}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="old-price" style="color: #f6643d; font-size: 28px;">{$goods.shop_price_formated}</span>
+		<br />
+        <span class="cu-time" style="color: #FC3; float: right; margin-right: 22px; margin-top: 15px; font-size: 24px;">剩余时间： <span id="leftTime">{$lang.please_waiting}</span></span>
         
         <!--{else}-->
         <span style="color: #f6643d; font-size: 50px;">单价：</span><span style="color: #f6643d; font-size: 60px;">{$goods.shop_price_formated}</span><span style="color: #8b8b8b; font-size: 16px;">({$goods.shop_jifen}积分)</span>
