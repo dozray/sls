@@ -12,3 +12,5 @@ body ._goods_imgbox ._imgbox ._gallery li { margin-right: 9px;}
 body ._goods_infobox { width: 660px; margin-right: 72px; background: none;}
 body ._goods_infobox ._goods_title { font-size: 44px; font-weight: bold; color: #6d6d6d; margin: 0px; line-height: normal; margin-top: 35px; height: 100px; width: 660px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-wrap: normal;}
 body ._goods_infobox ._goods_price { background: none; padding: 0px; height:auto; line-height: normal; margin-top: 30px;}
+
+body p { line-height: 30px;}
